@@ -59,3 +59,11 @@ CREATE TABLE IF NOT EXISTS administrador(
 
 INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES
   ('admin', MD5('admin'));
+
+INSERT INTO `tipo_producto` (`id`, `nombre`) VALUES
+  ('1', 'Entrantes'),
+  ('2', 'Ensaladas'),
+  ('3', 'Carnes'),
+  ('4', 'Pescados'),
+  ('5', 'Bebidas'),
+  ('6', 'Postres'),;
