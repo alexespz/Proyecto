@@ -35,15 +35,27 @@ CREATE TABLE IF NOT EXISTS producto(
   CONSTRAINT fk_producto_tipo FOREIGN KEY (tipo_producto) REFERENCES tipo_producto(id)
 );
 
-/*TABLA 4 - PEDIDO*/
+/*TABLA 4 - RESERVA*/
+CREATE TABLE IF NOT EXISTS reserva(
+  id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  comensales TINYINT UNSIGNED NOT NULL,
+  fecha_reserva DATETIME NOT NULL,
+  codigo_reserva CHAR(9)
+);
+
+/*TABLA 5 - PEDIDO*/
 CREATE TABLE IF NOT EXISTS pedido(
   id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   id_producto TINYINT UNSIGNED NOT NULL,
   CONSTRAINT fk_pedido_producto FOREIGN KEY (id_producto) REFERENCES producto(id)
 );
 
-/*TABLA 5 - ADMINISTRADOR*/
+/*TABLA 6 - ADMINISTRADOR*/
 CREATE TABLE IF NOT EXISTS administrador(
   usuario VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY,
   contrasenia VARCHAR(255) NOT NULL
 );
+
+INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES
+  ('admin', MD5('admin'));
