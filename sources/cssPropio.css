@@ -25,6 +25,12 @@ body{
     left: 80vh;
 }
 
+#formulario{
+    position: relative;!important;
+    top: 15vh;
+    left: 55vh;
+}
+
 .espacios {
     margin-top: 20px;
     margin-right: 20px;
@@ -38,13 +44,26 @@ body{
 .img-center{
     margin: 0 auto;
 }
+
+.divider {
+    height: 1px;
+    width:100%;
+    display:block; /* for use on default inline elements like span */
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+
+#contenedorPrincipal{
+    top: 50%;
+    left: 50%;
+    transform: translate3D(-50%,-50%,0);
+}
+
+
+
 /*
-
-
-
-
-
-
 * Clase hecha para los botones del menu de navegación de la izquierda
 */
 .menu-buttons{

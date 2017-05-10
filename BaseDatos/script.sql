@@ -7,16 +7,14 @@ USE restaurante;
 CREATE TABLE IF NOT EXISTS usuarios(
   id_usuario TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(20) NOT NULL,
-  apellido1 VARCHAR(20) NOT NULL,
-  apellido2 VARCHAR(20) NOT NULL,
+  apellidos VARCHAR(40) NOT NULL,
   dni CHAR(9) NOT NULL UNIQUE,
   telefono VARCHAR(9) NOT NULL UNIQUE,
   sexo CHAR(1) NOT NULL,
   usuario VARCHAR(25) NOT NULL UNIQUE,
   contrasenia VARCHAR(255) NOT NULL,
   email VARCHAR(60) NOT NULL UNIQUE,
-  contador_pedidos TINYINT UNSIGNED,
-  tipo_usuario CHAR(1) NOT NULL
+  contador_pedidos TINYINT UNSIGNED DEFAULT 0
 );
 
 /*TABLA 2 - TIPO_PRODUCTO*/
@@ -36,8 +34,9 @@ CREATE TABLE IF NOT EXISTS producto(
   id_producto TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL,
   descripcion VARCHAR(100),
-  precio DECIMAL NOT NULL,
+  precio DOUBLE NOT NULL,
   foto VARCHAR(50),
+  calorias TINYINT UNSIGNED,
   tipo_producto TINYINT UNSIGNED NOT NULL,
   CONSTRAINT fk_producto_tipo FOREIGN KEY (tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
 );
@@ -45,25 +44,29 @@ CREATE TABLE IF NOT EXISTS producto(
 /*TABLA 5 - RESERVA*/
 CREATE TABLE IF NOT EXISTS reserva(
   id_reserva TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL,
+  id_usuario TINYINT UNSIGNED NOT NULL,
   comensales TINYINT UNSIGNED NOT NULL,
   fecha_reserva DATE NOT NULL,
   hora_reserva TINYINT UNSIGNED NOT NULL,
   codigo_reserva CHAR(9),
-  CONSTRAINT fk_hora_reserva FOREIGN KEY (hora_reserva) REFERENCES hora_reserva(id_hora)
+  CONSTRAINT fk_hora_reserva FOREIGN KEY (hora_reserva) REFERENCES hora_reserva(id_hora),
+  CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
 
 /*TABLA 6 - PEDIDO*/
 CREATE TABLE IF NOT EXISTS pedido(
   id_pedido TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   id_producto TINYINT UNSIGNED NOT NULL,
+  gestionado BOOLEAN NOT NULL DEFAULT FALSE,
   CONSTRAINT fk_pedido_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
 /*TABLA 7 - PEDIDO_PRODUCTO*/
 CREATE TABLE IF NOT EXISTS pedido_producto(
   id_pedido TINYINT UNSIGNED PRIMARY KEY,
-  id_producto TINYINT UNSIGNED PRIMARY KEY
+  id_producto TINYINT UNSIGNED,
+  CONSTRAINT fk_pedido_id FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
+  CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
 /*TABLA 8 - ADMINISTRADOR*/
