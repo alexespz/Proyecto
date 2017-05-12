@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS producto(
   nombre VARCHAR(30) NOT NULL,
   descripcion VARCHAR(100),
   precio DOUBLE NOT NULL,
-  foto VARCHAR(50),
+  foto VARCHAR(100),
   calorias TINYINT UNSIGNED,
   tipo_producto TINYINT UNSIGNED NOT NULL,
   CONSTRAINT fk_producto_tipo FOREIGN KEY (tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
