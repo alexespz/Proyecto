@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="restaurante@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="restaurante">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="incidenciasevg"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="magentoe_incidenciasevg"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="peliculas"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="phpmyadmin"/>
+    <schema id="10" parent="1" name="pruebasexamen"/>
+    <schema id="11" parent="1" name="test"/>
+    <schema id="12" parent="1" name="wespedv2"/>
+    <table id="13" parent="2" name="administrador"/>
+    <table id="14" parent="2" name="hora_reserva"/>
+    <table id="15" parent="2" name="pedido"/>
+    <table id="16" parent="2" name="pedido_producto"/>
+    <table id="17" parent="2" name="producto"/>
+    <table id="18" parent="2" name="reserva"/>
+    <table id="19" parent="2" name="tipo_producto"/>
+    <table id="20" parent="2" name="usuarios"/>
+    <column id="21" parent="13" name="usuario">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="13" name="contrasenia">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="23" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>usuario</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="24" parent="14" name="id_hora">
+      <Position>1</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="14" name="hora">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="26" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_hora</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="15" name="id_pedido">
+      <Position>1</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="15" name="id_producto">
+      <Position>2</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="15" name="gestionado">
+      <Position>3</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="30" parent="15" name="fk_pedido_producto">
+      <ColNames>id_producto</ColNames>
+    </index>
+    <key id="31" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_pedido</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="15" name="fk_pedido_producto">
+      <ColNames>id_producto</ColNames>
+      <RefSchemaName>restaurante</RefSchemaName>
+      <RefTableName>producto</RefTableName>
+      <RefColNames>id_producto</RefColNames>
+    </foreign-key>
+    <column id="33" parent="16" name="id_pedido">
+      <Position>1</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="16" name="id_producto">
+      <Position>2</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+    </column>
+    <index id="35" parent="16" name="fk_producto_id">
+      <ColNames>id_producto</ColNames>
+    </index>
+    <key id="36" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_pedido</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="16" name="fk_pedido_id">
+      <ColNames>id_pedido</ColNames>
+      <RefSchemaName>restaurante</RefSchemaName>
+      <RefTableName>pedido</RefTableName>
+      <RefColNames>id_pedido</RefColNames>
+    </foreign-key>
+    <foreign-key id="38" parent="16" name="fk_producto_id">
+      <ColNames>id_producto</ColNames>
+      <RefSchemaName>restaurante</RefSchemaName>
+      <RefTableName>producto</RefTableName>
+      <RefColNames>id_producto</RefColNames>
+    </foreign-key>
+    <column id="39" parent="17" name="id_producto">
+      <Position>1</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="40" parent="17" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="17" name="descripcion">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="42" parent="17" name="precio">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="17" name="foto">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="44" parent="17" name="calorias">
+      <Position>6</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+    </column>
+    <column id="45" parent="17" name="tipo_producto">
+      <Position>7</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="46" parent="17" name="fk_producto_tipo">
+      <ColNames>tipo_producto</ColNames>
+    </index>
+    <key id="47" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_producto</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="48" parent="17" name="fk_producto_tipo">
+      <ColNames>tipo_producto</ColNames>
+      <RefSchemaName>restaurante</RefSchemaName>
+      <RefTableName>tipo_producto</RefTableName>
+      <RefColNames>id_tipo_producto</RefColNames>
+    </foreign-key>
+    <column id="49" parent="18" name="id_reserva">
+      <Position>1</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="18" name="id_usuario">
+      <Position>2</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="18" name="comensales">
+      <Position>3</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="18" name="fecha_reserva">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="18" name="hora_reserva">
+      <Position>5</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="18" name="codigo_reserva">
+      <Position>6</Position>
+      <DataType>char(9)|0</DataType>
+    </column>
+    <index id="55" parent="18" name="fk_hora_reserva">
+      <ColNames>hora_reserva</ColNames>
+    </index>
+    <index id="56" parent="18" name="fk_reserva_usuario">
+      <ColNames>id_usuario</ColNames>
+    </index>
+    <key id="57" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_reserva</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="58" parent="18" name="fk_reserva_usuario">
+      <ColNames>id_usuario</ColNames>
+      <RefSchemaName>restaurante</RefSchemaName>
+      <RefTableName>usuarios</RefTableName>
+      <RefColNames>id_usuario</RefColNames>
+    </foreign-key>
+    <foreign-key id="59" parent="18" name="fk_hora_reserva">
+      <ColNames>hora_reserva</ColNames>
+      <RefSchemaName>restaurante</RefSchemaName>
+      <RefTableName>hora_reserva</RefTableName>
+      <RefColNames>id_hora</RefColNames>
+    </foreign-key>
+    <column id="60" parent="19" name="id_tipo_producto">
+      <Position>1</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="61" parent="19" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="62" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_tipo_producto</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="63" parent="20" name="id_usuario">
+      <Position>1</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="20" name="nombre">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="20" name="dni">
+      <Position>4</Position>
+      <DataType>char(9)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="20" name="telefono">
+      <Position>5</Position>
+      <DataType>varchar(9)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="67" parent="20" name="sexo">
+      <Position>6</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="20" name="usuario">
+      <Position>7</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="20" name="contrasenia">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="20" name="email">
+      <Position>9</Position>
+      <DataType>varchar(60)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="20" name="contador_pedidos">
+      <Position>10</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="72" parent="20" name="apellidos">
+      <Position>3</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="73" parent="20" name="dni">
+      <ColNames>dni</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="74" parent="20" name="email">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="75" parent="20" name="telefono">
+      <ColNames>telefono</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="76" parent="20" name="usuario">
+      <ColNames>usuario</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="77" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_usuario</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="78" parent="20" name="dni">
+      <ColNames>dni</ColNames>
+      <UnderlyingIndexName>dni</UnderlyingIndexName>
+    </key>
+    <key id="79" parent="20" name="telefono">
+      <ColNames>telefono</ColNames>
+      <UnderlyingIndexName>telefono</UnderlyingIndexName>
+    </key>
+    <key id="80" parent="20" name="usuario">
+      <ColNames>usuario</ColNames>
+      <UnderlyingIndexName>usuario</UnderlyingIndexName>
+    </key>
+    <key id="81" parent="20" name="email">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>email</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

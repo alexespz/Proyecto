@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
-include_once '../consultas/obtenerProductos.php';
 
 if(!isset($_SESSION["usuario"])){
     header("Location: inicioSesion.php");
@@ -19,6 +18,175 @@ if(!isset($_SESSION["usuario"])){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script>
+        $(window).on('load', function(){
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/obtenerProductos.php",
+                data: "tipo="+1,
+                success: function(resp){
+                    $('#entrantes').attr('class', 'active');
+                    $('#ensaladas').attr('class', '');
+                    $('#carnes').attr('class', '');
+                    $('#pescados').attr('class', '');
+                    $('#bebidas').attr('class', '');
+                    $('#postres').attr('class', '');
+                    $('#ensaladas').empty();
+                    $('#carnes').empty();
+                    $('#pescados').empty();
+                    $('#bebidas').empty();
+                    $('#postres').empty();
+
+                    $('#entrantes').html(resp);
+                }
+            });
+
+            $(document).ready(function() {
+                $('#modal').on('hide.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
+            });
+        });
+        function ValidarEnsaladas(tipo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/obtenerProductos.php",
+                data: "tipo="+tipo,
+                success: function(resp){
+                    $('#ensaladas').attr('class', 'active');
+                    $('#entrantes').attr('class', '');
+                    $('#carnes').attr('class', '');
+                    $('#pescados').attr('class', '');
+                    $('#bebidas').attr('class', '');
+                    $('#postres').attr('class', '');
+                    $('#entrantes').empty();
+                    $('#carnes').empty();
+                    $('#pescados').empty();
+                    $('#bebidas').empty();
+                    $('#postres').empty();
+
+                    $('#ensaladas').html(resp);
+                }
+            });
+        }
+        function ValidarEntrantes(tipo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/obtenerProductos.php",
+                data: "tipo="+tipo,
+                success: function(resp){
+                    $('#entrantes').attr('class', 'active');
+                    $('#ensaladas').attr('class', '');
+                    $('#carnes').attr('class', '');
+                    $('#pescados').attr('class', '');
+                    $('#bebidas').attr('class', '');
+                    $('#postres').attr('class', '');
+                    $('#ensaladas').empty();
+                    $('#carnes').empty();
+                    $('#pescados').empty();
+                    $('#bebidas').empty();
+                    $('#postres').empty();
+
+                    $('#entrantes').html(resp);
+                }
+            });
+        }
+        function ValidarCarnes(tipo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/obtenerProductos.php",
+                data: "tipo="+tipo,
+                success: function(resp){
+                    $('#carnes').attr('class', 'active');
+                    $('#entrantes').attr('class', '');
+                    $('#ensaladas').attr('class', '');
+                    $('#pescados').attr('class', '');
+                    $('#bebidas').attr('class', '');
+                    $('#postres').attr('class', '');
+                    $('#entrantes').empty();
+                    $('#ensaladas').empty();
+                    $('#pescados').empty();
+                    $('#bebidas').empty();
+                    $('#postres').empty();
+
+                    $('#carnes').html(resp);
+                }
+            });
+        }
+        function ValidarPescados(tipo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/obtenerProductos.php",
+                data: "tipo="+tipo,
+                success: function(resp){
+                    $('#pescados').attr('class', 'active');
+                    $('#entrantes').attr('class', '');
+                    $('#carnes').attr('class', '');
+                    $('#ensaladas').attr('class', '');
+                    $('#bebidas').attr('class', '');
+                    $('#postres').attr('class', '');
+                    $('#entrantes').empty();
+                    $('#carnes').empty();
+                    $('#ensaladas').empty();
+                    $('#bebidas').empty();
+                    $('#postres').empty();
+
+                    $('#pescados').html(resp);
+                }
+            });
+        }
+        function ValidarBebidas(tipo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/obtenerProductos.php",
+                data: "tipo="+tipo,
+                success: function(resp){
+                    $('#bebidas').attr('class', 'active');
+                    $('#entrantes').attr('class', '');
+                    $('#carnes').attr('class', '');
+                    $('#pescados').attr('class', '');
+                    $('#ensaladas').attr('class', '');
+                    $('#postres').attr('class', '');
+                    $('#entrantes').empty();
+                    $('#carnes').empty();
+                    $('#pescados').empty();
+                    $('#ensaladas').empty();
+                    $('#postres').empty();
+
+                    $('#bebidas').html(resp);
+                }
+            });
+        }
+        function ValidarPostres(tipo) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/obtenerProductos.php",
+                data: "tipo="+tipo,
+                success: function(resp){
+                    $('#postres').attr('class', 'active');
+                    $('#entrantes').attr('class', '');
+                    $('#carnes').attr('class', '');
+                    $('#pescados').attr('class', '');
+                    $('#bebidas').attr('class', '');
+                    $('#ensaladas').attr('class', '');
+                    $('#entrantes').empty();
+                    $('#carnes').empty();
+                    $('#pescados').empty();
+                    $('#bebidas').empty();
+                    $('#ensaladas').empty();
+
+                    $('#postres').html(resp);
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -36,42 +204,32 @@ if(!isset($_SESSION["usuario"])){
     <!-- CUERPO DE LA PÁGINA -->
     <div class="col-md-8" id="cuerpo">
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#entrantes" data-toggle="tab">ENTRANTES</a></li>
-            <li><a href="#ensaladas" data-toggle="tab">ENSALADAS</a></li>
-            <li><a href="#carnes" data-toggle="tab">CARNES</a></li>
-            <li><a href="#pescados" data-toggle="tab">PESCADOS</a></li>
-            <li><a href="#bebidas" data-toggle="tab">BEBIDAS</a></li>
-            <li><a href="#postres" data-toggle="tab">POSTRES</a></li>
+            <li class="active"><a onclick="ValidarEntrantes(1)"; data-toggle="tab">ENTRANTES</a></li>
+            <li><a onclick="ValidarEnsaladas(2)"; data-toggle="tab">ENSALADAS</a></li>
+            <li><a onclick="ValidarCarnes(3)"; data-toggle="tab">CARNES</a></li>
+            <li><a onclick="ValidarPescados(4)"; data-toggle="tab">PESCADOS</a></li>
+            <li><a onclick="ValidarBebidas(5)"; data-toggle="tab">BEBIDAS</a></li>
+            <li><a onclick="ValidarPostres(6)"; data-toggle="tab">POSTRES</a></li>
         </ul>
 
-        <div class="tab-content clearfix">
+        <div class="tab-content clearfix" id="contenidoProductos">
             <div class="tab-pane active" id="entrantes">
-                <table class="table table-stripted col-md-9">
-                    <tr>
-                        <td class="col-md-8">Producto</td>
-                        <td class="col-md-1">Precio</td>
-                    </tr>
-                    <tr>
-                        <?php
-                            echo '<td>HOLA</td>';
-                        ?>
-                    </tr>
-                </table>
+
             </div>
             <div class="tab-pane" id="ensaladas">
-                <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+
             </div>
             <div class="tab-pane" id="carnes">
-                <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+
             </div>
             <div class="tab-pane" id="pescados">
-                <h3>We use css to change the background color of the content to be equal to the tab</h3>
+
             </div>
             <div class="tab-pane" id="bebidas">
-                <h3>We use css to change the background color of the content to be equal to the tab</h3>
+
             </div>
             <div class="tab-pane" id="postres">
-                <h3>We use css to change the background color of the content to be equal to the tab</h3>
+
             </div>
         </div>
     </div>
@@ -89,14 +247,24 @@ if(!isset($_SESSION["usuario"])){
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <table class="table">
+                                <table class="table table-striped col-md-8">
                                     <tr>
-                                        <td>
-                                            hola
-                                        </td>
+                                        <td class="col-md-7">Producto</td>
+                                        <td class="col-md-1">Precio</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-7"></td>
+                                        <td class="col-md-1"><button class="btn btn-warning">Realizar Pedido</button></td>
                                     </tr>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#">Realizar Pedido</a>
+                            </h4>
                         </div>
                     </div>
                     <div class="panel panel-default">
