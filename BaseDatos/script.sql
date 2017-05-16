@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS producto(
   nombre VARCHAR(30) NOT NULL,
   descripcion VARCHAR(100),
   precio DOUBLE NOT NULL,
-  foto VARCHAR(50),
+  foto VARCHAR(100),
   calorias TINYINT UNSIGNED,
   tipo_producto TINYINT UNSIGNED NOT NULL,
   CONSTRAINT fk_producto_tipo FOREIGN KEY (tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS reserva(
 /*TABLA 6 - PEDIDO*/
 CREATE TABLE IF NOT EXISTS pedido(
   id_pedido TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  id_usuario TINYINT UNSIGNED NOT NULL,
   id_producto TINYINT UNSIGNED NOT NULL,
   gestionado BOOLEAN NOT NULL DEFAULT FALSE,
   CONSTRAINT fk_pedido_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
