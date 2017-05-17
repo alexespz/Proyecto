@@ -16,48 +16,31 @@ echo '
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="Modal_Label_' . $id_producto . '">' . $nombre . '</h4>
 </div>
-<div class="modal-body">
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label for="alumno" class="col-md-3 control-label">Producto:</label>
-            <div class="col-lg-12">
-                <input type="text" class="form-control" id="alumno" value="' . $nombre . '" disabled>
-            </div>
+<div class="modal-body col-md-12">
+    <div class="col-md-8" id="contenidoTexto">
+        <p><h1>'.$nombre.'</h1></p>
+        <p class="divider"></p>
+        <p>'.$descripcion.'</p>
+        <p>'.$calorias.' Calorias</p>
+        <p class="divider"></p>
+        <p>PUEDE CONTENER</p>
+        <p>Aqui van los iconos de los alérgenos</p>
+    </div>
+    <div class="col-md-4" id="contenidoFoto">
+        <div id="imagen">';
+            if($foto == "null"){
+                echo '<image src="../imagenes/imagen-no-disponible.gif"/>';
+            }else{
+                echo '<image src="'.$foto.'"/>';
+            }echo'
         </div>
-        <div class="form-group">
-            <label for="alumno" class="col-lg-12 control-label">Descripcion:</label>
-            <div class="col-lg-12">
-                <input type="text" class="form-control" id="alumno" value="' . $descripcion . '" disabled>
-            </div>
+        <div id="precio">
+            <p>Precio: '.$precio.'€</p>
         </div>
-        <div class="form-group">
-            <label for="alumno" class="col-md-12 control-label">Precio:</label>
-            <div class="col-lg-12">
-                <input type="text" class="form-control" id="alumno" value="' . $precio . ' €" disabled>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="alumno" class="col-md-12 control-label">Foto:</label>
-            <div class="col-lg-12">
-                <input type="text" class="form-control" id="alumno" value="' . $foto . '" disabled>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="alumno" class="col-md-12 control-label">Calorias:</label>
-            <div class="col-lg-12">
-                <input type="text" class="form-control" id="alumno" value="' . $calorias . '" disabled>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="alumno" class="col-md-12 control-label">Alergenos:</label>
-            <div class="col-lg-12">
-                <input type="text" class="form-control" id="alumno" value="" disabled>
-            </div>
-        </div>
-    </form>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <a class="btn btn-succes" href="/*VALIDAR MEDIANTE AJAX*/">Añadir al pedido</a>
+    <button type="button" class="btn btn-info">Añadir al pedido</button>
 </div>';
 $sentenciaProductos->close();
