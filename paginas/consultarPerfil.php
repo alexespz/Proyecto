@@ -1,8 +1,6 @@
 <?php
 include_once '../procedimientos/procedimientos.php';
 include_once '../consultas/obtenerPerfil.php';
-$conexion = new procedimientos();
-$conexion->conect();
 
 ?>
 <html lang="en">
