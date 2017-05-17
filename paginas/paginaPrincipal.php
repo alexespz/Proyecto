@@ -49,7 +49,11 @@ if(!isset($_SESSION["usuario"])){
                 window.location = "../paginas/paginaPedido.php";
             });
             
-            $('#pedido').on('click', function(){
+            $('#perfil').on('click', function(){
+                window.location = "../paginas/perfilPersonal.php";
+            });
+            
+            $('#cerrar').on('click', function(){
                 window.location = "../paginas/cerrarSesion.php";
             });
         });
