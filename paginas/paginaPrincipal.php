@@ -44,9 +44,13 @@ if(!isset($_SESSION["usuario"])){
                 $('#cerrar').css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto"});
             });
 
-            //Localización a la que hace referencia cada elemento al hacer click sobre ella.
+            //Localización a la que hace referencia cada elemento al hacer click sobre el.
             $('#pedido').on('click', function(){
-                window.location="../paginas/paginaPedido.php";
+                window.location = "../paginas/paginaPedido.php";
+            });
+            
+            $('#pedido').on('click', function(){
+                window.location = "../paginas/cerrarSesion.php";
             });
         });
     </script>
