@@ -6,7 +6,7 @@ $conexion->conect();
 
 $obtenerProductos = "SELECT id_producto,nombre,precio FROM producto WHERE tipo_producto = ?";
 $sentenciaProductos = $conexion->consultasPreparadas($obtenerProductos);
-$sentenciaProductos->bind_Param('i', $tipo);
+$sentenciaProductos->bind_param('i', $tipo);
 $tipo = $_POST["tipo"];
 $sentenciaProductos->execute();
 $sentenciaProductos->bind_result($id_producto, $nombre, $precio);
