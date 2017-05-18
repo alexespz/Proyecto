@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS pedido(
   id_usuario TINYINT UNSIGNED NOT NULL,
   id_producto TINYINT UNSIGNED NOT NULL,
   gestionado BOOLEAN NOT NULL DEFAULT FALSE,
+  codigo_pedido CHAR(12),
   CONSTRAINT fk_pedido_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
