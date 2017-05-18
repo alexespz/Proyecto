@@ -76,12 +76,12 @@ include_once '../consultas/obtenerPerfil.php';
                 </div>
                 <div class="col-md-4 form-group">
                     <div class="form-group">
-                        <button class="btn btn-info" id="submit" style="margin-top: 25px;" onclick="modificarUsuario(document.getElementById('usuario').value);">Cambiar usuario</button>
+                        <button class="btn btn-info" style="margin-top: 25px;" onclick="modificarUsuario(document.getElementById('usuario').value);">Cambiar usuario</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 " id="boton">
-                <button class="btn btn-info" id="submit" onclick="modificarPerfil(document.getElementById('nombre').value, document.getElementById('apellidos').value, document.getElementById('email').value, document.getElementById('telefono').value, document.getElementById('sexo').value, document.getElementById('dni').value, document.getElementById('submit').value);">Modificar datos</button>
+                <!--<button class="btn btn-info" id="submit" onclick="modificarPerfil(document.getElementById('nombre').value, document.getElementById('apellidos').value, document.getElementById('email').value, document.getElementById('telefono').value, document.getElementById('sexo').value, document.getElementById('dni').value, document.getElementById('submit').value);">Modificar datos</button>-->
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
         </form>

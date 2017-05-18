@@ -23,7 +23,7 @@ session_start();
                 <div class="col-md-6 form-group">
                     <div class="form-group">
                         <label for="usuarioAntiguo" class="control-label">Antiguo Usuario</label>
-                        <input type="text" name="usuarioAntiguo" id="usuarioAntiguo" class="form-control" value="<?php echo $_POST["usuario"] ?>" disabled>
+                        <input type="text" name="usuarioAntiguo" id="usuarioAntiguo" class="form-control" value="<?php echo $_SESSION["usuario"] ?>" disabled>
                     </div>
                 </div>
                 <div class="col-md-6 form-group">
