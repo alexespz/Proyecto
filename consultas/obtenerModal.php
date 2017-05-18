@@ -23,7 +23,7 @@ echo '
         <p>'.$descripcion.'</p>
         <p>'.$calorias.' Calorias</p>
         <p class="divider"></p>
-        <p>PUEDE CONTENER</p>
+        <p>Puede contener:</p>
         <p>Aqui van los iconos de los alérgenos</p>
     </div>
     <div class="col-md-4" id="contenidoFoto">
