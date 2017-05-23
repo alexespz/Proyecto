@@ -15,7 +15,7 @@ $sentencia->close();
 
 if(password_verify($_POST['contrasenia'], $pass)){
     $_SESSION['usuario'] = $usuario;
-    echo '<script>window.location="../paginas/paginaPrincipal.php";</script>';
+    echo '<script>window.location="../paginas/menuAdmin.php";</script>';
 }else{
     echo '
     <script>
