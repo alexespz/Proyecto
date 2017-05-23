@@ -10,7 +10,7 @@ if(!isset($_SESSION["usuarios"])){
   header("Location: ../paginas/inicioSesion.php");
 }
 ?>
-
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Realizar reserva</title>
@@ -32,12 +32,13 @@ if(!isset($_SESSION["usuarios"])){
             maxDate: "+1M +10D" 
           });
         });
-        function Validar(nombre, apellidos, email, telefono, sexo, dni, user, pass, pass2, submit) {
+      
+        function Validar(nombre, comensales, fecha, hora) {
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "../consultas/validarRegistro.php",
-                data: "nombre="+nombre+"&apellidos="+apellidos+"&email="+email+"&telefono="+telefono+"&sexo="+sexo+"&dni="+dni+"&usuario="+user+"&contrasenia="+pass+"&contrasenia2="+pass2+"&submit="+submit,
+                url: "../consultas/realizarReserva.php",
+                data: "nombre="+nombre+"&comensales="+comensales+"&fecha="+fecha+"&hora="+hora,
                 success: function(resp){
                     $('#resultado').html(resp);
                 }
@@ -87,6 +88,7 @@ if(!isset($_SESSION["usuarios"])){
                              while($conexion->devolverFilas()){
                               echo <option value="resultado['hora']">resultado['hora']</option>
                              }
+                            ?>
                         </select>
                    </div>
                 </div>
@@ -94,7 +96,7 @@ if(!isset($_SESSION["usuarios"])){
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
             <div class="col-md-12 text-center" id="boton">
-                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('apellidos').value, document.getElementById('email').value, document.getElementById('telefono').value, document.getElementById('sexo').value, document.getElementById('dni').value, document.getElementById('usuario').value, document.getElementById('contrasenia').value, document.getElementById('contrasenia2').value, document.getElementById('submit').value);">Reservar</button>
+                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value);">Reservar</button>
             </div>
         </form>
     </div>
