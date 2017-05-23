@@ -1,0 +1,108 @@
+<?php
+session_start();
+include_once '../procedimientos/procedimientos.php';
+
+if(!isset($_SESSION["usuario"])){
+    header("Location: index.php");
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina principal</title>
+    <link type="text/css" href="../sources/bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="../sources/cssPropio.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../sources/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="../sources/ajaxAdmin.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container caja">
+    <!-- CABECERA -->
+    <header>
+        <div class="row vertical-align text-center">
+            <div class="col-md-3 col-sm-3">
+                <div id="title-cdi">PANEL ADMINISTRADOR</div>
+            </div>
+        </div>
+    </header>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" >
+                <div class="panel-group" id="accordion" >
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    <span class="glyphicon glyphicon-book text-success"></span>Productos</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table table-striped col-md-8">
+                                    <tr>
+                                        <td><a id="listadoProductos">Listado de productos</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a id="nuevosProductos">Añadir nuevos productos</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    <span class="glyphicon glyphicon-book text-success"></span>Tipos de Productos</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table table-striped col-md-8">
+                                    <tr>
+                                        <td><a id="listadoTipos">Listado de Tipos</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a id="nuevosTipos">Añadir nuevo tipo</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    <span class="glyphicon glyphicon-book text-success"></span>Horas de reserva</a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table table-striped col-md-8">
+                                    <tr>
+                                        <td><a id="listadoHoras">Listado de horas</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a id="nuevasHoras">Añadir nueva hora</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CUERPO DE LA PÁGINA -->
+    <div class="col-md-8" id="cuerpo">
+        
+    </div>
+</div>
+</body>
+</html>
