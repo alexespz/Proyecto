@@ -15,7 +15,7 @@ $sentencia->close();
 
 if(password_verify($_POST['contrasenia'], $pass)){
     $_SESSION['idUsuario'] = $idUsuario;
-    $_SESSION['usuario'] = $nombre;
+    $_SESSION['nombre'] = $nombre;
     $_SESSION['email'] = $email;
     $_SESSION['usuario'] = $usuario;
 

@@ -17,16 +17,19 @@ include_once '../consultas/obtenerPerfil.php';
         });
     }
     
-    function modificarPerfil(nombre, apellidos, email, telefono, sexo, dni, submit) {
+    function modificarPerfil() {
         $.ajax({
             async: true,
             type: "POST",
             url: "../paginas/modificarPerfil.php",
-            data: "nombre="+nombre+"&apellidos="+apellidos+"&email="+email+"&telefono="+telefono+"&sexo="+sexo+"&dni="+dni+"&submit="+submit,
             success: function(resp){
                 $('#cuerpo').load("modificarPerfil.php");
             }
         });
+    }
+
+    function volver(){
+        window.location = "../paginas/paginaPrincipal.php";
     }
 </script>
 <html lang="en">
@@ -47,7 +50,7 @@ include_once '../consultas/obtenerPerfil.php';
                         <label for="sexo" class="control-label">Sexo</label>
                         <?php if($sexo == 'H'){
                             $sexo = "Hombre";
-                        }else{
+                        }else if($sexo == "M"){
                             $sexo = "Mujer";
                         }?>
                         <input type="text" name="sexo" id="sexo" class="form-control" value="<?php echo $sexo ?>" disabled>
@@ -81,7 +84,8 @@ include_once '../consultas/obtenerPerfil.php';
                 </div>
             </div>
             <div class="col-md-12 " id="boton">
-                <!--<button class="btn btn-info" id="submit" onclick="modificarPerfil(document.getElementById('nombre').value, document.getElementById('apellidos').value, document.getElementById('email').value, document.getElementById('telefono').value, document.getElementById('sexo').value, document.getElementById('dni').value, document.getElementById('submit').value);">Modificar datos</button>-->
+                <button class="btn btn-info" id="submit" onclick="modificarPerfil();">Modificar datos</button>
+                <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
         </form>

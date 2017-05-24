@@ -43,11 +43,12 @@ if(!isset($_SESSION["usuario"])){
             });
 
             $(document).ready(function() {
-                $('#modal').on('hide.bs.modal', function () {
+                $('#Modal').on('hidden.bs.modal', function () {
                     $(this).removeData('bs.modal');
                 });
             });
         });
+
         function ValidarEnsaladas(tipo) {
             $.ajax({
                 async: true,
@@ -69,6 +70,12 @@ if(!isset($_SESSION["usuario"])){
 
                     $('#ensaladas').html(resp);
                 }
+            });
+
+            $(document).ready(function() {
+                $('#Modal').on('hidden.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
             });
         }
         function ValidarEntrantes(tipo) {
@@ -93,6 +100,12 @@ if(!isset($_SESSION["usuario"])){
                     $('#entrantes').html(resp);
                 }
             });
+
+            $(document).ready(function() {
+                $('#Modal').on('hidden.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
+            });
         }
         function ValidarCarnes(tipo) {
             $.ajax({
@@ -115,6 +128,12 @@ if(!isset($_SESSION["usuario"])){
 
                     $('#carnes').html(resp);
                 }
+            });
+
+            $(document).ready(function() {
+                $('#Modal').on('hidden.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
             });
         }
         function ValidarPescados(tipo) {
@@ -139,6 +158,12 @@ if(!isset($_SESSION["usuario"])){
                     $('#pescados').html(resp);
                 }
             });
+
+            $(document).ready(function() {
+                $('#Modal').on('hidden.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
+            });
         }
         function ValidarBebidas(tipo) {
             $.ajax({
@@ -162,6 +187,12 @@ if(!isset($_SESSION["usuario"])){
                     $('#bebidas').html(resp);
                 }
             });
+
+            $(document).ready(function() {
+                $('#Modal').on('hidden.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
+            });
         }
         function ValidarPostres(tipo) {
             $.ajax({
@@ -184,6 +215,12 @@ if(!isset($_SESSION["usuario"])){
 
                     $('#postres').html(resp);
                 }
+            });
+
+            $(document).ready(function() {
+                $('#Modal').on('hidden.bs.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
             });
         }
     </script>
@@ -253,10 +290,11 @@ if(!isset($_SESSION["usuario"])){
                                         <td class="col-md-1">Precio</td>
                                     </tr>
                                     <tr>
-                                        <td class="col-md-7"></td>
-                                        <td class="col-md-1"><button class="btn btn-warning">Realizar Pedido</button></td>
+                                        <td class="col-md-7" id="columnaProducto"></td>
+                                        <td class="col-md-1" id="columnaPrecio"></td>
                                     </tr>
                                 </table>
+                                <td class="col-md-1"><button class="btn btn-warning">Realizar Pedido</button></td>
                             </div>
                         </div>
                     </div>
@@ -270,7 +308,7 @@ if(!isset($_SESSION["usuario"])){
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a href="cerrarSession.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
+                                <a href="../paginas/paginaPrincipal.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
                             </h4>
                         </div>
                     </div>

@@ -64,7 +64,7 @@ if(!isset($_SESSION["usuario"])){
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a href="cerrarSession.php"><span class="fa fa-sign-out text-success"></span> Cerrar sesion</a>
+                                <a id="cerrarSesion"><span class="fa fa-sign-out text-success"></span> Cerrar sesion</a>
                             </h4>
                         </div>
                     </div>

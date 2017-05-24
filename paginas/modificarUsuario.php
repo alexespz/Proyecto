@@ -3,16 +3,20 @@ session_start();
 
 ?>
 <script>
-  function cambiarUsuario(oldUser, newUser) {
+    function cambiarUsuario(oldUser, newUser) {
         $.ajax({
             async: true,
             type: "POST",
             url: "../consultas/modificarUsuario.php",
-            data: "usuarioAntiguo="+user+"&usuarioNuevo="+newUser,
+            data: "usuarioAntiguo="+oldUser+"&usuarioNuevo="+newUser,
             success: function(resp){
                 $('#resultado').html(resp);
             }
         });
+    }
+
+    function volver(){
+      $('#cuerpo').load('../paginas/consultarPerfil.php');
     }
 </script>
 <html lang="en">
@@ -35,6 +39,7 @@ session_start();
             </div>
             <div class="col-md-12 " id="boton">
                 <button class="btn btn-info" id="submit" onclick="cambiarUsuario(document.getElementById('usuarioAntiguo').value, document.getElementById('nuevoUsuario').value);">Modificar</button>
+                <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
         </form>

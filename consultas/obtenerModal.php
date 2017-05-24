@@ -1,6 +1,5 @@
 <?php
 include_once '../procedimientos/procedimientos.php';
-
 $conexion = new procedimientos();
 $conexion->conect();
 
