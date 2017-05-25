@@ -6,29 +6,6 @@ include_once '../consultas/obtenerPerfil.php';
 ?>
 <script>
     function modificarPerfil(nombre, apellidos, email, telefono, sexo, dni) {
-        if(nombre = ''){
-            nombre = $('#nombre').attr('placeholder');
-        }
-
-        if(apellidos = ''){
-            apellidos = $('#apellidos').attr('placeholder');
-        }
-
-        if(email = ''){
-            email = $('#email').attr('placeholder');
-        }
-
-        if(telefono = '') {
-            telefono = $('#telefono').attr('placeholder');
-        }
-
-        if(sexo = ''){
-            sexo = $('#sexo').attr('placeholder')
-        }
-
-        if(dni = ''){
-            dni = $('#dni').attr('placeholder')
-        }
         $.ajax({
             async: true,
             type: "GET",
@@ -82,7 +59,7 @@ include_once '../consultas/obtenerPerfil.php';
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="modificarPerfil($('#nombre').text(), document.getElementById('apellidos').value, document.getElementById('email').value, document.getElementById('telefono').value, document.getElementById('sexo').value, document.getElementById('dni').value);">Modificar datos</button>
+            <button class="btn btn-info" id="submit" onclick="modificarPerfil($('#nombre').text(), $('#apellidos').text(), $('#email').text(), $('#telefono').text(), $('#sexo').text(), $('#dni').text();">Modificar datos</button>
             <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
