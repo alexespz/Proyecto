@@ -13,7 +13,7 @@ $sentenciaProductos->bind_result($nombre, $precio);
 $sentenciaProductos->fetch();
 $sentenciaProductos->close();
 
-$carrito[$indice] = array("producto"=> $nombre, "precio"=> $precio);
+$carrito = array("producto".$indice=> $nombre, "precio".$indice=> $precio);
 $indice += 1;
 
 for($i=0; $i< count($carrito); $i++){
