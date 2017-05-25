@@ -294,15 +294,8 @@ if(!isset($_SESSION["usuario"])){
                                         <td class="col-md-1" id="columnaPrecio"></td>
                                     </tr>
                                 </table>
-                                <td class="col-md-1"><button class="btn btn-warning">Realizar Pedido</button></td>
+                                <td class="col-md-1"><button class="btn btn-warning" href="../consultas/realizarPedido.php">Realizar Pedido</button></td>
                             </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a href="#">Realizar Pedido</a>
-                            </h4>
                         </div>
                     </div>
                     <div class="panel panel-default">
