@@ -5,35 +5,35 @@ include_once '../consultas/obtenerPerfil.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-/*$sql = "SELECT email,telefono,dni FROM usuarios WHERE dni = '".$_POST["dni"]."' OR telefono = '".$_POST["telefono"]."' OR email = '".$_POST["email"]."'";
+$sql = "SELECT nombre, apellidos, email, telefono, dni FROM usuarios WHERE dni = '".$_POST["dni"]."' OR telefono = '".$_POST["telefono"]."' OR email = '".$_POST["email"]."'";
 $conexion->consultas($sql);
 if($conexion->filasAfectadas() > 0){
     echo '<span class="col-md-12 alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> El correo, telefono o dni especificado ya existen</span>';
-}else{*/
-echo $_POST["nombre"];
-/*if($_POST["nombre"] == ''){
+}else{
+    
+if($_POST["nombre"] == ""){
     $_POST["nombre"] = $nombre;
 }
 
-if($_POST["apellidos"] == ''){
+if($_POST["apellidos"] == ""){
     $_POST["apellidos"] = $apellidos;
 }
 
-if($_POST["email"] == ''){
+if($_POST["email"] == ""){
     $_POST["email"] = $email;
 }
 
-if($_POST["telefono"] == ''){
+if($_POST["telefono"] == ""){
     $_POST["telefono"] = $telefono;
 }
 
-if($_POST["sexo"] == ''){
+if($_POST["sexo"] == ""){
     $_POST["sexo"] = $sexo;
 }
 
-if($_POST["dni"] == ''){
+if($_POST["dni"] == ""){
     $_POST["dni"] = $dni;
-}*/
+}
 
 $sql = "UPDATE usuarios SET nombre = '".$_POST["nombre"]."', apellidos = '".$_POST["apellidos"]."', email = '".$_POST["email"]."', telefono = '".$_POST["telefono"]."', sexo = '".$_POST["sexo"]."', dni = '".$_POST["dni"]."',  WHERE usuario = '".$_SESSION["usuario"]."'";
 $conexion->consultas($sql);
@@ -46,4 +46,6 @@ if($conexion->filasAfectadas() > 0){
                 $("#cuerpo").load("consultarPerfil.php");
             }, 1200);
         </script>';
+}else{
+    echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Ha ocurrido algún error al modificar los datos</span>'
 }
