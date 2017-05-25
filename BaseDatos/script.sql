@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS administrador(
 );
 
 INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES
-  ('admin', MD5('admin'));
+  ('admin', <?php password_hash('admin', PASSWORD_DEFAULT)?> );
 
 INSERT INTO `tipo_producto` (`id_tipo_producto`, `nombre`) VALUES
   ('1', 'Entrantes'),
