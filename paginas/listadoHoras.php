@@ -9,7 +9,7 @@ if(!isset($_SESSION["usuario"])){
   header("Location: ../paginas/paginaAdministrador.php");
 }
 
-$query = "SELECT id_hora, hora FROM horas";
+$query = "SELECT id_hora, hora FROM hora_reserva";
 $conexion->consultas();
 echo '<table class="table table-striped col-md-9">
   <tr>
