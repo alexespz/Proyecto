@@ -70,7 +70,7 @@ $sentencia->close();
                 </div>
             </div>
             <div class="col-md-12 " id="boton">
-                <!--<button class="btn btn-info" id="submit" onclick="modificarProducto(document.getElementById('nombre').value, document.getElementById('apellidos').value, document.getElementById('email').value, document.getElementById('telefono').value, document.getElementById('sexo').value, document.getElementById('dni').value, document.getElementById('submit').value);">Modificar datos</button>-->
+                <button class="btn btn-info" id="submit" onclick="modificarProducto(document.getElementById('id').value, document.getElementById('nombre').value, document.getElementById('descripcion').value, document.getElementById('precio').value, document.getElementById('foto').value, document.getElementById('calorias').value, document.getElementById('tipo').value);">Modificar</button>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
         </form>
