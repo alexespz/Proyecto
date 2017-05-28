@@ -283,18 +283,8 @@ if(!isset($_SESSION["usuario"])){
                             </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <table class="table table-striped col-md-8">
-                                    <tr>
-                                        <td class="col-md-7">Producto</td>
-                                        <td class="col-md-1">Precio</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-7" id="columnaProducto"></td>
-                                        <td class="col-md-1" id="columnaPrecio"></td>
-                                    </tr>
-                                </table>
-                                <td class="col-md-1"><button class="btn btn-warning" href="../consultas/realizarPedido.php">Realizar Pedido</button></td>
+                            <div class="panel-body" id="pedido">
+
                             </div>
                         </div>
                     </div>

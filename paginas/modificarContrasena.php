@@ -16,7 +16,7 @@ session_start();
     }
 
     function volver(){
-        $('#cuerpo').load('../paginas/consultarPerfil.php');
+        window.location = "../paginas/paginaPrincipal.php";
     }
 </script>
 <html lang="en">

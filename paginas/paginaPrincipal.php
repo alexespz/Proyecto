@@ -45,6 +45,10 @@ if(!isset($_SESSION["usuario"])){
             });
 
             //Localización a la que hace referencia cada elemento al hacer click sobre el.
+            $('#reserva').on('click', function(){
+               window.location = "../paginas/paginaReserva.php";
+            });
+
             $('#pedido').on('click', function(){
                 window.location = "../paginas/paginaPedido.php";
             });

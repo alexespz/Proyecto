@@ -6,7 +6,7 @@ $conexion = new procedimientos();
 $conexion->conect();
 
 if(!isset($_POST["usuario"])){
-  header("Location: ../paginas/paginaAdministrador.php");
+  header("Location: ../admin/index.html");
 }
 ?>
 <script>
@@ -21,10 +21,7 @@ if(!isset($_POST["usuario"])){
             }
         });
     }
-    
-    function volver(){
-        window.location = "../paginas/paginaPrincipal.php";
-    }
+
 </script>
 <html lang="en">
 <div class="col-md-9 pull-md-right main-content">
@@ -40,7 +37,6 @@ if(!isset($_POST["usuario"])){
         </div>
         <div class="col-md-12 " id="boton">
             <button class="btn btn-info" id="submit" onclick="aniadirTipoProducto($('#nombre').text());">Añadir</button>
-            <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

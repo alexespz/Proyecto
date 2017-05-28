@@ -6,7 +6,7 @@ include_once '../consultas/obtenerPerfil.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-if(!isset($_SESSION["usuarios"])){
+if(!isset($_SESSION["usuario"])){
   header("Location: ../paginas/inicioSesion.php");
 }
 ?>
@@ -85,8 +85,8 @@ if(!isset($_SESSION["usuarios"])){
                             <?php
                              $sql = "SELECT hora FROM hora_reserva";
                              $conexion->consultas($sql);
-                             while($conexion->devolverFilas()){
-                              echo <option value="resultado['hora']">resultado['hora']</option>
+                             while($resultado = $conexion->devolverFilas()){
+                              echo '<option value="'.$resultado["hora"].'">'.$resultado["hora"].'</option>';
                              }
                             ?>
                         </select>

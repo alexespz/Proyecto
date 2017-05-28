@@ -8,7 +8,7 @@ include_once '../consultas/obtenerPerfil.php';
     function modificarPerfil(nombre, apellidos, email, telefono, sexo, dni) {
         $.ajax({
             async: true,
-            type: "GET",
+            type: "POST",
             url: "../consultas/modificarPerfil.php",
             data: "nombre="+nombre+"&apellidos="+apellidos+"&email="+email+"&telefono="+telefono+"&sexo="+sexo+"&dni="+dni,
             success: function(resp){
@@ -59,7 +59,7 @@ include_once '../consultas/obtenerPerfil.php';
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="modificarPerfil($('#nombre').text(), $('#apellidos').text(), $('#email').text(), $('#telefono').text(), $('#sexo').text(), $('#dni').text();">Modificar datos</button>
+            <button class="btn btn-info" id="submit" onclick="modificarPerfil($('#nombre').val(), $('#apellidos').val(), $('#email').val(), $('#telefono').val(), $('#sexo').val(), $('#dni').val());">Modificar datos</button>
             <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>

@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS hora_reserva(
 /*TABLA 4 - ALERGENOS*/
 CREATE TABLE IF NOT EXISTS alergenos(
   id_alergeno TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(15);
-  foto VARCHAR(100);
+  nombre VARCHAR(15),
+  foto VARCHAR(100)
 );
 
 /*TABLA 5 - PRODUCTO*/
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS administrador(
 );
 
 INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES
-  ('admin', <?php password_hash('admin', PASSWORD_DEFAULT)?> );
+  ('admin', 'admin' );
 
 INSERT INTO `tipo_producto` (`id_tipo_producto`, `nombre`) VALUES
   ('1', 'Entrantes'),

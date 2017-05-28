@@ -3,7 +3,7 @@ session_start();
 include_once '../procedimientos/procedimientos.php';
 
 if(!isset($_SESSION["usuario"])){
-    header("Location: index.php");
+    header("Location: index.html");
 }
 ?>
 

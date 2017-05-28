@@ -6,7 +6,7 @@ $conexion = new procedimientos();
 $conexion->conect();
 
 if(!isset($_SESSION["usuario"])){
-  header("Location: ../paginas/paginaAdministrador.php");
+  header("Location: ../admin/index.html");
 }
 
 $query = "SELECT id_hora, hora FROM hora_reserva";
