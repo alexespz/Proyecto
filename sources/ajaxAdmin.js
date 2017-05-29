@@ -18,4 +18,9 @@ function modificarPerfil(){
         e.preventDefault();
         $('#cuerpo').load("aniadirTipoProducto.php");
   });
+  
+  $('#listadoHoras').on('click', function(e){
+        e.preventDefault();
+        $('#cuerpo').load("listadoHoras.php");
+  });
 }
