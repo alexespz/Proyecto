@@ -21,7 +21,6 @@ if(!isset($_POST["usuario"])){
             }
         });
     }
-
 </script>
 <html lang="en">
 <div class="col-md-9 pull-md-right main-content">

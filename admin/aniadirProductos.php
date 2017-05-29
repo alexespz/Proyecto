@@ -5,10 +5,9 @@ include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-if(!isset($_POST["usuario"])){
+if(!isset($_SESSION["usuario"])){
   header("Location: ../admin/index.html");
 }
-
 ?>
 <script>
     function aniadirProducto(nombre, descripcion, precio, calorias, foto, tipo) {
@@ -22,7 +21,6 @@ if(!isset($_POST["usuario"])){
             }
         });
     }
-
 </script>
 <html lang="en">
 <div class="col-md-9 pull-md-right main-content">
@@ -63,13 +61,13 @@ if(!isset($_POST["usuario"])){
             <div class="divider"></div>
             <div class="col-md-8 form-group">
                 <div class="form-group">
-                    <label for="foto" class="control-label">Imagen de la preferencia</label>
-		                <input type="file" name="imagen" id="foto" class="form-control">
+                    <label for="foto" class="control-label">Foto</label>
+                    <input type="file" name="imagen" id="foto" class="form-control">
                 </div>
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="aniadirProducto($('#nombre').text(), $('#descripcion').text(), $('#precio').text(), $('#calorias').text(), $('#foto').text(), $('#tipo').val();">Añadir</button>
+            <button class="btn btn-info" id="submit" onclick="aniadirProducto($('#nombre').val(), $('#descripcion').val(), $('#precio').val(), $('#calorias').val(), $('#foto').val(), $('#tipo').val();">Añadir</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

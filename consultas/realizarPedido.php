@@ -6,5 +6,5 @@ $conexion = new procedimientos();
 $conexion->conect();
 
 for($i=0; $i<count($carrito); $i++){
-  $query = "INSERT INTO pedido VALUES"
+  $query = "INSERT INTO pedido VALUES";
 }

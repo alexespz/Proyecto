@@ -8,7 +8,7 @@ $conexion->conect();
 if(!isset($_POST['submit'])){
     echo "Acceso prohibido";
 }else{
-    /*Comprobamos en primer lugar si existe ya un usuario registrado con el nombre que recivimos*/
+    /*Comprobamos en primer lugar si existe ya un usuario registrado con el nombre que recibimos*/
     $query = "SELECT usuario FROM usuarios WHERE usuario = ?";
     $sentencia = $conexion->consultasPreparadas($query);
     $sentencia->bind_param('s', $user);

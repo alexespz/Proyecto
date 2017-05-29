@@ -7,6 +7,7 @@ $conexion->conect();
 
 $carpeta = "../imagenes/productos/";
 $tipoImagen = $_FILES["foto"]["type"];
+
 if(file_exists($carpeta . $_FILES["foto"]["name"])){
   echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ya existe una imagen con ese nombre</span>';
 }else if (strlen($_FILES["foto"]["name"]) > 30){

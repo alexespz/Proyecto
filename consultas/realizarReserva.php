@@ -36,9 +36,10 @@ $sentencia->bind_result($reserva);
 $sentencia->close();
 
 //Configuramos el correo que se le envia al usuario al realizar la reserva
-$para      = '.$email.';
-$titulo    = 'TU CODIGO DE RESERVA';
-$mensaje   = 'Tu codigo de reserva es el siguiente: ' ."\r\n" ?><h1><?php echo $reserva?> </h1><?php;
+$para      = $email;
+$titulo    = 'CODIGO DE RESERVA';
+$mensaje   = 'Tu codigo de reserva es el siguiente: '.$reserva;
+
 $cabeceras = 'From: webmaster@example.com' . "\r\n" .
     'Reply-To: webmaster@example.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
