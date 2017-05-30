@@ -19,16 +19,28 @@ body{
     height: 100%;
 }
 
+.cajaInstalacion{
+    background-color: white;
+    width: 40%;
+    height: 80%;
+}
+
 #contenedor {
     position: relative!important;
     top: 40vh;
     left: 80vh;
 }
 
+#contenedorInstalacion {
+    position: relative!important;
+    left: 15vh;
+}
+
 #formulario{
     position: relative;!important;
-    top: 15vh;
-    left: 55vh;
+    top: 50%;
+    left: 50%;
+    transform: translate3D(-50%, -50%, 0);
 }
 
 .espacios {
@@ -56,6 +68,7 @@ body{
 
 
 #contenedorPrincipal{
+    position: relative!important;
     top: 50%;
     left: 50%;
     transform: translate3D(-50%,-50%,0);

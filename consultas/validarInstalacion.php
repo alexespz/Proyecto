@@ -1,7 +1,4 @@
 <?php
-include_once '../procedimientos/procedimientos.php';
-$conexion = new procedimientos();
-$conexion->conect();
 
 if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
     echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Error. Las contrasñas no coinciden</span>';
@@ -9,7 +6,7 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
     $passwordEncrypted = password_hash($_POST["contrasenia"], PASSWORD_DEFAULT);
 
     $sql = file_get_contents('../baseDatos/script.sql');
-    if($db->exec($sql)){
+    if(exec($sql)){
         //Si la ejecución del archivo sql no ha dado ningun problema se le manda al usuario un correo con los datos de la cuenta del administrador.
         //Configuramos el correo que se le envia al usuario al realizar la reserva
         $para      = $_POST["email"];

@@ -46,19 +46,19 @@ if(!isset($_SESSION["usuario"])){
         }
 
         function ActivarImagen(id){
-            $('#imagen'id).hover(function(){
-                $('#imagen'id).css({"cursor": "pointer"});
+            $('#imagen'+id).hover(function(){
+                $('#imagen'+id).css({"cursor": "pointer"});
             }, function(){
-                $('#imagen'id).css({"cursor": "auto"});
+                $('#imagen'+id).css({"cursor": "auto"});
             });
 
-            $('#imagen'id).on(click, function(){
-                $('#imagen'id).css({"background-color": "red", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out"});
-                $('#imagen'id).attr('active', 'true');
+            $('#imagen'+id).on(click, function(){
+                $('#imagen'+id).css({"background-color": "red", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out"});
+                $('#imagen'+id).attr('active', 'true');
 
             }, function(){
-                $('#imagen'id).css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out"});
-                $('#imagen'id).attr('active', 'false');
+                $('#imagen'+id).css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out"});
+                $('#imagen'+id).attr('active', 'false');
             });
         }
     </script>

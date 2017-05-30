@@ -29,23 +29,23 @@ if(!include_once '../procedimientos/procedimientos.php'){
     </script>
 </head>
 <body>
-<div id="contenedor" class="row container text-center">
+<div id="contenedorPrincipal" class="col-md-12 container cajaInstalacion">
     <div class="col-md-12"><h1><p>BIENVENIDO</p></h1></div>
-    <div class="divider"></div>
-    <div class="col-md-12"><p>Bienvenido al proceso de instalación de "insertar nombre de la aplicacion".</p></div>
-    Se trata de un proceso muy sencillo y que no te llevará más de dos minutos. Rellena los datos más abajo y podrás comenzar a utilizar la mejor plataforma de reserva y pedidos en restaurantes.
+    <div class="col-md-12"><hr /></div>
+    <div class="col-md-12"><p>Bienvenido al proceso de instalación de "insertar nombre de la aplicacion".</p>
+        <p>Se trata de un proceso muy sencillo y que no te llevará más de dos minutos. Rellena los datos más abajo y podrás comenzar a utilizar la mejor plataforma de reserva y pedidos en restaurantes.</p></div>
     <div class="col-md-12"><h1><p>DATOS NECESARIOS</p></h1></div>
-    <div class="divider"></div>
+    <div class="col-md-12"><hr /></div>
     <div class="col-md-12">
-        <form class="form-horizontal" action="return false" onsubmit="return false" method="POST">
+        <form class="form-horizontal" id="contenedorInstalacion" action="return false" onsubmit="return false" method="POST">
             <div class="row">
-                <div class="col-md-12 form-group">
+                <div class="col-md-7 form-group">
                     <div class="form-group">
                         <label for="usuario" class="control-label">Usuario</label>
                         <input type="text" name="usuario" id="usuario" class="form-control" >
                     </div>
                 </div>
-                <div class="col-md-12 form-group">
+                <div class="col-md-7 form-group">
                     <div class="form-group">
                         <label for="pass" class="control-label">Contraseña (introducir dos veces)</label>
                         <input type="password" name="pass" id="pass" class="form-control" >
@@ -54,7 +54,7 @@ if(!include_once '../procedimientos/procedimientos.php'){
                         <input type="password" name="pass2" id="pass2" class="form-control" >
                     </div>
                 </div>
-                <div class="col-md-12 form-group">
+                <div class="col-md-7 form-group">
                     <div class="form-group">
                         <label for="email" class="control-label">Tu correo electónico</label>
                         <input type="text" name="email" id="email" class="form-control" >
@@ -62,7 +62,7 @@ if(!include_once '../procedimientos/procedimientos.php'){
                 </div>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
-            <div class="col-md-12" id="boton">
+            <div class="col-md-2" id="boton">
                 <button class="btn btn-info" onclick="Validar(document.getElementById('usuario').value, document.getElementById('pass').value, document.getElementById('pass2').value, document.getElementById('email').value);">Instalar</button>
             </div>
         </form>

@@ -1,13 +1,16 @@
 <?php
+session_start();
 include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
 if(!isset($_SESSION["carrito"])){
     $_SESSION["carrito"] = array();
-    $ref = 001;
+    $ref = 1;
 }else{
-    $ref = array_pop($_SESSION["carrito"]["ref"]);
+    end($_SESSION["carrito"]);
+    $ref = key($_SESSION["carrito"]);
+    $ref += 1;
 }
 
 $obtenerProductos = "SELECT nombre,precio FROM producto WHERE id_producto = ?";
@@ -18,8 +21,8 @@ $sentenciaProductos->execute();
 $sentenciaProductos->bind_result($nombre, $precio);
 $sentenciaProductos->fetch();
 
-$carrito[$ref]=array("nombre"=>"$nombre", "ref"=>$ref, "precio"=>$precio);
-
+$carrito[$ref]=array("nombre"=>"$nombre", "precio"=>$precio, "ref"=>$ref);
+$_SESSION["carrito"] += $carrito;
 echo '
 <table class="table table-striped col-md-8">
     <tr>
