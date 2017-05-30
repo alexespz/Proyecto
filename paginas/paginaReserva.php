@@ -33,15 +33,32 @@ if(!isset($_SESSION["usuario"])){
           });
         });
       
-        function Validar(nombre, comensales, fecha, hora) {
+        function Validar(nombre, comensales, fecha, hora, alergeno1, alergeno2, alergeno3, alergeno4, alergeno5, alergeno6, alergeno7, alergeno8, alergeno9, alergeno10, alergeno11, alergeno12, alergeno13, alergeno14) {
             $.ajax({
                 async: true,
                 type: "POST",
                 url: "../consultas/realizarReserva.php",
-                data: "nombre="+nombre+"&comensales="+comensales+"&fecha="+fecha+"&hora="+hora,
+                data: "nombre="+nombre+"&comensales="+comensales+"&fecha="+fecha+"&hora="+hora+"&alergeno1="+alergeno1+"&alergeno2="+alergeno2+"&alergeno3="+alergeno3+"&alergeno4="+alergeno4+"&alergeno5="+alergeno5+"&alergeno6="+alergeno6+"&alergeno7="+alergeno7+"&alergeno8="+alergeno8+"&alergeno9="+alergeno9+"&alergeno10="+alergeno10+"&alergeno11="+alergeno11+"&alergeno12="+alergeno12+"&alergeno13="+alergeno13+"&alergeno14="+alergeno14,
                 success: function(resp){
                     $('#resultado').html(resp);
                 }
+            });
+        }
+
+        function ActivarImagen(id){
+            $('#imagen'id).hover(function(){
+                $('#imagen'id).css({"cursor": "pointer"});
+            }, function(){
+                $('#imagen'id).css({"cursor": "auto"});
+            });
+
+            $('#imagen'id).on(click, function(){
+                $('#imagen'id).css({"background-color": "red", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out"});
+                $('#imagen'id).attr('active', 'true');
+
+            }, function(){
+                $('#imagen'id).css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out"});
+                $('#imagen'id).attr('active', 'false');
             });
         }
     </script>
@@ -55,7 +72,7 @@ if(!isset($_SESSION["usuario"])){
                 <div class="col-md-12 form-group">
                     <div class="col-md-9 form-group">
                         <label for="nombre" class="control-label">Titular de la reserva</label>
-                        <input type="text" name="nombre" id="nombre" class="form-control" maxlength="20" value="<?php echo $nombre. ' '. $apellidos ?>">
+                        <input type="text" name="nombre" id="nombre" class="form-control" maxlength="20" value="<?php echo $nombre. ' '. $apellidos ?>" disabled>
                     </div>
                     <div class="col-md-3 form-group">
                         <label for="comensales" class="control-label">Numero de comensales</label>
@@ -75,28 +92,44 @@ if(!isset($_SESSION["usuario"])){
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
-                  <div class="col-md-9 form-group">
+                    <div class="col-md-9 form-group">
                         <label for="fecha" class="control-label">Fecha de la reserva</label>
                         <input type="text" name="fecha" id="fecha" class="form-control" required>
-                   </div>
-                   <div class="col-md-3 form-group">
+                    </div>
+                    <div class="col-md-3 form-group">
                         <label for="hora" class="control-label">Hora de la reserva</label>
                         <select name="hora" class="form-control" id="hora" required>
-                            <?php
-                             $sql = "SELECT hora FROM hora_reserva";
-                             $conexion->consultas($sql);
-                             while($resultado = $conexion->devolverFilas()){
-                              echo '<option value="'.$resultado["hora"].'">'.$resultado["hora"].'</option>';
-                             }
-                            ?>
+                        <?php
+                        $sql = "SELECT hora FROM hora_reserva";
+                        $conexion->consultas($sql);
+                        while($resultado = $conexion->devolverFilas()){
+                            echo '<option value="'.$resultado["hora"].'">'.$resultado["hora"].'</option>';
+                        }
+                        ?>
                         </select>
-                   </div>
+                    </div>
                 </div>
                 <div class="divider"></div>
+                <div class="col-md-12 form-group">
+                    <div class="col-md-12 form-group">
+                        <label for="nombre" class="control-label">Alergias (En caso de que alguno de los comensales padezca algún tipo de alergia)</label>
+                        <?php
+                        $query = "SELECT * FROM alergenos";
+                        $conexion->consultas($query);
+                        while($resultado = $conexion->devolverFilas()){
+                            echo '<table>
+                                <tr>
+                                    <td><div id="contenedorImagen"><img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'" onclick="ActivarImagen('.$resultado["id_alergeno"].');" active="false"/></div></td>
+                                </tr>
+                            </table>';
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
             <div class="col-md-12 text-center" id="boton">
-                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value);">Reservar</button>
+                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, $('#imagen1').attr('active'),$('#imagen2').attr('active'), $('#imagen3').attr('active'), $('#imagen4').attr('active'), $('#imagen5').attr('active'), $('#imagen6').attr('active'), $('#imagen7').attr('active'), $('#imagen8').attr('active'), $('#imagen9').attr('active'), $('#imagen10').attr('active'), $('#imagen11').attr('active'), $('#imagen12').attr('active'),$('#imagen13').attr('active'), $('#imagen14').attr('active') );">Reservar</button>
             </div>
         </form>
     </div>

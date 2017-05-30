@@ -1,18 +1,10 @@
 <?php
-include_once '../procedimientos/procedimientos.php';
-$conexion = new procedimientos();
-$conexion->conect();
-
-$query = "SELECT * FROM administrador";
-$conexion->consultas($query);
-
-if($conexion->devolverFilas() > 0){
+if(!include_once '../procedimientos/procedimientos.php'){
     header ("Location: ../paginas/inicioSesion.php");
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Instalacion</title>
@@ -22,7 +14,6 @@ if($conexion->devolverFilas() > 0){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <script>
         function Validar(user, pass, pass2, email) {
             $.ajax({

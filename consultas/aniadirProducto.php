@@ -2,8 +2,13 @@
 include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
-$carrito = [];
-$indice = 0;
+
+if(!isset($_SESSION["carrito"])){
+    $_SESSION["carrito"] = array();
+    $ref = 001;
+}else{
+    $ref = array_pop($_SESSION["carrito"]["ref"]);
+}
 
 $obtenerProductos = "SELECT nombre,precio FROM producto WHERE id_producto = ?";
 $sentenciaProductos = $conexion->consultasPreparadas($obtenerProductos);
@@ -13,8 +18,7 @@ $sentenciaProductos->execute();
 $sentenciaProductos->bind_result($nombre, $precio);
 $sentenciaProductos->fetch();
 
-array_push($carrito, ["producto".$indice=> $nombre, "precio".$indice=> $precio]);
-$indice += 1;
+$carrito[$ref]=array("nombre"=>"$nombre", "ref"=>$ref, "precio"=>$precio);
 
 echo '
 <table class="table table-striped col-md-8">
@@ -22,10 +26,10 @@ echo '
         <td class="col-md-7">Producto</td>
         <td class="col-md-1">Precio</td>
     </tr>';
-for($i=0; $i< count($carrito); $i++){echo'
+foreach ($_SESSION["carrito"] as $producto){echo'
     <tr>
-        <td class="col-md-7">'.$carrito[$i]["producto".$i.""].'</td>
-        <td class="col-md-1">'.$carrito[$i]["precio".$i.""].' €</td>
+        <td class="col-md-7">'.$producto["nombre"].'</td>
+        <td class="col-md-1">'.$producto["precio"].' €</td>
     </tr>';
 }echo '
 </table>

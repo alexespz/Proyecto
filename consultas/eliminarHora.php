@@ -5,7 +5,7 @@ include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-$query = "UPDATE hora_reserva SET delete = 'true' WHERE id_hora = ?";
+$query = "UPDATE hora_reserva SET is_delete = '1' WHERE id_hora = ?";
 $sentencia = $conexion->cosultasPreparadas();
 $sentencia->bind_param('i', $id);
 $id = $_POST["id_hora"];

@@ -20,20 +20,23 @@ CREATE TABLE IF NOT EXISTS usuarios(
 /*TABLA 2 - TIPO_PRODUCTO*/
 CREATE TABLE IF NOT EXISTS tipo_producto(
   id_tipo_producto TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(15) NOT NULL
+  nombre VARCHAR(15) NOT NULL,
+  is_delete CHAR(1) NOT NULL DEFAULT 0
 );
 
 /*TABLA 3 - HORA_RESERVA*/
 CREATE TABLE IF NOT EXISTS hora_reserva(
   id_hora TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  hora CHAR(5) NOT NULL
+  hora CHAR(5) NOT NULL,
+  is_delete CHAR(1) NOT NULL DEFAULT 0
 );
 
 /*TABLA 4 - ALERGENOS*/
 CREATE TABLE IF NOT EXISTS alergenos(
   id_alergeno TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  nombre VARCHAR(15),
-  foto VARCHAR(100)
+  nombre VARCHAR(15) NOT NULL,
+  foto VARCHAR(100),
+  is_delete CHAR(1) NOT NULL DEFAULT 0
 );
 
 /*TABLA 5 - PRODUCTO*/
@@ -45,6 +48,7 @@ CREATE TABLE IF NOT EXISTS producto(
   foto VARCHAR(100),
   calorias TINYINT UNSIGNED,
   tipo_producto TINYINT UNSIGNED NOT NULL,
+  is_delete CHAR(1) NOT NULL DEFAULT 0,
   CONSTRAINT fk_producto_tipo FOREIGN KEY (tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
 );
 
@@ -55,7 +59,7 @@ CREATE TABLE IF NOT EXISTS reserva(
   comensales TINYINT UNSIGNED NOT NULL,
   fecha_reserva DATE NOT NULL,
   hora_reserva TINYINT UNSIGNED NOT NULL,
-  codigo_reserva CHAR(9),
+codigo_reserva CHAR(9),
   CONSTRAINT fk_hora_reserva FOREIGN KEY (hora_reserva) REFERENCES hora_reserva(id_hora),
   CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
@@ -78,7 +82,23 @@ CREATE TABLE IF NOT EXISTS pedido_producto(
   CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
-/*TABLA 9 - ADMINISTRADOR*/
+/*TABLA 9 - PRODUCTO_ALERGENO*/
+CREATE TABLE IF NOT EXISTS producto_alergeno(
+  id_producto TINYINT UNSIGNED PRIMARY KEY ,
+  id_alergeno TINYINT UNSIGNED,
+  CONSTRAINT  fk_producto_id FOREIGN KEY (id_producto) REFERENCES pedido(id_pedido),
+  CONSTRAINT  fk_alergeno_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)
+);
+
+/*TABLA 10 - RESERVA_ALERGENO*/
+CREATE TABLE IF NOT EXISTS reserva_alergeno(
+  id_reserva TINYINT UNSIGNED PRIMARY KEY,
+  id_alergeno TINYINT UNSIGNED,
+  CONSTRAINT fk_reserva_id FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva),
+  CONSTRAINT fk_alergeno_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)
+);
+
+/*TABLA 11 - ADMINISTRADOR*/
 CREATE TABLE IF NOT EXISTS administrador(
   usuario VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY,
   contrasenia VARCHAR(255) NOT NULL
