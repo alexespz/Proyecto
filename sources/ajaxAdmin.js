@@ -23,4 +23,21 @@ function modificarPerfil(){
         e.preventDefault();
         $('#cuerpo').load("listadoHoras.php");
   });
+
+  $('#nuevasHoras').on('click', function(e){
+      e.preventDefault();
+      $('#cuerpo').load("aniadirHora.php")
+  });
+
+    $('#listadoAlergenos').on('click', function(e){
+        e.preventDefault();
+        $('#cuerpo').load("listadoAlergenos.php");
+    });
+
+    $('#nuevosAlergenos').on('click', function(e){
+        e.preventDefault();
+        $('#cuerpo').load("aniadirAlergeno.php")
+    });
+
+
 }

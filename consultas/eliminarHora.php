@@ -8,12 +8,12 @@ $conexion->conect();
 $query = "UPDATE hora_reserva SET is_delete = '1' WHERE id_hora = ?";
 $sentencia = $conexion->cosultasPreparadas();
 $sentencia->bind_param('i', $id);
-$id = $_POST["id_hora"];
+$id = $_GET["id_hora"];
 $sentencia->execute();
 $sentencia->close();
 
 //No estoy seguro de que esto funcione
 echo '
 <script>
-  $("#cuerpo").load("listadoProductos.php");
+  $("#cuerpo").load("listadoHoras.php");
 </script>';

@@ -8,21 +8,21 @@ $conexion->conect();
 if(!isset($_SESSION["usuario"])){
     header("Location: ../admin/index.html");
 }
-$query = "SELECT id_hora, hora FROM hora_reserva WHERE id_hora = ?";
+$query = "SELECT id_alergeno, nombre FROM alergenos WHERE id_alergeno = ?";
 $sentencia = $conexion->consultasPreparadas($query);
 $sentencia->bindParam('i', $id);
-$id = $_GET["id_hora"];
+$id = $_GET["id_alergeno"];
 $sentencia->execute();
-$sentencia->bind_result($id, $hora);
+$sentencia->bind_result($id, $nombre);
 $sentencia->close();
 ?>
 <script>
-    function modificarHora(id, hora){
+    function modificarAlergeno(id, nombre){
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/modificarHora.php",
-            data: "id="+id+"hora="+hora,
+            url: "../consultas/modificarAlergeno.php",
+            data: "id="+id+"nombre="+nombre,
             success: function(resp){
                 $('#cuerpo').load("resp");
             }
@@ -31,7 +31,7 @@ $sentencia->close();
 </script>
 <html lang="en">
 <div class="col-md-9 pull-md-right main-content">
-    <div class="col-md-12 text-center"><h1><p>MODIFICAR HORA</p></h1></div>
+    <div class="col-md-12 text-center"><h1><p>MODIFICAR ALERGENO</p></h1></div>
     <form action="return false" onsubmit="return false" method="POST">
         <div class="row">
             <div class="col-md-6 form-group">
@@ -42,13 +42,13 @@ $sentencia->close();
             </div>
             <div class="col-md-6 form-group">
                 <div class="form-group">
-                    <label for="hora" class="control-label">Hora</label>
-                    <input type="text" name="hora" id="hora" class="form-control" placeholder="<?php echo $hora ?>" >
+                    <label for="nombre" class="control-label">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="<?php echo $nombre ?>" >
                 </div>
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="modificarHora($('#id').val(), $('#hora').val();">Modificar</button>
+            <button class="btn btn-info" id="submit" onclick="modificarAlergeno(document.getElementById('id').value, document.getElementById('nombre').value;">Modificar</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

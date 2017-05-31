@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
+
 $conexion = new procedimientos();
 $conexion->conect();
 

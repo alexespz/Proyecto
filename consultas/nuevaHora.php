@@ -5,7 +5,7 @@ include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-$query = "INSERT INTO tipo_producto VALUES('','".$_POST["nombre"]."') ";
+$query = "INSERT INTO hora_reserva VALUES('','".$_POST["hora"]."') ";
 $conexion->consultas($query);
 
 if($conexion->devolverFilas() > 0){

@@ -76,7 +76,8 @@ if(!isset($_SESSION["usuario"])){
                                 </table>
                             </div>
                         </div>
-                        <div class="panel panel-default">
+                    </div>
+                    <div class="panel panel-default">
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -96,6 +97,25 @@ if(!isset($_SESSION["usuario"])){
                             </div>
                         </div>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                    <span class="glyphicon glyphicon-book text-success"></span>Tipos de alergenos</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table table-striped col-md-8">
+                                    <tr>
+                                        <td><a id="listadoAlergenos">Listado de alergenos</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a id="nuevosAlergenos">Añadir nuevo alergeno</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

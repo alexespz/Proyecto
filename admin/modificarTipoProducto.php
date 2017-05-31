@@ -18,12 +18,12 @@ $sentencia->bind_result($id, $tipo);
 $sentencia->close();
 ?>
 <script>
-    function modificarTipoProducto(tipo){
+    function modificarTipoProducto(id, tipo){
         $.ajax({
             async: true,
             type: "POST",
             url: "../consultas/modificarTipoProducto.php",
-            data: "tipo="+tipo,
+            data: "id="+id+"&tipo="+tipo,
             success: function(resp){
                 $('#cuerpo').load("resp");
             }
@@ -49,7 +49,7 @@ $sentencia->close();
                 </div>
             </div>
             <div class="col-md-12 " id="boton">
-                <button class="btn btn-info" id="submit" onclick="modificarTipoProducto(document.getElementById('id').value, document.getElementById('tipo').value;">Modificar</button>
+                <button class="btn btn-info" id="submit" onclick="modificarTipoProducto($('#id').val(), $('#tipo').val();">Modificar</button>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
         </form>

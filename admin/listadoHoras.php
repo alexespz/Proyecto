@@ -23,12 +23,12 @@ echo '<table class="table table-striped col-md-9">
 while($resultado = $conexion->devolverFilas()){
         echo '<td>' .$resultado["id_hora"]. '</td>';
         if($resultado["is_delete"] == "1"){
-            echo '<td><input type="checkbox" disabled checked data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=""></td>';
+            echo '<td><input type="checkbox" disabled data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=""></td>';
         }else{
-            echo '<td><input type="checkbox" disabled data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
+            echo '<td><input type="checkbox" disabled checked data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
         }echo'
         <td>' .$resultado["hora"]. '</td>
-        <td><button class="btn btn-info" href="../consultas/modificarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-pencil"></span></button>
+        <td><button class="btn btn-info" href="../admin/modificarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-pencil"></span></button>
             <button class="btn btn-danger" href="../consultas/eliminarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-trash"></span></button>
         </td>
     </tr>';

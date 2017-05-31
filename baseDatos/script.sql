@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS reserva(
   comensales TINYINT UNSIGNED NOT NULL,
   fecha_reserva DATE NOT NULL,
   hora_reserva TINYINT UNSIGNED NOT NULL,
-codigo_reserva CHAR(9),
+  codigo_reserva CHAR(9),
   CONSTRAINT fk_hora_reserva FOREIGN KEY (hora_reserva) REFERENCES hora_reserva(id_hora),
   CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
@@ -68,9 +68,8 @@ codigo_reserva CHAR(9),
 CREATE TABLE IF NOT EXISTS pedido(
   id_pedido TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   id_usuario TINYINT UNSIGNED NOT NULL,
-  id_producto TINYINT UNSIGNED NOT NULL,
-  gestionado BOOLEAN NOT NULL DEFAULT FALSE,
-  codigo_pedido CHAR(12),
+  precio DOUBLE NOT NULL,
+  codigo_pedido CHAR(9),
   CONSTRAINT fk_pedido_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
 
@@ -78,6 +77,7 @@ CREATE TABLE IF NOT EXISTS pedido(
 CREATE TABLE IF NOT EXISTS pedido_producto(
   id_pedido TINYINT UNSIGNED PRIMARY KEY,
   id_producto TINYINT UNSIGNED,
+  cantidad_producto TINYINT,
   CONSTRAINT fk_pedido_id FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
   CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
@@ -104,9 +104,6 @@ CREATE TABLE IF NOT EXISTS administrador(
   contrasenia VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES
-  ('admin', 'admin' );
-
 INSERT INTO `tipo_producto` (`id_tipo_producto`, `nombre`) VALUES
   ('1', 'Entrantes'),
   ('2', 'Ensaladas'),
@@ -127,3 +124,19 @@ INSERT INTO `hora_reserva` (`id_hora`, `hora`) VALUES
   ('9', '15:00'),
   ('10', '15:15'),
   ('11', '15:30');
+
+INSERT INTO `alergenos` (`id_alergeno`, `nombre`, `foto`) VALUES
+  ('1', 'altramuces', 'alergenos-altramuces.png'),
+  ('2', 'apio', 'alergenos-apio.png'),
+  ('3', 'cacahuetes', 'alergenos-cacahuetes.png'),
+  ('4', 'crustaceos', 'alergenos-crustaceos.png'),
+  ('5', 'frutos secos', 'alergenos-frutos.png'),
+  ('6', 'gluten', 'alergenos-gluten.png'),
+  ('7', 'huevo', 'alergenos-huevo.png'),
+  ('8', 'leche', 'alergenos-leche.png'),
+  ('9', 'moluscos', 'alergenos-moluscos.png'),
+  ('10', 'mostaza', 'alergenos-mostaza.png'),
+  ('11', 'pescado', 'alergenos-pescado.png'),
+  ('12', 'sesamo', 'alergenos-sesamo.png'),
+  ('13', 'soja', 'alergenos-soja.png'),
+  ('14', 'sulfito', 'alergenos-sulfito.png');

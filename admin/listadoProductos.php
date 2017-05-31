@@ -9,7 +9,7 @@ if(!isset($_SESSION["usuario"])){
   header("Location: ../admin/index.html");
 }
 
-$query = "SELECT id_producto, nombre, descripcion, is_delete FROM producto";
+$query = "SELECT * FROM producto";
 $conexion->consultas($query);
 
 echo '<table class="table table-striped col-md-10">
@@ -24,9 +24,9 @@ echo '<table class="table table-striped col-md-10">
 while($resultado = $conexion->devolverFilas()){
         echo '<td>' .$resultado["id_producto"]. '</td>';
         if($resultado["is_delete"] == "1"){
-            echo '<td><input type="checkbox" disabled checked data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=""></td>';
+            echo '<td><input type="checkbox" disabled data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=""></td>';
         }else{
-            echo '<td><input type="checkbox" disabled data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
+            echo '<td><input type="checkbox" disabled checked data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
         }echo'
         <td>' .$resultado["nombre"]. '</td>
         <td>' .$resultado["descripcion"]. '</td>
