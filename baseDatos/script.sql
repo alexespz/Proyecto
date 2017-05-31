@@ -86,8 +86,8 @@ CREATE TABLE IF NOT EXISTS pedido_producto(
 CREATE TABLE IF NOT EXISTS producto_alergeno(
   id_producto TINYINT UNSIGNED PRIMARY KEY ,
   id_alergeno TINYINT UNSIGNED,
-  CONSTRAINT  fk_producto_id FOREIGN KEY (id_producto) REFERENCES pedido(id_pedido),
-  CONSTRAINT  fk_alergeno_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)
+  CONSTRAINT fk_productoA_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
+  CONSTRAINT fk_alergenoA_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)
 );
 
 /*TABLA 10 - RESERVA_ALERGENO*/
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS reserva_alergeno(
 
 /*TABLA 11 - ADMINISTRADOR*/
 CREATE TABLE IF NOT EXISTS administrador(
-  usuario VARCHAR(20) NOT NULL UNIQUE PRIMARY KEY,
+  usuario VARCHAR(20) NOT NULL PRIMARY KEY,
   contrasenia VARCHAR(255) NOT NULL
 );
 

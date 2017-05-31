@@ -7,10 +7,12 @@ $conexion->conect();
 if(!isset($_SESSION["carrito"])){
     $_SESSION["carrito"] = array();
     $ref = 1;
+    $total = 0;
 }else{
     end($_SESSION["carrito"]);
     $ref = key($_SESSION["carrito"]);
     $ref += 1;
+    $total = 0;
 }
 
 $obtenerProductos = "SELECT id_producto, nombre, precio FROM producto WHERE id_producto = ?";
@@ -23,11 +25,13 @@ $sentenciaProductos->fetch();
 
 foreach ($_SESSION["carrito"] as $producto){
     if($producto["nombre"] == $nombre){
-        $producto["cantidad"] += 1;
+        $producto["cantidad"] = 2;
     }
 }
+
 $carrito[$ref]=array("idProducto"=>$id , "nombre"=>$nombre, "precio"=>$precio, "cantidad"=>1 ,"ref"=>$ref);
 $_SESSION["carrito"] += $carrito;
+
 echo '
 <table class="table table-striped col-md-9">
     <tr>
@@ -44,5 +48,6 @@ foreach ($_SESSION["carrito"] as $producto){echo'
     $total += ($producto["precio"] * $producto["cantidad"]);
 }echo '
 </table>
-<td class="col-md-3"><button class="btn btn-success" >Total: '.$total.'</button></td>
+<td class="col-md-9"><button class="btn btn-success" >Total: '.$total.' €</button></td>
+<hr/>
 <td class="col-md-1"><button class="btn btn-warning" href="../consultas/realizarPedido.php?total='.$total.'">Realizar Pedido</button></td>';
