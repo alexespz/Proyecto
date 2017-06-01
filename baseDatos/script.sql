@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS producto(
   nombre VARCHAR(30) NOT NULL,
   descripcion VARCHAR(100),
   precio DOUBLE NOT NULL,
-  foto VARCHAR(100),
+  foto VARCHAR(100) DEFAULT NULL,
   calorias TINYINT UNSIGNED,
   tipo_producto TINYINT UNSIGNED NOT NULL,
   is_delete CHAR(1) NOT NULL DEFAULT 0,
@@ -140,3 +140,31 @@ INSERT INTO `alergenos` (`id_alergeno`, `nombre`, `foto`) VALUES
   ('12', 'sesamo', 'alergenos-sesamo.png'),
   ('13', 'soja', 'alergenos-soja.png'),
   ('14', 'sulfito', 'alergenos-sulfito.png');
+
+INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `foto`, `calorias`, `tipo_producto`) VALUES
+  ('1', 'Surtido Ibérico', 'Surtido variado ibérico', '4', null, '1200', '1'),
+  ('2', 'Croquetas Caseras', 'Croqueras caseras', '3', null, '800', '1'),
+  ('3', 'Ensalada Mixta', 'Ensalada mixta', '5.20', null, '200', '2'),
+  ('4', 'Ensalada Cesar', 'Ensalada cesar', '7.20', null, '400', '2'),
+  ('5', 'Solomillo al Roquefort', 'Solomillo al roquefort', '13.90', null, '900', '3'),
+  ('6', 'Secreto Ibérico', 'Secreto ibérico', '14.70', null, '900', '3'),
+  ('7', 'Bacalado a la Nata', 'Bacalado a la nata', '14.60', null, '800', '4'),
+  ('8', 'Merluza a la Plancha', 'Merluza a la plancha', '13.90', null, '600', '4'),
+  ('9', 'Jarra Cerveza 1/2 L', 'Jarra de cerveza de medio litro', '2', null, '80', '5'),
+  ('10', 'CocaCola', 'CocaCola normal', '1.20', null, '150', '5'),
+  ('11', 'Copa de Chocolate', 'Copa de helado de chocolate', '2', null, '400', '6'),
+  ('12', 'Flan Casero', 'Flan casero de huevo', '2.50', null, '240', '6');
+
+INSERT INTO `producto_alergeno` VALUES
+  ('2', '6'),
+  ('2', '8'),
+  ('5', '8'),
+  ('6', '6'),
+  ('7', '7'),
+  ('7', '9'),
+  ('7', '11'),
+  ('8', '9'),
+  ('8', '11'),
+  ('12', '7'),
+  ('12', '8'),
+  ('12', '13');

@@ -25,22 +25,6 @@ if(!isset($_SESSION["usuario"])){
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script type="text/javascript" src="../sources/tabsPedido.js"></script>
-    <script>
-        function validarTipo(tipo){
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "../consultas/obtenerProductos.php",
-                data: "tipo="+tipo,
-                success: function(resp){
-                    $('#productos').attr('class', 'active');
-                    $('#productos').empty();
-
-                    $('#productos').html(resp);
-                }
-            });
-        }
-    </script>
 </head>
 <body>
 <div class="container caja">
@@ -59,12 +43,6 @@ if(!isset($_SESSION["usuario"])){
             while($resultado = $conexion->devolverFilas()){
                 echo '<li class=""><a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab">'.$resultado["nombre"].'</a></li>';
             }?>
-            <!--<li class="active"><a onclick="ValidarEntrantes(1)"; data-toggle="tab">ENTRANTES</a></li>
-            <li><a onclick="ValidarEnsaladas(2)"; data-toggle="tab">ENSALADAS</a></li>
-            <li><a onclick="ValidarCarnes(3)"; data-toggle="tab">CARNES</a></li>
-            <li><a onclick="ValidarPescados(4)"; data-toggle="tab">PESCADOS</a></li>
-            <li><a onclick="ValidarBebidas(5)"; data-toggle="tab">BEBIDAS</a></li>
-            <li><a onclick="ValidarPostres(6)"; data-toggle="tab">POSTRES</a></li> -->
         </ul>
 
         <div class="tab-content clearfix" id="contenidoProductos">
