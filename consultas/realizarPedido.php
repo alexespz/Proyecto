@@ -27,6 +27,6 @@ $sentencia->close();
 
 $lastId = $conexion->ultimoId();
 foreach ($_SESSION["carrito"] as $producto){
-    $query .= "INSERT INTO pedido_producto VALUES(".$lastId.", ".$producto["idProducto"].", ".$producto["cantidad"].")";
+    $query .= "INSERT INTO pedido_producto VALUES(".$lastId.", ".$producto["id"].", ".$producto["cantidad"].")";
 }
 $conexion->multiConsultas($query);
