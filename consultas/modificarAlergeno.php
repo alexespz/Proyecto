@@ -29,10 +29,10 @@ if($conexion->devolverFilas() > 0){
     $query = "UPDATE alergenos SET nombre = '".$alergeno."' WHERE id_alergeno = '".$_POST["id"]."' ";
     $conexion->consultas($query);
     if($conexion->devolverFilas() > 0){
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Modificado correctamente</span>
+        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Alergeno modificado</span>
         <script>
             setTimeout(function(){
-                $("#cuerpo").load("listadoHoras.php");
+                $("#cuerpo").load("listadoAlergenos.php");
             }, 1200);
         </script>';
     }else{

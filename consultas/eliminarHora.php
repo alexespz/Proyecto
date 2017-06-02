@@ -13,7 +13,9 @@ $sentencia->execute();
 $sentencia->close();
 
 //No estoy seguro de que esto funcione
-echo '
-<script>
-  $("#cuerpo").load("listadoHoras.php");
-</script>';
+echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Hora eliminada</span>
+    <script>
+        setTimeout(function(){
+            $("#cuerpo").load("listadoHoras.php");
+        }, 1200);
+    </script>';

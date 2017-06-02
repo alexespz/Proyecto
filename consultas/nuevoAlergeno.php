@@ -26,5 +26,18 @@ if(file_exists($carpeta . $_FILES["foto"]["name"])){
         $_POST["foto"] = NULL;
     }
 
-    $query = "INSERT INTO alergeno VALUES('','".$_POST["nombre"]."', '".$_POST["foto"]."' )";
+    $query = "INSERT INTO alergeno VALUES('','".$_POST["nombre"]."', '".$imagen."' )";
+    $conexion->consultas($query);
+
+    if($conexion->filasAfectadas() > 0){
+        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Alergeno añadido.</span>
+            <script>
+                setTimeout(function(){
+                    $("#cuerpo").load("listadoAlergenos.php");
+                }, 1200);
+            </script>';
+    }else{
+        echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';
+    }
+
 }

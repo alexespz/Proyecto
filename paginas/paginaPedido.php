@@ -5,9 +5,6 @@ include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-$query = "SELECT * FROM tipo_producto";
-$conexion->consultas($query);
-
 if(!isset($_SESSION["usuario"])){
     header("Location: inicioSesion.php");
 }
@@ -40,11 +37,12 @@ if(!isset($_SESSION["usuario"])){
     <!-- CUERPO DE LA PÁGINA -->
     <div class="col-md-8" id="cuerpo">
         <ul class="nav nav-tabs"><?php
+            $query = "SELECT * FROM tipo_producto";
+            $conexion->consultas($query);
             while($resultado = $conexion->devolverFilas()){
                 echo '<li class=""><a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab">'.$resultado["nombre"].'</a></li>';
             }?>
         </ul>
-
         <div class="tab-content clearfix" id="contenidoProductos">
             <div class="tab-pane active" id="productos">
 

@@ -19,15 +19,15 @@ $query = "SELECT nombre FROM tipo_producto WHERE nombre = '".$_POST["tipo"]."' "
 $conexion->consultas($query);
 
 if($conexion->devolverFilas() > 0){
-    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ya existe la hora especificada</span>';
+    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ya existe ese tipo de producto</span>';
 }else{
     $query = "UPDATE tipo_producto SET nombre = '".$tipo."' WHERE id_hora = '".$_POST["id"]."' ";
     $conexion->consultas($query);
     if($conexion->devolverFilas() > 0){
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Modificado correctamente</span>
+        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Tipo de producto modificado</span>
         <script>
             setTimeout(function(){
-                $("#cuerpo").load("listadoHoras.php");
+                $("#cuerpo").load("listadoTiposProductos.php");
             }, 1200);
         </script>';
     }else{

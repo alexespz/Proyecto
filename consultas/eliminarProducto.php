@@ -13,7 +13,10 @@ $sentencia->execute();
 $sentencia->close();
 
 //No estoy seguro de que esto funcione
-echo '
-<script>
-  $("#cuerpo").load("listadoProductos.php");
-</script>';
+echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Producto eliminado</span>
+    <script>
+        setTimeout(function(){
+            $("#cuerpo").load("listadoProductos.php");
+        }, 1200);
+    </script>';
+

@@ -9,7 +9,7 @@ $query = "INSERT INTO tipo_producto VALUES('','".$_POST["nombre"]."') ";
 $conexion->consultas($query);
 
 if($conexion->devolverFilas() > 0){
-    echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Añadido correctamente</span>
+    echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Tipo de producto añadido</span>
             <script>
                 setTimeout(function(){
                     $("#cuerpo").load("listadoTiposProductos.php");

@@ -24,7 +24,7 @@ if($conexion->devolverFilas() > 0){
     $query = "UPDATE hora_reserva SET hora = '".$hora."' WHERE id_hora = '".$_POST["id"]."' ";
     $conexion->consultas($query);
     if($conexion->devolverFilas() > 0){
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Modificado correctamente</span>
+        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Hora modificada</span>
         <script>
             setTimeout(function(){
                 $("#cuerpo").load("listadoHoras.php");

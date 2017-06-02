@@ -8,7 +8,7 @@ $conexion->conect();
 $obtenerUsuario = "SELECT id_usuario, email FROM usuarios WHERE nombre = ?";
 $sentencia = $conexion->consultasPreparadas($obtenerUsuario);
 $sentencia->bind_param('s', $nombre);
-$nombre = substr($_POST["usuario"], " ");
+$nombre = substr($_POST["nombre"], " ");
 $sentencia->execute();
 $sentencia->bind_result($id, $email);
 $sentencia->close();
@@ -25,14 +25,14 @@ $codigoRerseva = implode($codigo); //devolvemos el array convertido a string
 
 $sql = "INSERT INTO reserva(id_usuario,comensales,fecha_reserva,hora_reserva,codigo_reserva) VALUES(?,?,?,?)";
 $sentencia = $conexion->consultasPreparadas($sql);
-$sentencia->bind_param('iisi', $usuario, $comensales, $fecha, $hora, $reserva);
+$sentencia->bind_param('iisi', $usuario, $comensales, $fecha, $hora, $codReserva);
 $usuario = $id;
 $comensales = $_POST["comensales"];
 $fecha = $_POST["fecha"];
 $hora = $_POST["hora"];
-$reserva = $codigoReserva;
+$codReserva = $codigoReserva;
 $sentencia->execute();
-$sentencia->bind_result($reserva);
+$sentencia->bind_result($idUsuario, $comensales, $fechaReserva, $horaReserva, $reserva);
 $sentencia->close();
 
 //obtenemos el ultimo id insertado e introducimos los alergenos indicados en la reserva
@@ -94,14 +94,24 @@ if($_POST["alergeno14"] == "true"){
 }
 
 $conexion->multiConsultas($query);
+if($conexion->filasAfectadas() > 0){
+    //Configuramos el correo que se le envia al usuario al realizar la reserva
+    $para      = $email;
+    $titulo    = 'DATOS DE LA RESERVA';
+    $mensaje   = 'Tu codigo de reserva es el siguiente: '.$reserva;
 
-//Configuramos el correo que se le envia al usuario al realizar la reserva
-$para      = $email;
-$titulo    = 'CODIGO DE RESERVA';
-$mensaje   = 'Tu codigo de reserva es el siguiente: '.$reserva;
+    $cabeceras = 'From: webmaster@example.com' . "\r\n" .
+        'Reply-To: webmaster@example.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
 
-$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-    'Reply-To: webmaster@example.com' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
+    mail($para, $titulo, $mensaje, $cabeceras);
 
-mail($para, $titulo, $mensaje, $cabeceras);
+    echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Reserva Realizada. Le enviaremos un correo con los datos de la reserva</span>
+            <script>
+                setTimeout(function(){
+                    window.location="../paginas/paginaPrincipal.php ";
+                }, 1200);
+            </script>';
+}else{
+    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';
+}

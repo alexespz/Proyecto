@@ -32,10 +32,6 @@ class Carrito {
             }
         }
 
-        //evitamos que nos pongan números negativos y que sólo sean números para cantidad y precio
-        /*$articulo["cantidad"] = trim(preg_replace('/([^0-9\.])/i', '', $articulo["cantidad"]));
-        $articulo["precio"] = trim(preg_replace('/([^0-9\.])/i', '', $articulo["precio"]));*/
-
         //añadimos un elemento total al array carrito para saber el precio total de la suma de este artículo
         $articulo["total"] = $articulo["cantidad"] * $articulo["precio"];
 
