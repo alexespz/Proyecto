@@ -34,6 +34,7 @@ foreach($carro as $producto) {echo'
     </tr>';
 }echo '
 </table>
-<td class="col-md-9"><button class="btn btn-success" >Total: '.$carrito->precio_total().' €</button></td>
+<p class="bg-success">Total: '.$carrito->precio_total().' €</p>
+<button class="btn btn-default" href="../consultar/visualizarPedido.php">Ver pedido</button>
 <hr/>
-<td class="col-md-1"><button class="btn btn-warning" href="../consultas/realizarPedido.php?total='.$carrito->precio_total().'">Realizar Pedido</button></td>';
+<button class="btn btn-warning" href="../consultas/realizarPedido.php?total='.$carrito->precio_total().'">Realizar Pedido</button>';
