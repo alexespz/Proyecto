@@ -44,23 +44,6 @@ if(!isset($_SESSION["usuario"])){
                 }
             });
         }
-
-        function ActivarImagen(id){
-            $('#imagen'+id).hover(function(){
-                $('#imagen'+id).css({"cursor": "pointer"});
-            }, function(){
-                $('#imagen'+id).css({"cursor": "auto"});
-            });
-
-            $('#imagen'+id).on(click, function(){
-                $('#imagen'+id).css({"background-color": "red", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out"});
-                $('#imagen'+id).attr('active', 'true');
-
-            }, function(){
-                $('#imagen'+id).css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out"});
-                $('#imagen'+id).attr('active', 'false');
-            });
-        }
     </script>
 </head>
 <body>
@@ -100,10 +83,10 @@ if(!isset($_SESSION["usuario"])){
                         <label for="hora" class="control-label">Hora de la reserva</label>
                         <select name="hora" class="form-control" id="hora" required>
                         <?php
-                        $sql = "SELECT hora FROM hora_reserva";
+                        $sql = "SELECT * FROM hora_reserva";
                         $conexion->consultas($sql);
                         while($resultado = $conexion->devolverFilas()){
-                            echo '<option value="'.$resultado["hora"].'">'.$resultado["hora"].'</option>';
+                            echo '<option value="'.$resultado["id_hora"].'">'.$resultado["hora"].'</option>';
                         }
                         ?>
                         </select>
@@ -115,21 +98,26 @@ if(!isset($_SESSION["usuario"])){
                         <label for="nombre" class="control-label">Alergias (En caso de que alguno de los comensales padezca algún tipo de alergia)</label>
                         <?php
                         $query = "SELECT * FROM alergenos";
-                        $conexion->consultas($query);
-                        while($resultado = $conexion->devolverFilas()){
-                            echo '<table>
-                                <tr>
-                                    <td><div id="contenedorImagen"><img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'" onclick="ActivarImagen('.$resultado["id_alergeno"].');" active="false"/></div></td>
-                                </tr>
-                            </table>';
-                        }
+                        $conexion->consultas($query);echo '
+                        <table>
+                        <tr>';
+                        while($resultado = $conexion->devolverFilas()){echo'
+                            <td>
+                                <label id="contenedorImagen">
+                                    <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'"/>
+                                    <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
+                                </label>
+                            </td>';
+                        }echo '
+                        </tr>
+                        </table>';
                         ?>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
             <div class="col-md-12 text-center" id="boton">
-                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, $('#imagen1').attr('active'),$('#imagen2').attr('active'), $('#imagen3').attr('active'), $('#imagen4').attr('active'), $('#imagen5').attr('active'), $('#imagen6').attr('active'), $('#imagen7').attr('active'), $('#imagen8').attr('active'), $('#imagen9').attr('active'), $('#imagen10').attr('active'), $('#imagen11').attr('active'), $('#imagen12').attr('active'),$('#imagen13').attr('active'), $('#imagen14').attr('active') );">Reservar</button>
+                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, $('#check1').prop('checked'),$('#check2').prop('checked'), $('#check3').prop('checked'), $('#check4').prop('checked'), $('#check5').prop('checked'), $('#check6').prop('checked'), $('#check7').prop('checked'), $('#check8').prop('checked'), $('#check9').prop('checked'), $('#check10').prop('checked'), $('#check11').prop('checked'), $('#check12').prop('checked'),$('#check13').prop('checked'), $('#check14').prop('checked'));">Reservar</button>
             </div>
         </form>
     </div>

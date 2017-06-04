@@ -36,7 +36,10 @@ echo '<table class="table table-striped col-md-9">
             while($sentenciaProductos->fetch()){
             echo'<td class="text-uppercase"> -  ' .$nombre. ' </td>
                  <td class="text-uppercase text-center">' .$precio. ' €</td>
-                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$id_producto.'"><span class="fa fa-eye"></span></button> <button type="button" class="btn btn-success" onclick="aniadirProducto('.$id_producto.')"><span class="fa fa-plus"></span></button></td>
+                 <td>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$id_producto.'"><span class="fa fa-eye"></span></button> 
+                    <button type="button" class="btn btn-success" onclick="aniadirProducto('.$id_producto.')"><span class="fa fa-plus"></span></button>
+                 </td>
             </tr>';
             }
 echo '</table>';

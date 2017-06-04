@@ -48,6 +48,7 @@ if(!isset($_SESSION["usuario"])){
 
             </div>
         </div>
+        <div class="col-md-12 espacios" id="resultado"></div>
     </div>
 
     <div class="container">

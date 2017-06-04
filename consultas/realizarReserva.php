@@ -5,12 +5,12 @@ include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-$obtenerUsuario = "SELECT id_usuario, email FROM usuarios WHERE nombre = ?";
+$obtenerUsuario = "SELECT id_usuario, email FROM usuarios WHERE id_usuario = ?";
 $sentencia = $conexion->consultasPreparadas($obtenerUsuario);
-$sentencia->bind_param('s', $nombre);
-$nombre = substr($_POST["nombre"], " ");
+$sentencia->bind_param('i', $idUsuario);
+$idUsuario = $_SESSION["idUsuario"];
 $sentencia->execute();
-$sentencia->bind_result($id, $email);
+$sentencia->bind_result($idUsuario, $email);
 $sentencia->close();
 
 //Creamos el codigo de reserva aleatorio
@@ -21,76 +21,68 @@ for ($i = 0; $i < 9; $i++) {
     $cod = rand(0, $longitud);
     $codigo[] = $alphabet[$cod];
 }
-$codigoRerseva = implode($codigo); //devolvemos el array convertido a string
+$codigoReserva = implode($codigo); //devolvemos el array convertido a string
 
-$sql = "INSERT INTO reserva(id_usuario,comensales,fecha_reserva,hora_reserva,codigo_reserva) VALUES(?,?,?,?)";
-$sentencia = $conexion->consultasPreparadas($sql);
-$sentencia->bind_param('iisi', $usuario, $comensales, $fecha, $hora, $codReserva);
-$usuario = $id;
-$comensales = $_POST["comensales"];
-$fecha = $_POST["fecha"];
-$hora = $_POST["hora"];
-$codReserva = $codigoReserva;
-$sentencia->execute();
-$sentencia->bind_result($idUsuario, $comensales, $fechaReserva, $horaReserva, $reserva);
-$sentencia->close();
+$sql = "INSERT INTO reserva VALUES ('', ".$idUsuario.", ".$_POST["comensales"].", '".$_POST["fecha"]."', '".$_POST["hora"]."', '".$codigoReserva."')";
+$conexion->consultas($sql);
 
 //obtenemos el ultimo id insertado e introducimos los alergenos indicados en la reserva
 $lastId = $conexion->ultimoId();
+$query = "";
 if($_POST["alergeno1"] == "true"){
-    $query = "INSERT INTO reserva_alergeno VALUES('".$lastId."', 1);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 1);";
 }
 
 if($_POST["alergeno2"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 2);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 2);";
 }
 
 if($_POST["alergeno3"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 3);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 3);";
 }
 
 if($_POST["alergeno4"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 4);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 4);";
 }
 
 if($_POST["alergeno5"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 5);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 5);";
 }
 
 if($_POST["alergeno6"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 6);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 6);";
 }
 
 if($_POST["alergeno7"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 7);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 7);";
 }
 
 if($_POST["alergeno8"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 8);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 8);";
 }
 
 if($_POST["alergeno9"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 9);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 9);";
 }
 
 if($_POST["alergeno10"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 10);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 10);";
 }
 
 if($_POST["alergeno11"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 11);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 11);";
 }
 
 if($_POST["alergeno12"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 12);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 12);";
 }
 
 if($_POST["alergeno13"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 13);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 13);";
 }
 
 if($_POST["alergeno14"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES('".$lastId."', 14);";
+    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 14);";
 }
 
 $conexion->multiConsultas($query);
@@ -98,7 +90,7 @@ if($conexion->filasAfectadas() > 0){
     //Configuramos el correo que se le envia al usuario al realizar la reserva
     $para      = $email;
     $titulo    = 'DATOS DE LA RESERVA';
-    $mensaje   = 'Tu codigo de reserva es el siguiente: '.$reserva;
+    $mensaje   = 'Tu codigo de reserva es el siguiente: '.$codigoReserva;
 
     $cabeceras = 'From: webmaster@example.com' . "\r\n" .
         'Reply-To: webmaster@example.com' . "\r\n" .
@@ -110,7 +102,7 @@ if($conexion->filasAfectadas() > 0){
             <script>
                 setTimeout(function(){
                     window.location="../paginas/paginaPrincipal.php ";
-                }, 1200);
+                }, 2000);
             </script>';
 }else{
     echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';

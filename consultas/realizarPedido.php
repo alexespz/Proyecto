@@ -1,7 +1,9 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
+include_once '../procedimientos/carrito.php';
 
+$carrito = new Carrito();
 $conexion = new procedimientos();
 $conexion->conect();
 
@@ -10,7 +12,7 @@ $sentencia = $conexion->consultasPreparadas($obtenerUsuario);
 $sentencia->bind_param('i', $idUsuario);
 $idUsuario = $_SESSION["idUsuario"];
 $sentencia->execute();
-$sentencia->bind_result($id, $email);
+$sentencia->bind_result($idUsuario, $email);
 $sentencia->close();
 
 //Creamos el codigo de pedido aleatorio
@@ -23,21 +25,18 @@ for ($i = 0; $i < 9; $i++) {
 }
 $codigoPedido = implode($codigo); //devolvemos el array convertido a string
 
-$query = "INSERT INTO pedido(id_usuario, precio, codigo_pedido) VALUES (?,?,?)";
-$sentencia = $conexion->consultasPreparadas($query);
-$sentencia->bind_param('iis', $idUsuario, $precio, $codigoPe);
-$idUsuario = $_SESSION["usuario"];
-$precio = $_GET["total"];
-$codigoPe = $codigoPedido;
-$sentencia->execute();
-$sentencia->bind_result($idUsuario, $precio, $codigoPe);
-$sentencia->close();
+$query = "INSERT INTO pedido VALUES ('', ".$idUsuario.", ".$_POST["total"].", '".$codigoPedido."')";
+echo $query;
+$conexion->consultas($query);
 
 $lastId = $conexion->ultimoId();
-foreach ($_SESSION["carrito"] as $producto){
-    $query .= "INSERT INTO pedido_producto VALUES(".$lastId.", ".$producto["id"].", ".$producto["cantidad"].")";
+$carro = $carrito->get_content();
+$query = "";
+foreach ($carro as $producto){
+    $query .= "INSERT INTO pedido_producto VALUES(".$lastId.", ".$producto["id"].", ".$producto["cantidad"].");";
 }
 $conexion->multiConsultas($query);
+
 if($conexion->filasAfectadas() > 0){
     $carrito->destroy();
 
@@ -56,7 +55,7 @@ if($conexion->filasAfectadas() > 0){
             <script>
                 setTimeout(function(){
                     window.location="../paginas/paginaPrincipal.php ";
-                }, 1200);
+                }, 2000);
             </script>';
 }else{
     echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';

@@ -70,12 +70,12 @@ CREATE TABLE IF NOT EXISTS pedido(
   id_usuario TINYINT UNSIGNED NOT NULL,
   precio DOUBLE NOT NULL,
   codigo_pedido CHAR(9),
-  CONSTRAINT fk_pedido_producto FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
+  CONSTRAINT fk_pedido_producto FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
 
 /*TABLA 8 - PEDIDO_PRODUCTO*/
 CREATE TABLE IF NOT EXISTS pedido_producto(
-  id_pedido TINYINT UNSIGNED PRIMARY KEY,
+  id_pedido TINYINT UNSIGNED,
   id_producto TINYINT UNSIGNED,
   cantidad_producto TINYINT,
   CONSTRAINT fk_pedido_id FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS pedido_producto(
 
 /*TABLA 9 - PRODUCTO_ALERGENO*/
 CREATE TABLE IF NOT EXISTS producto_alergeno(
-  id_producto TINYINT UNSIGNED PRIMARY KEY ,
+  id_producto TINYINT UNSIGNED,
   id_alergeno TINYINT UNSIGNED,
   CONSTRAINT fk_productoA_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
   CONSTRAINT fk_alergenoA_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)

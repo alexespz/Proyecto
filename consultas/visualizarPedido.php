@@ -1,17 +1,13 @@
 <?php
 session_start();
-
 include_once '../procedimientos/procedimientos.php';
 include_once '../procedimientos/carrito.php';
 
 $carrito = new Carrito();
 $conexion = new procedimientos();
+$conexion->conect();
 
-if(!isset($_SESSION["usuario"])){
-    header("Location: inicioSesion.php");
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,28 +41,26 @@ if(!isset($_SESSION["usuario"])){
                     <td class="col-md-1">Cantidad</td>
                     <td class="col-md-1">Precio</td>
                     <td class="col-md-3">Acciones</td>
-                </tr>
-                <tr><?php
-                foreach($carrito as $producto){
-                echo '<td class="col-md-1">'.$producto["unique_id"].'</td>
-                      <td class="col-md-3">'.$producto["nombre"].'</td>
-                      <td class="col-md-1">'.$producto["cantidad"].'</td>
-                      <td class="col-md-1">'.$producto["precio"].'</td>
-                      <td class="col-md-3">
+                </tr><?php
+                $carro = $carrito->get_content();
+                foreach($carro as $producto){echo '
+                <tr>
+                    <td class="col-md-1">'.$producto["unique_id"].'</td>
+                    <td class="col-md-3">'.$producto["nombre"].'</td>
+                    <td class="col-md-1">'.$producto["cantidad"].'</td>
+                    <td class="col-md-1">'.$producto["precio"].' €</td>
+                    <td class="col-md-3">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$producto["id"].'"><span class="fa fa-eye"></span></button>
-                        <button class="btn btn-danger" onclick="'.$carrito->remove_producto($producto["unique_id"]).'"><span class="glyphicon glyphicon-trash"></span></button>
-                      </td>
+                        <button type="button" class="btn btn-danger" onclick=""><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
                 </tr>';
-                }
-    echo '</table>';
-    echo 'Productos del carricto: ' .$carrito->articulos_total();
-
-    echo '<button class="btn btn-warning" href="../consultas/realizarPedido.php?total='.$carrito->precio_total().'">Realizar Pedido</button>';
-                ?>
+                }echo '
+            </table>
+                <p>Productos del carrito: '.$carrito->articulos_total().'</p>
+                <p>Total: '.$carrito->precio_total().' €</p>
+                <button class="btn btn-warning" href="../consultas/realizarPedido.php?total='.$carrito->precio_total().'">Realizar Pedido</button>';?>
         </div>
     </div>
-</div>
-
     <!-- Modal -->
     <div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -75,5 +69,6 @@ if(!isset($_SESSION["usuario"])){
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

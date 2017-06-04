@@ -12,10 +12,8 @@ $(window).on('load', function(){
         }
     });
 
-    $(document).ready(function() {
-        $('#Modal').on('hidden.bs.modal', function () {
-            $(this).removeData('bs.modal');
-        });
+    $(document).on('hidden.bs.modal','#Modal', function () {
+        $('#Modal').removeData('bs.modal');
     });
 });
 

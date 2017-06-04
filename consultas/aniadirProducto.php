@@ -7,6 +7,26 @@ $carrito = new Carrito();
 $conexion = new procedimientos();
 $conexion->conect();
 
+?>
+<script>
+    function visualizarPedido(){
+        window.location = "../consultas/visualizarPedido.php";
+    }
+
+    function realizarPedido(total) {
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../consultas/realizarPedido.php",
+            data: "total=" + total,
+            success: function (resp) {
+                $('#resultado').html(resp);
+            }
+        });
+    }
+</script>
+<?php
+
 $obtenerProductos = "SELECT id_producto, nombre, precio FROM producto WHERE id_producto = ?";
 $sentenciaProductos = $conexion->consultasPreparadas($obtenerProductos);
 $sentenciaProductos->bind_Param('i', $id);
@@ -34,7 +54,7 @@ foreach($carro as $producto) {echo'
     </tr>';
 }echo '
 </table>
-<p class="bg-success">Total: '.$carrito->precio_total().' €</p>
-<button class="btn btn-default" href="../consultar/visualizarPedido.php">Ver pedido</button>
+<p>Total: '.$carrito->precio_total().' €</p>
+<button class="btn btn-info" onclick="visualizarPedido();">Ver pedido</button>
 <hr/>
-<button class="btn btn-warning" href="../consultas/realizarPedido.php?total='.$carrito->precio_total().'">Realizar Pedido</button>';
+<button class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');">Realizar Pedido</button>';
