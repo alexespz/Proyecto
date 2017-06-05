@@ -8,14 +8,11 @@ $conexion->conect();
 $query = "UPDATE hora_reserva SET is_delete = '1' WHERE id_hora = ?";
 $sentencia = $conexion->cosultasPreparadas();
 $sentencia->bind_param('i', $id);
-$id = $_GET["id_hora"];
+$id = $_POST["id"];
 $sentencia->execute();
 $sentencia->close();
 
-//No estoy seguro de que esto funcione
-echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Hora eliminada</span>
+echo '
     <script>
-        setTimeout(function(){
-            $("#cuerpo").load("listadoHoras.php");
-        }, 1200);
+        $("#cuerpo").load("listadoHoras.php");
     </script>';

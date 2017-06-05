@@ -8,15 +8,12 @@ $conexion->conect();
 $query = "UPDATE producto SET is_delete = '1' WHERE id_producto = ?";
 $sentencia = $conexion->cosultasPreparadas();
 $sentencia->bind_param('i', $id);
-$id = $_GET["id_producto"];
+$id = $_POST["id"];
 $sentencia->execute();
 $sentencia->close();
 
-//No estoy seguro de que esto funcione
-echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Producto eliminado</span>
+echo '
     <script>
-        setTimeout(function(){
-            $("#cuerpo").load("listadoProductos.php");
-        }, 1200);
+        $("#cuerpo").load("listadoProductos.php");
     </script>';
 

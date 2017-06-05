@@ -19,6 +19,19 @@ $conexion->conect();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script>
+        function realizarPedido(total) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/realizarPedido.php",
+                data: "total=" + total,
+                success: function (resp) {
+                    $('#resultado').html(resp);
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <div class="container caja">
@@ -43,7 +56,8 @@ $conexion->conect();
                     <td class="col-md-3">Acciones</td>
                 </tr><?php
                 $carro = $carrito->get_content();
-                foreach($carro as $producto){echo '
+                foreach($carro as $producto){
+                    $idUnica = $producto["unique_id"]; echo '
                 <tr>
                     <td class="col-md-1">'.$producto["unique_id"].'</td>
                     <td class="col-md-3">'.$producto["nombre"].'</td>
@@ -51,16 +65,18 @@ $conexion->conect();
                     <td class="col-md-1">'.$producto["precio"].' €</td>
                     <td class="col-md-3">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$producto["id"].'"><span class="fa fa-eye"></span></button>
-                        <button type="button" class="btn btn-danger" onclick=""><span class="glyphicon glyphicon-trash"></span></button>
+                        <button type="button" class="btn btn-danger" onclick="'.$carrito->remove_producto("$idUnica").'"><span class="glyphicon glyphicon-remove"></span></button>
                     </td>
                 </tr>';
                 }echo '
             </table>
                 <p>Productos del carrito: '.$carrito->articulos_total().'</p>
                 <p>Total: '.$carrito->precio_total().' €</p>
-                <button class="btn btn-warning" href="../consultas/realizarPedido.php?total='.$carrito->precio_total().'">Realizar Pedido</button>';?>
+                <button class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');"">Realizar Pedido</button>';?>
         </div>
+        <div class="col-md-12 espacios" id="resultado"></div>
     </div>
+
     <!-- Modal -->
     <div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">

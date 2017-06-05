@@ -68,5 +68,5 @@ echo '
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-info" onclick="aniadirProducto('.$id_producto.')">Añadir al pedido</button>
+    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="aniadirProducto('.$id_producto.')">Añadir al pedido</button>
 </div>';

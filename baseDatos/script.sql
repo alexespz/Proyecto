@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS pedido(
 
 /*TABLA 8 - PEDIDO_PRODUCTO*/
 CREATE TABLE IF NOT EXISTS pedido_producto(
+  id_pedido_producto TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   id_pedido TINYINT UNSIGNED,
   id_producto TINYINT UNSIGNED,
   cantidad_producto TINYINT,
@@ -84,6 +85,7 @@ CREATE TABLE IF NOT EXISTS pedido_producto(
 
 /*TABLA 9 - PRODUCTO_ALERGENO*/
 CREATE TABLE IF NOT EXISTS producto_alergeno(
+  id_producto_alergeno TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   id_producto TINYINT UNSIGNED,
   id_alergeno TINYINT UNSIGNED,
   CONSTRAINT fk_productoA_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
@@ -92,7 +94,8 @@ CREATE TABLE IF NOT EXISTS producto_alergeno(
 
 /*TABLA 10 - RESERVA_ALERGENO*/
 CREATE TABLE IF NOT EXISTS reserva_alergeno(
-  id_reserva TINYINT UNSIGNED PRIMARY KEY,
+  id_reserva_alergeno TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  id_reserva TINYINT UNSIGNED,
   id_alergeno TINYINT UNSIGNED,
   CONSTRAINT fk_reserva_id FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva),
   CONSTRAINT fk_alergeno_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)

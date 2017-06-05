@@ -28,10 +28,25 @@ while($resultado = $conexion->devolverFilas()){
             echo '<td><input type="checkbox" disabled checked data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
         }echo'
         <td>' .$resultado["hora"]. '</td>
-        <td><button class="btn btn-info" href="../admin/modificarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-pencil"></span></button>
-            <button class="btn btn-danger" href="../consultas/eliminarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-trash"></span></button>
+        <td>';
+            if($resultado["is_delete"] == 0){echo '
+                <button type="button" class="btn btn-info" href="../admin/modificarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../consultas/confirmarEliminarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+            }else{ echo '
+                <button type="button" class="btn btn-warning" href="../consultas/recuperarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
+            }echo '
         </td>
     </tr>';
 }
 echo '</table>';
 echo 'Resultados obtenidos: ' .$conexion->numFilas();
+
+echo'
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+        </div>
+    </div>
+</div>';

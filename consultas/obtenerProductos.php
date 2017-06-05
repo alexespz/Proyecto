@@ -47,11 +47,11 @@ echo 'Resultados Obtenidos: ' .$conexion->numFilas();
 $sentenciaProductos->close();
 
 echo'
-            <!-- Modal -->
-            <div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        
-                    </div>
-                </div>
-            </div>';
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+        </div>
+    </div>
+</div>';
