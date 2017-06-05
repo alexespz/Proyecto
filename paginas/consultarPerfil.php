@@ -1,38 +1,13 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
-include_once '../consultas/obtenerPerfil.php';
+include_once '../consultas/perfil/obtenerPerfil.php';
 
 ?>
-<script>
-    function modificarUsuario(user) {
-        $.ajax({
-            async: true,
-            type: "POST",
-            url: "../paginas/modificarUsuario.php",
-            data: "usuario="+user,
-            success: function(resp){
-                $('#cuerpo').load("modificarUsuario.php");
-            }
-        });
-    }
-    
-    function modificarPerfil() {
-        $.ajax({
-            async: true,
-            type: "POST",
-            url: "../paginas/modificarPerfil.php",
-            success: function(resp){
-                $('#cuerpo').load("modificarPerfil.php");
-            }
-        });
-    }
-
-    function volver(){
-        window.location = "../paginas/paginaPrincipal.php";
-    }
-</script>
 <html lang="en">
+<head>
+    <script src="../sources/ajaxPerfil.js"></script>
+</head>
     <div class="col-md-9 pull-md-right main-content">
         <div class="col-md-12 text-center"><h1><p>PERFIL PERSONAL</p></h1></div>
         <form action="return false" onsubmit="return false" method="POST">
@@ -84,8 +59,7 @@ include_once '../consultas/obtenerPerfil.php';
                 </div>
             </div>
             <div class="col-md-12 " id="boton">
-                <button class="btn btn-info" id="submit" onclick="modificarPerfil();">Modificar datos</button>
-                <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
+                <button class="btn btn-info" id="submit" onclick="cargarPerfil();">Modificar datos</button>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
         </form>

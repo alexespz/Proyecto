@@ -1,11 +1,11 @@
 <?php
 session_start();
-include_once '../procedimientos/procedimientos.php';
+include_once '../../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
 
-$carpeta = "../imagenes/alergenos/";
+$carpeta = "../../imagenes/alergenos/";
 $tipoImagen = $_FILES["foto"]["type"];
 
 if(file_exists($carpeta . $_FILES["foto"]["name"])){

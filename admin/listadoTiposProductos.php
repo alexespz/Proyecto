@@ -31,9 +31,9 @@ while($resultado = $conexion->devolverFilas()){
         <td>';
             if($resultado["is_delete"] == 0){ echo '
                 <button type="button" class="btn btn-info" href="../admin/modificarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../admin/ConfirmarEliminarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../consultas/tiposProducto/confirmarEliminarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
             }else { echo '
-                <button type="button" class="btn btn-warning" href="../consultas/recuperarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
+                <button type="button" class="btn btn-warning" href="../consultas/tiposProducto/recuperarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
             }echo '
         </td>
     </tr>';

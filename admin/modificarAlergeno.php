@@ -21,7 +21,7 @@ $sentencia->close();
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/modificarAlergeno.php",
+            url: "../consultas/alergenos/modificarAlergeno.php",
             data: "id="+id+"nombre="+nombre,
             success: function(resp){
                 $('#cuerpo').load("resp");

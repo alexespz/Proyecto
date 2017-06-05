@@ -1,14 +1,14 @@
 <?php
-include_once '../procedimientos/procedimientos.php';
+include_once '../../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 ?>
 <script>
-    function eliminarProducto(id) {
+    function eliminarTipoProdcuto(id) {
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/eliminarProducto.php",
+            url: "eliminarTipoProducto.php",
             data: "id=" + id,
             success: function (resp) {
 
@@ -26,6 +26,6 @@ echo '
     <p>¿Seguro que desea eliminar el elemento seleccionado?</p>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary pull-right" onclick="eliminarProducto('.$_GET["id"].')">Si</button>
+    <button type="button" class="btn btn-primary pull-right" onclick="eliminarTipoProdcuto('.$_GET["id"].')">Si</button>
     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">No</button>
 </div>';

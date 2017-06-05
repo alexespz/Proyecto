@@ -21,7 +21,7 @@ $sentencia->close();
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/modificarHora.php",
+            url: "../consultas/horas/modificarHora.php",
             data: "id="+id+"hora="+hora,
             success: function(resp){
                 $('#cuerpo').load("resp");

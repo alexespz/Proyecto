@@ -10,7 +10,7 @@ if(!isset($_SESSION["usuario"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pagina principal</title>
+    <title>Perfil personal</title>
     <link type="text/css" href="../sources/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="../sources/cssPropio.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -43,22 +43,23 @@ if(!isset($_SESSION["usuario"])){
                             <div class="panel-body">
                                 <table class="table">
                                     <tr>
-                                        <td>
-                                            <a id="editarPerfil">Editar perfil</a>
-                                        </td>
+                                        <td><a id="editarPerfil">Editar perfil</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                           <a id="cambiarContrasena">Cambiar contraseña</a>
-                                        </td>
+                                        <td><a id="cambiarContrasena">Cambiar contraseña</a></td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                           <a id="verPerfil">Ver perfil</a>
-                                        </td>
+                                        <td><a id="verPerfil">Ver perfil</a></td>
                                     </tr>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a id="volverMenu"><span class="fa fa-sign-out text-success"></span> Volver al menu</a>
+                            </h4>
                         </div>
                     </div>
                     <div class="panel panel-default">

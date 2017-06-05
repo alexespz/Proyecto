@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once '../procedimientos/procedimientos.php';
+include_once '../../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
@@ -33,9 +33,9 @@ while($resultado = $conexion->devolverFilas()){
         <td>';
             if($resultado["is_delete"] == 0){echo '
                 <button type="button" class="btn btn-info" href="../admin/modificarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../consultas/confirmarEliminarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../consultas/alergenos/confirmarEliminarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-trash"></span></button>';
             }else { echo '
-                <button type="button" class="btn btn-warning" href="../consultas/recuperarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
+                <button type="button" class="btn btn-warning" href="../consultas/alergenos/recuperarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
             }echo'
         </td>
     </tr>';

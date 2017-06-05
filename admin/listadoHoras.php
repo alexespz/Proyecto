@@ -31,9 +31,9 @@ while($resultado = $conexion->devolverFilas()){
         <td>';
             if($resultado["is_delete"] == 0){echo '
                 <button type="button" class="btn btn-info" href="../admin/modificarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../consultas/confirmarEliminarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../consultas/horas/confirmarEliminarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-trash"></span></button>';
             }else{ echo '
-                <button type="button" class="btn btn-warning" href="../consultas/recuperarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
+                <button type="button" class="btn btn-warning" href="../consultas/horas/recuperarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
             }echo '
         </td>
     </tr>';

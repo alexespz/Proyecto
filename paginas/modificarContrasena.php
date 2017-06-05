@@ -2,24 +2,8 @@
 session_start();
 
 ?>
-<script>
-    function cambiarContrasena(newPass, repeatPass) {
-        $.ajax({
-            async: true,
-            type: "POST",
-            url: "../consultas/modificarContrasena.php",
-            data: "nuevaContrasena="+newPass+"&repetirContrasena="+repeatPass,
-            success: function(resp){
-                $('#resultado').html(resp);
-            }
-        });
-    }
-
-    function volver(){
-        window.location = "../paginas/paginaPrincipal.php";
-    }
-</script>
 <html lang="en">
+<script src="../sources/ajaxPerfil.js"></script>
 <div class="col-md-9 pull-md-right main-content">
     <div class="col-md-12 text-center"><h1><p>MODIFICAR CONTRASEÑA</p></h1></div>
     <form action="return false" onsubmit="return false" method="POST">

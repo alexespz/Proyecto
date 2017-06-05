@@ -1,19 +1,19 @@
 <?php
+
 session_start();
-include_once '../procedimientos/procedimientos.php';
+include_once '../../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
 
-$query = "UPDATE tipo_producto SET is_delete = '1' WHERE id_tipo_producto = ?";
+$query = "UPDATE hora_reserva SET is_delete = '0' WHERE id_hora = ?";
 $sentencia = $conexion->cosultasPreparadas();
 $sentencia->bind_param('i', $id);
-$id = $_POST["id"];
+$id = $_GET["id"];
 $sentencia->execute();
 $sentencia->close();
 
 echo '
     <script>
-        $("#cuerpo").load("listadoTiposProducto.php");
+        $("#cuerpo").load("listadoHoras.php");
     </script>';
-

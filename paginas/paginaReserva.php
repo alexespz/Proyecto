@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
-include_once '../consultas/obtenerPerfil.php';
+include_once '../consultas/perfil/obtenerPerfil.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
@@ -43,6 +43,11 @@ if(!isset($_SESSION["usuario"])){
                     $('#resultado').html(resp);
                 }
             });
+        }
+
+        function aniadirAlergeno(id){
+            var arrayAlergeno = [];
+            arrayAlergeno.push(id);
         }
     </script>
 </head>
@@ -104,7 +109,7 @@ if(!isset($_SESSION["usuario"])){
                         while($resultado = $conexion->devolverFilas()){echo'
                             <td>
                                 <label id="contenedorImagen">
-                                    <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'"/>
+                                    <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
                                     <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
                                 </label>
                             </td>';

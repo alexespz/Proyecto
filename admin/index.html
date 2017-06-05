@@ -16,7 +16,7 @@
             $.ajax({
                 async: true,
                 type: "POST",
-                url: "../consultas/inicioSesionAdmin.php",
+                url: "../consultas/validarInicioSesionAdmin.php",
                 data: "usuario="+user+"&contrasenia="+pass,
                 success: function(resp){
                     $('#resultado').html(resp);

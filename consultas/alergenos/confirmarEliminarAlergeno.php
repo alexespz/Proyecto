@@ -1,5 +1,5 @@
 <?php
-include_once '../procedimientos/procedimientos.php';
+include_once '../../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 ?>
@@ -8,7 +8,7 @@ $conexion->conect();
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/eliminarAlergeno.php",
+            url: "eliminarAlergeno.php",
             data: "id=" + id,
             success: function (resp) {
 

@@ -14,7 +14,7 @@ if(!isset($_POST["usuario"])){
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/nuevaHora.php",
+            url: "../consultas/horas/nuevaHora.php",
             data: "hora="+hora,
             success: function(resp){
                 $('#resultado').html(resp);

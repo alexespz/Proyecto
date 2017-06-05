@@ -22,7 +22,7 @@ $sentencia->close();
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/modificarTipoProducto.php",
+            url: "../consultas/tiposProducto/modificarTipoProducto.php",
             data: "id="+id+"&tipo="+tipo,
             success: function(resp){
                 $('#cuerpo').load("resp");

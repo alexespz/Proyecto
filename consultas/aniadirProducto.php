@@ -10,7 +10,7 @@ $conexion->conect();
 ?>
 <script>
     function visualizarPedido(){
-        window.location = "../consultas/visualizarPedido.php";
+        window.location = "../paginas/visualizarPedido.php";
     }
 
     function realizarPedido(total) {

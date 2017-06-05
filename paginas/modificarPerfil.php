@@ -1,27 +1,11 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
-include_once '../consultas/obtenerPerfil.php';
+include_once '../consultas/perfil/obtenerPerfil.php';
 
 ?>
-<script>
-    function modificarPerfil(nombre, apellidos, email, telefono, sexo, dni) {
-        $.ajax({
-            async: true,
-            type: "POST",
-            url: "../consultas/modificarPerfil.php",
-            data: "nombre="+nombre+"&apellidos="+apellidos+"&email="+email+"&telefono="+telefono+"&sexo="+sexo+"&dni="+dni,
-            success: function(resp){
-                $('#resultado').html(resp);
-            }
-        });
-    }
-
-    function volver(){
-        window.location = "../paginas/paginaPrincipal.php";
-    }
-</script>
 <html lang="en">
+<script src="../sources/ajaxPerfil.js"></script>
 <div class="col-md-9 pull-md-right main-content">
     <div class="col-md-12 text-center"><h1><p>PERFIL PERSONAL</p></h1></div>
     <form action="return false" onsubmit="return false" method="POST">
@@ -60,7 +44,6 @@ include_once '../consultas/obtenerPerfil.php';
         </div>
         <div class="col-md-12 " id="boton">
             <button class="btn btn-info" id="submit" onclick="modificarPerfil($('#nombre').val(), $('#apellidos').val(), $('#email').val(), $('#telefono').val(), $('#sexo').val(), $('#dni').val());">Modificar datos</button>
-            <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

@@ -1,12 +1,11 @@
 <?php
-
 session_start();
-include_once '../procedimientos/procedimientos.php';
+include_once '../../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
 
-$query = "UPDATE hora_reserva SET is_delete = '0' WHERE id_hora = ?";
+$query = "UPDATE alergenos SET is_delete = '0' WHERE id_alergeno = ?";
 $sentencia = $conexion->cosultasPreparadas();
 $sentencia->bind_param('i', $id);
 $id = $_GET["id"];
@@ -15,5 +14,5 @@ $sentencia->close();
 
 echo '
     <script>
-        $("#cuerpo").load("listadoHoras.php");
+        $("#cuerpo").load("listadoAlergenos.php");
     </script>';

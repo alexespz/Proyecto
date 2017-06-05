@@ -1,11 +1,11 @@
 <?php
 session_start();
-include_once '../procedimientos/procedimientos.php';
+include_once '../../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
 
-$query = "UPDATE producto SET is_delete = '1' WHERE id_producto = ?";
+$query = "UPDATE alergenos SET is_delete = '1' WHERE id_alergeno = ?";
 $sentencia = $conexion->cosultasPreparadas();
 $sentencia->bind_param('i', $id);
 $id = $_POST["id"];
@@ -14,6 +14,5 @@ $sentencia->close();
 
 echo '
     <script>
-        $("#cuerpo").load("listadoProductos.php");
+        $("#cuerpo").load("listadoAlergenos.php");
     </script>';
-

@@ -33,9 +33,9 @@ while($resultado = $conexion->devolverFilas()){
         <td>';
             if($resultado["is_delete"] == 0){ echo '
                 <button type="button" class="btn btn-info" href="../admin/modificarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-taget="#Modal" href="../admin/confirmarEliminarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-taget="#Modal" href="../consultas/productos/confirmarEliminarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
             }else { echo '
-                <button type="button" class="btn btn-warning" href="../consultas/recuperarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
+                <button type="button" class="btn btn-warning" href="../consultas/productos/recuperarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
             }echo '
         </td>
     </tr>';
