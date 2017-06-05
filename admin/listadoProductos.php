@@ -12,10 +12,21 @@ if(!isset($_SESSION["usuario"])){
 $query = "SELECT * FROM producto";
 $conexion->consultas($query);
 
-echo '<table class="table table-striped col-md-10">
+echo '
+<script>
+    $(document).ready(function(){
+        $("#miTabla").DataTable();
+    });
+
+  $(function() {
+    $("#toggle-1").bootstrapToggle();
+  })
+</script>
+
+<table class="table table-striped col-md-12" id="miTabla">
     <tr>
         <td class="col-md-1">ID</td>
-        <td class="col-md-1">Activo</td>
+        <td class="col-md-3">Activo</td>
         <td class="col-md-3">Nombre</td>
         <td class="col-md-3">Descripcion</td>
         <td class="col-md-2">Acciones</td>
@@ -24,9 +35,10 @@ echo '<table class="table table-striped col-md-10">
 while($resultado = $conexion->devolverFilas()){
         echo '<td>' .$resultado["id_producto"]. '</td>';
         if($resultado["is_delete"] == "1"){
-            echo '<td><input type="checkbox" disabled data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=""></td>';
+            echo '<td><input type="checkbox" data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=""></td>';
         }else{
-            echo '<td><input type="checkbox" disabled checked data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
+            echo '
+                <td><input type="checkbox" id="toggle-'.$resultado["id_producto"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on="Si" data-off=" "></td>';
         }echo'
         <td>' .$resultado["nombre"]. '</td>
         <td>' .$resultado["descripcion"]. '</td>

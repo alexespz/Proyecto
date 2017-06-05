@@ -15,12 +15,15 @@ if(!isset($_SESSION["usuario"])){
     <link type="text/css" href="../sources/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="../sources/cssPropio.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap2-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap2-toggle.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="../sources/ajaxAdmin.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../sources/ajaxAdmin.js"></script>
 </head>
 <body>
 <div class="container caja">
@@ -35,13 +38,13 @@ if(!isset($_SESSION["usuario"])){
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-md-3" >
+            <div class="col-md-3 col-sm-3" >
                 <div class="panel-group" id="accordion" >
                     <div class="panel panel-default">
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    <span class="glyphicon glyphicon-book text-success"></span>Productos</a>
+                                    <span class="glyphicon glyphicon-book text-success"></span> Productos</a>
                             </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
@@ -61,7 +64,7 @@ if(!isset($_SESSION["usuario"])){
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                    <span class="glyphicon glyphicon-book text-success"></span>Tipos de Productos</a>
+                                    <span class="glyphicon glyphicon-book text-success"></span> Tipos de Productos</a>
                             </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse in">
@@ -81,7 +84,7 @@ if(!isset($_SESSION["usuario"])){
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                    <span class="glyphicon glyphicon-book text-success"></span>Horas de reserva</a>
+                                    <span class="glyphicon glyphicon-book text-success"></span> Horas de reserva</a>
                             </h4>
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse in">
@@ -101,7 +104,7 @@ if(!isset($_SESSION["usuario"])){
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                    <span class="glyphicon glyphicon-book text-success"></span>Tipos de alergenos</a>
+                                    <span class="glyphicon glyphicon-book text-success"></span> Tipos de alergenos</a>
                             </h4>
                         </div>
                         <div id="collapseFour" class="panel-collapse collapse in">
@@ -119,12 +122,13 @@ if(!isset($_SESSION["usuario"])){
                     </div>
                 </div>
             </div>
+            <!-- CUERPO DE LA PÁGINA -->
+            <div class="col-md-8" id="cuerpo">
+
+            </div>
         </div>
     </div>
-    <!-- CUERPO DE LA PÁGINA -->
-    <div class="col-md-8" id="cuerpo">
-        
-    </div>
+
 </div>
 </body>
 </html>
