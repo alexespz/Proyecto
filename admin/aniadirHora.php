@@ -5,7 +5,7 @@ include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-if(!isset($_POST["usuario"])){
+if(!isset($_SESSION["usuario"])){
     header("Location: ../admin/index.html");
 }
 ?>

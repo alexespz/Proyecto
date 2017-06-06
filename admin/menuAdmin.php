@@ -64,7 +64,7 @@ if(!isset($_SESSION["usuario"])){
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                    <span class="glyphicon glyphicon-book text-success"></span> Tipos de Productos</a>
+                                    <span class="fa fa-tags text-success"></span> Tipos de Productos</a>
                             </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse in">
@@ -84,7 +84,7 @@ if(!isset($_SESSION["usuario"])){
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                    <span class="glyphicon glyphicon-book text-success"></span> Horas de reserva</a>
+                                    <span class="fa fa-clock-o text-success"></span> Horas de reserva</a>
                             </h4>
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse in">
@@ -104,7 +104,7 @@ if(!isset($_SESSION["usuario"])){
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                    <span class="glyphicon glyphicon-book text-success"></span> Tipos de alergenos</a>
+                                    <span class="glyphicon glyphicon-grain text-success"></span> Tipos de alergenos</a>
                             </h4>
                         </div>
                         <div id="collapseFour" class="panel-collapse collapse in">
@@ -118,6 +118,13 @@ if(!isset($_SESSION["usuario"])){
                                     </tr>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a id="cerrarSesion"><span class="fa fa-sign-out text-success"></span> Cerrar sesion</a>
+                            </h4>
                         </div>
                     </div>
                 </div>

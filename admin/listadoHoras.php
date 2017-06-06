@@ -12,7 +12,14 @@ if(!isset($_SESSION["usuario"])){
 $query = "SELECT * FROM hora_reserva";
 $conexion->consultas($query);
 
-echo '<table class="table table-striped col-md-9">
+echo '
+<script>
+    $(function() {
+        $("#miToggle-").bootstrapToggle();
+    });
+</script>
+
+<table class="table table-striped col-md-9">
     <tr>
         <td class="col-md-1">ID</td>
         <td class="col-md-1">Activo</td>
@@ -23,9 +30,9 @@ echo '<table class="table table-striped col-md-9">
 while($resultado = $conexion->devolverFilas()){
         echo '<td>' .$resultado["id_hora"]. '</td>';
         if($resultado["is_delete"] == "1"){
-            echo '<td><input type="checkbox" disabled data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=""></td>';
+            echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_hora"].'" disabled data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
         }else{
-            echo '<td><input type="checkbox" disabled checked data-toggle="toggle" data-size="mini" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
+            echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_hora"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
         }echo'
         <td>' .$resultado["hora"]. '</td>
         <td>';

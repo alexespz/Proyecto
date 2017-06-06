@@ -23,7 +23,6 @@ if(!isset($_SESSION["usuario"])){
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <script>
         $.datepicker.regional['es'] = {
             closeText: 'Cerrar',
