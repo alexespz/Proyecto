@@ -31,7 +31,7 @@ if(!isset($_SESSION["usuario"])){
     <header>
         <div class="row vertical-align text-center">
             <div class="col-md-3 col-sm-3">
-                <div id="title-cdi">PANEL ADMINISTRADOR</div>
+                <div id="title-cdi" class="text-center">PANEL ADMINISTRADOR</div>
             </div>
         </div>
     </header>
@@ -131,7 +131,7 @@ if(!isset($_SESSION["usuario"])){
             </div>
             <!-- CUERPO DE LA PÁGINA -->
             <div class="col-md-8" id="cuerpo">
-
+                <p class="text-center">BIENVENIDO A LA PAGINA DEL ADMINISTRADOR</p>
             </div>
         </div>
     </div>

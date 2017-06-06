@@ -3,6 +3,7 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
     echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Error. Las contrasñas no coinciden</span>';
 }else {
     $db = new mysqli("localhost", "root", "");
+    $db->set_charset("UTF8");
     $passwordEncrypted = password_hash($_POST["contrasenia"], PASSWORD_DEFAULT);
 
     $sql = file_get_contents('../baseDatos/script.sql');
@@ -23,5 +24,12 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
             'X-Mailer: PHP/' . phpversion();
 
         mail($para, $titulo, $mensaje, $cabeceras);
+
+        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Se ha realizado la instalación con existo. Le enviaremos los datos a su direccion de correo</span>
+            <script>
+                setTimeout(function(){
+                    window.location="../paginas/inicioSesion.php ";
+                }, 2000);
+            </script>';
     }
 }

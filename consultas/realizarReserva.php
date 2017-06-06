@@ -30,59 +30,59 @@ $conexion->consultas($sql);
 $lastId = $conexion->ultimoId();
 $query = "";
 if($_POST["alergeno1"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 1);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 1);";
 }
 
 if($_POST["alergeno2"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 2);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 2);";
 }
 
 if($_POST["alergeno3"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 3);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 3);";
 }
 
 if($_POST["alergeno4"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 4);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 4);";
 }
 
 if($_POST["alergeno5"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 5);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 5);";
 }
 
 if($_POST["alergeno6"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 6);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 6);";
 }
 
 if($_POST["alergeno7"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 7);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 7);";
 }
 
 if($_POST["alergeno8"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 8);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 8);";
 }
 
 if($_POST["alergeno9"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 9);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 9);";
 }
 
 if($_POST["alergeno10"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 10);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 10);";
 }
 
 if($_POST["alergeno11"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 11);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 11);";
 }
 
 if($_POST["alergeno12"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 12);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 12);";
 }
 
 if($_POST["alergeno13"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 13);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 13);";
 }
 
 if($_POST["alergeno14"] == "true"){
-    $query .= "INSERT INTO reserva_alergeno VALUES (".$lastId.", 14);";
+    $query .= "INSERT INTO reserva_alergeno VALUES ('', ".$lastId.", 14);";
 }
 
 $conexion->multiConsultas($query);

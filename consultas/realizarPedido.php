@@ -33,7 +33,7 @@ $lastId = $conexion->ultimoId();
 $carro = $carrito->get_content();
 $query = "";
 foreach ($carro as $producto){
-    $query .= "INSERT INTO pedido_producto VALUES(".$lastId.", ".$producto["id"].", ".$producto["cantidad"].");";
+    $query .= "INSERT INTO pedido_producto VALUES('', ".$lastId.", ".$producto["id"].", ".$producto["cantidad"].");";
 }
 $conexion->multiConsultas($query);
 

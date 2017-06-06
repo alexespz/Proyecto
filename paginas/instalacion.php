@@ -1,8 +1,8 @@
 <?php
 include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
-
-if($conexion->conect()){
+$conectado = $conexion->conect();
+if($conectado){
     header ("Location: ../paginas/inicioSesion.php");
 }
 ?>

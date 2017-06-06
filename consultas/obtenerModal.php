@@ -26,9 +26,6 @@ $sentenciaProductos->bind_result($id_producto, $nombre, $descripcion, $precio, $
 $sentenciaProductos->fetch();
 $sentenciaProductos->close();
 
-$obtenerAlergenos = "SELECT id_alergeno FROM producto_alergeno WHERE id_producto = '".$_GET["id"]."' ";
-$conexion->consultas($obtenerAlergenos);
-
 echo '
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -43,10 +40,12 @@ echo '
         <p class="divider"></p>
         <p>Puede contener:</p>
         <p>';
+            $obtenerAlergenos = "SELECT id_alergeno FROM producto_alergeno WHERE id_producto = '".$_GET["id"]."' ";
+            $conexion->consultas($obtenerAlergenos);
             while($resultado = $conexion->devolverFilas()){
                 $obtenerFotoAlergeno = "SELECT foto FROM alergenos WHERE id_alergeno = '".$resultado["id_alergeno"]."' ";
                 $conexion->consultas($obtenerFotoAlergeno);
-                while($resultadoFoto = $conexion->devolverFilas()){
+                if($resultadoFoto = $conexion->devolverFilas()){
                     echo '<img src="../imagenes/alergenos/'.$resultado["foto"].'" />';
                 }
             }
