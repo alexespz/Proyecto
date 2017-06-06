@@ -78,13 +78,16 @@ body{
     height: 175px;
 }
 
-img{
+#imagen img{
     position: relative;
     top: 25px;
     width: 100%;
     height: auto;
 }
 
+#imagenAlergeno{
+    width: 60px;
+}
 /*Estilos para las imagenes de los alérgenos de la reserva*/
 #contenedorImagen input {
     display: none;
@@ -141,6 +144,7 @@ img{
 #cuerpo {
     border: 1px solid #DFDFDF;
     min-height: 375px;
+    max-height: 690px;
 }
 
 

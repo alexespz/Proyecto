@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
-include_once '../procedimientos/paginator.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
@@ -10,19 +9,25 @@ if(!isset($_SESSION["usuario"])){
   header("Location: ../admin/index.html");
 }
 
-$limit = (isset($_GET['limit'])) ? $_GET['limit'] : 25;
-$page = (isset($_GET['page'] )) ? $_GET['page'] : 1;
-$links = (isset($_GET['links'])) ? $_GET['links'] : 7;
-
 $query = "SELECT * FROM producto";
-//$conexion->consultas($query);
-$paginator = new Paginator($conexion, $query);
-$resultado = $paginator->getData($page, $limit);
+$conexion->consultas($query);
 echo '
 <script>
     $(function() {
-        $("#miToggle-").bootstrapToggle();
+        $("input:checkbox").bootstrapToggle();
     });
+    
+    function eliminarProducto(id){
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../consultas/productos/recuperarProducto.php?",
+            data: "id=" + id,
+            success: function (resp) {
+                $("#cuerpo").html(resp);
+            }
+        });
+    }
 </script>
 
 <table class="table table-striped col-md-12">
@@ -34,21 +39,21 @@ echo '
         <td class="col-md-2">Acciones</td>
     </tr>
     <tr>';
-for($i = 0; $i < count($resultado->data); $i++){
-    echo '<td>' .$resultado->data[$i]["id_producto"]. '</td>';
-    if($resultado->data[$i]["is_delete"] == "1"){
-        echo '<td><input type="checkbox" id="miToggle-'.$resultado->data[$i]["id_producto"].'" data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
+while($resultado = $conexion->devolverFilas()){
+    echo '<td>' .$resultado["id_producto"]. '</td>';
+    if($resultado["is_delete"] == "1"){
+        echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_producto"].'" data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
     }else{
-        echo '<td><input type="checkbox" id="miToggle-'.$resultado->data[$i]["id_producto"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
+        echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_producto"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
     }echo'
-        <td>' .$resultado->data[$i]["nombre"]. '</td>
-        <td>' .$resultado->data[$i]["descripcion"]. '</td>
+        <td>' .$resultado["nombre"]. '</td>
+        <td>' .$resultado["descripcion"]. '</td>
         <td>';
-        if($resultado->data[$i]["is_delete"] == 0){ echo '
-            <button type="button" class="btn btn-info" href="../admin/modificarProducto.php?id='.$resultado->data[$i]["id_producto"].'"><span class="glyphicon glyphicon-pencil"></span></button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-taget="#Modal" href="../consultas/productos/confirmarEliminarProducto.php?id='.$resultado->data[$i]["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+        if($resultado["is_delete"] == 0){ echo '
+            <button type="button" class="btn btn-info" href="../admin/modificarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-taget="#Modal" href="../consultas/productos/confirmarEliminarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
         }else{ echo '
-            <button type="button" class="btn btn-warning" href="../consultas/productos/recuperarProducto.php?id='.$resultado->data[$i]["id_producto"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
+            <button type="button" class="btn btn-warning" onclick="eliminarProducto('.$resultado["id_producto"].')"><span class="glyphicon glyphicon-refresh"></span></button>';
         }echo '
         </td>
     </tr>';

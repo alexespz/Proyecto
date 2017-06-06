@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once '../../procedimientos/procedimientos.php';
+include_once '../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
@@ -18,8 +18,8 @@ echo '
         $("#miToggle-").bootstrapToggle();
     });
 </script>
-
-<table class="table table-striped col-md-10">
+<div class="pre-scrollable" style="min-height: 590px;">
+<table class="table table-striped col-md-10" >
     <tr>
         <td class="col-md-1">ID</td>
         <td class="col-md-1">Activo</td>
@@ -36,7 +36,7 @@ while($resultado = $conexion->devolverFilas()){
         echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_alergeno"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
     }echo'
         <td>' .$resultado["nombre"]. '</td>
-        <td><img src="../imagenes/alergenos/'.$resultado["foto"].'"></td>
+        <td><img src="../imagenes/alergenos/'.$resultado["foto"].'" style="width: 60px;"></td>
         <td>';
         if($resultado["is_delete"] == 0){echo '
             <button type="button" class="btn btn-info" href="../admin/modificarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -47,7 +47,10 @@ while($resultado = $conexion->devolverFilas()){
         </td>
     </tr>';
 }
-echo '</table>';
+echo '</table>
+</div>
+<div class="espacios"></div>';
+
 echo 'Resultados obtenidos: ' .$conexion->numFilas();
 
 echo'

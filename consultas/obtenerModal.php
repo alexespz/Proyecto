@@ -22,7 +22,7 @@ $sentenciaProductos = $conexion->consultasPreparadas($obtenerProductos);
 $sentenciaProductos->bind_Param('i', $id);
 $id = $_GET["id"];
 $sentenciaProductos->execute();
-$sentenciaProductos->bind_result($id_producto, $nombre, $descripcion, $precio, $foto, $calorias, $tipo);
+$sentenciaProductos->bind_result($id_producto, $nombre, $descripcion, $precio, $foto, $calorias, $tipo, $isDelete);
 $sentenciaProductos->fetch();
 $sentenciaProductos->close();
 
@@ -46,7 +46,7 @@ echo '
                 $obtenerFotoAlergeno = "SELECT foto FROM alergenos WHERE id_alergeno = '".$resultado["id_alergeno"]."' ";
                 $conexion->consultas($obtenerFotoAlergeno);
                 if($resultadoFoto = $conexion->devolverFilas()){
-                    echo '<img src="../imagenes/alergenos/'.$resultado["foto"].'" />';
+                    echo '<img src="../imagenes/alergenos/'.$resultadoFoto["foto"].'" id="imagenAlergeno"/>';
                 }
             }
         echo '    
@@ -54,7 +54,7 @@ echo '
     </div>
     <div class="col-md-4" id="contenidoFoto">
         <div id="imagen">';
-            if($foto == "null"){
+            if($foto == null){
                 echo '<img src="../imagenes/imagen-no-disponible.gif"/>';
             }else{
                 echo '<img src="../imagenes/productos/'.$foto.'"/>';
