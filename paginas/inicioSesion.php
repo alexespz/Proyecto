@@ -42,7 +42,7 @@
                     <button class="btn btn-info" onclick="Validar(document.getElementById('usuario').value, document.getElementById('pass').value);">Entrar</button>
                 </div>
                 <div class="col-md-12 espacios">
-                    <a href="formularioRegistro.php" class="alert-link" style="color: black;">¿No tienes una cuenta?</a>&nbsp|&nbsp<a class="alert-link" style="color: black;">¿Olvidaste tu contraseña?</a>
+                    <a href="formularioRegistro.php" class="alert-link" style="color: black;">¿No tienes una cuenta?</a>&nbsp|&nbsp<a href="recuperarContrasenia.php" class="alert-link" style="color: black;">¿Olvidaste tu contraseña?</a>
                 </div>
             </form>
         </div>

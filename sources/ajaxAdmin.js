@@ -95,6 +95,6 @@ $(document).ready(function() {
     });
 
     $('#cerrarSesion').on('click', function(){
-        window.location = "../paginas/cerrarSesion.php";
+        window.location = "../admin/cerrarSesion.php";
     });
 });
