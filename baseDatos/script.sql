@@ -32,10 +32,10 @@ CREATE TABLE IF NOT EXISTS hora_reserva(
 );
 
 /*TABLA 4 - ALERGENOS*/
-CREATE TABLE IF NOT EXISTS alergenos(
+CREATE TABLE IF NOT EXISTS alergeno(
   id_alergeno TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(15) NOT NULL,
-  foto VARCHAR(100),
+  foto VARCHAR(100) DEFAULT NULL,
   is_delete CHAR(1) NOT NULL DEFAULT 0
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS producto(
   descripcion VARCHAR(100),
   precio DOUBLE NOT NULL,
   foto VARCHAR(100) DEFAULT NULL,
-  calorias TINYINT UNSIGNED,
+  calorias TINYINT UNSIGNED DEFAULT NULL,
   tipo_producto TINYINT UNSIGNED NOT NULL,
   is_delete CHAR(1) NOT NULL DEFAULT 0,
   CONSTRAINT fk_producto_tipo FOREIGN KEY (tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS reserva(
   comensales TINYINT UNSIGNED NOT NULL,
   fecha_reserva DATE NOT NULL,
   hora_reserva TINYINT UNSIGNED NOT NULL,
-  codigo_reserva CHAR(9),
+  codigo_reserva CHAR(9) NOT NULL,
   CONSTRAINT fk_hora_reserva FOREIGN KEY (hora_reserva) REFERENCES hora_reserva(id_hora),
   CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
@@ -69,16 +69,16 @@ CREATE TABLE IF NOT EXISTS pedido(
   id_pedido TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   id_usuario TINYINT UNSIGNED NOT NULL,
   precio DOUBLE NOT NULL,
-  codigo_pedido CHAR(9),
+  codigo_pedido CHAR(9) NOT NULL,
   CONSTRAINT fk_pedido_producto FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
 );
 
 /*TABLA 8 - PEDIDO_PRODUCTO*/
 CREATE TABLE IF NOT EXISTS pedido_producto(
   id_pedido_producto TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  id_pedido TINYINT UNSIGNED,
-  id_producto TINYINT UNSIGNED,
-  cantidad_producto TINYINT,
+  id_pedido TINYINT UNSIGNED NOT NULL,
+  id_producto TINYINT UNSIGNED NOT NULL,
+  cantidad_producto TINYINT NOT NULL,
   CONSTRAINT fk_pedido_id FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido),
   CONSTRAINT fk_producto_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS producto_alergeno(
   id_producto TINYINT UNSIGNED,
   id_alergeno TINYINT UNSIGNED,
   CONSTRAINT fk_productoA_id FOREIGN KEY (id_producto) REFERENCES producto(id_producto),
-  CONSTRAINT fk_alergenoA_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)
+  CONSTRAINT fk_alergenoA_id FOREIGN KEY (id_alergeno) REFERENCES alergeno(id_alergeno)
 );
 
 /*TABLA 10 - RESERVA_ALERGENO*/
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS reserva_alergeno(
   id_reserva TINYINT UNSIGNED,
   id_alergeno TINYINT UNSIGNED,
   CONSTRAINT fk_reserva_id FOREIGN KEY (id_reserva) REFERENCES reserva(id_reserva),
-  CONSTRAINT fk_alergeno_id FOREIGN KEY (id_alergeno) REFERENCES alergenos(id_alergeno)
+  CONSTRAINT fk_alergeno_id FOREIGN KEY (id_alergeno) REFERENCES alergeno(id_alergeno)
 );
 
 /*TABLA 11 - ADMINISTRADOR*/
@@ -128,7 +128,7 @@ INSERT INTO `hora_reserva` (`id_hora`, `hora`) VALUES
   ('10', '15:15'),
   ('11', '15:30');
 
-INSERT INTO `alergenos` (`id_alergeno`, `nombre`, `foto`) VALUES
+INSERT INTO `alergeno` (`id_alergeno`, `nombre`, `foto`) VALUES
   ('1', 'altramuces', 'alergenos-altramuces.png'),
   ('2', 'apio', 'alergenos-apio.png'),
   ('3', 'cacahuetes', 'alergenos-cacahuetes.png'),

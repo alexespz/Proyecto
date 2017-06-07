@@ -119,7 +119,7 @@ if(!isset($_SESSION["usuario"])){
                     <div class="col-md-12 form-group">
                         <label for="nombre" class="control-label">Alergias (En caso de que alguno de los comensales padezca algún tipo de alergia)</label>
                         <?php
-                        $query = "SELECT * FROM alergenos";
+                        $query = "SELECT * FROM alergeno";
                         $conexion->consultas($query);echo '
                         <table>
                         <tr>';

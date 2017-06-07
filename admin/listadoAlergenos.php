@@ -9,7 +9,7 @@ if(!isset($_SESSION["usuario"])){
     header("Location: ../admin/index.html");
 }
 
-$query = "SELECT * FROM alergenos";
+$query = "SELECT * FROM alergeno";
 $conexion->consultas($query);
 
 echo '

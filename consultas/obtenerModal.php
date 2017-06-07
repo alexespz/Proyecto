@@ -43,7 +43,7 @@ echo '
             $obtenerAlergenos = "SELECT id_alergeno FROM producto_alergeno WHERE id_producto = '".$_GET["id"]."' ";
             $conexion->consultas($obtenerAlergenos);
             while($resultado = $conexion->devolverFilas()){
-                $obtenerFotoAlergeno = "SELECT foto FROM alergenos WHERE id_alergeno = '".$resultado["id_alergeno"]."' ";
+                $obtenerFotoAlergeno = "SELECT foto FROM alergeno WHERE id_alergeno = '".$resultado["id_alergeno"]."' ";
                 $conexion->consultas($obtenerFotoAlergeno);
                 if($resultadoFoto = $conexion->devolverFilas()){
                     echo '<img src="../imagenes/alergenos/'.$resultadoFoto["foto"].'" id="imagenAlergeno"/>';

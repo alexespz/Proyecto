@@ -70,7 +70,7 @@ if(!isset($_SESSION["usuario"])){
                 <div class="col-md-12 form-group">
                     <label for="nombre" class="control-label">Puede contener</label>
                     <?php
-                    $query = "SELECT * FROM alergenos";
+                    $query = "SELECT * FROM alergeno";
                     $conexion->consultas($query);echo '
                         <table>
                         <tr>';

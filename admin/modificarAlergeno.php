@@ -8,7 +8,7 @@ $conexion->conect();
 if(!isset($_SESSION["usuario"])){
     header("Location: ../admin/index.html");
 }
-$query = "SELECT id_alergeno, nombre FROM alergenos WHERE id_alergeno = ?";
+$query = "SELECT id_alergeno, nombre FROM alergeno WHERE id_alergeno = ?";
 $sentencia = $conexion->consultasPreparadas($query);
 $sentencia->bindParam('i', $id);
 $id = $_GET["id_alergeno"];
