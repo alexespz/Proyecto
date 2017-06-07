@@ -30,10 +30,10 @@ echo '
     }
 </script>
 
-<table class="table table-striped col-md-12">
+<table class="table table-striped col-md-10">
     <tr>
         <td class="col-md-1">ID</td>
-        <td class="col-md-3">Activo</td>
+        <td class="col-md-1">Activo</td>
         <td class="col-md-3">Nombre</td>
         <td class="col-md-3">Descripcion</td>
         <td class="col-md-2">Acciones</td>
