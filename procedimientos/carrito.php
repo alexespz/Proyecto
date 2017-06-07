@@ -1,6 +1,5 @@
 <?php
 class Carrito {
-
     private $carrito = array();
 
     //seteamos el carrito exista o no exista en el constructor

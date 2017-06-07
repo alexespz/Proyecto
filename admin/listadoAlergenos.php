@@ -15,7 +15,7 @@ $conexion->consultas($query);
 echo '
 <script>
     $(function() {
-        $("#miToggle-").bootstrapToggle();
+        $("input:checkbox").bootstrapToggle();
     });
 </script>
 <div class="pre-scrollable" style="min-height: 590px;">

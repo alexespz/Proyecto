@@ -1,7 +1,9 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
+include_once '../procedimientos/paginator.php';
 
+$paginacion = new paginator();
 $conexion = new procedimientos();
 $conexion->conect();
 
@@ -27,7 +29,7 @@ echo '
         <td class="col-md-2">Acciones</td>
     </tr>
     <tr>';
-while($resultado = $conexion->devolverFilas()){
+while($resultado = $paginacion->getData("tipo_producto")){
         echo '<td>' .$resultado["id_tipo_producto"]. '</td>';
         if($resultado["is_delete"] == "1"){
             echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_tipo_producto"].'" disabled data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
@@ -47,6 +49,8 @@ while($resultado = $conexion->devolverFilas()){
 }
 echo '</table>';
 echo 'Resultados obtenidos: ' .$conexion->numFilas();
+
+$paginacion->pintarPaginacion("tipo_producto");
 
 echo'
 <!-- Modal -->

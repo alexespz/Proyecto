@@ -131,7 +131,7 @@ if(!isset($_SESSION["usuario"])){
             </div>
             <!-- CUERPO DE LA PÁGINA -->
             <div class="col-md-8" id="cuerpo">
-                <p class="text-center">BIENVENIDO A LA PAGINA DEL ADMINISTRADOR</p>
+                <h1><p class="text-center">BIENVENIDO A LA PAGINA DEL ADMINISTRADOR</p></h1>
             </div>
         </div>
     </div>

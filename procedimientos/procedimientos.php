@@ -14,15 +14,6 @@ class procedimientos{
         }
     }
 
-    public function importDB(){
-        $obj = new conexion();
-        $this->conexion = new mysqli($obj->getServer(), $obj->getUser(), $obj->getPass());
-        $this->conexion->set_charset("UTF8");
-        if ($this->conexion->connect_error) {
-            echo $this->conexion->connect_error;
-        }
-    }
-
     public function consultas($query){
         $this->resultado = $this->conexion->query($query);
     }
