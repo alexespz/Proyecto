@@ -21,7 +21,7 @@ echo '
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/productos/recuperarProducto.php?",
+            url: "../consultas/recuperarProducto.php",
             data: "id=" + id,
             success: function (resp) {
                 $("#cuerpo").html(resp);
@@ -75,7 +75,7 @@ echo 'Resultados obtenidos: ' .$conexion->numFilas();
 
 echo'
 <!-- Modal -->
-<div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
+<div class="modal" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             

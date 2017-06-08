@@ -23,14 +23,14 @@ $conexion->consultas($sql);
 echo '
 <script>
     $(function() {
-        $("#miToggle-").bootstrapToggle();
+        $("input:checkbox").bootstrapToggle();
     });
     
     function primeraPagina(page){
         $.ajax({
             async: true,
             type: "POST",
-            url: "../admin/listadoTiposProducto.php",
+            url: "../admin/listadoTiposProductos.php",
             data: "pagina=" + page,
             success: function (resp) {
                 $("#cuerpo").html(resp);
@@ -42,7 +42,7 @@ echo '
         $.ajax({
             async: true,
             type: "POST",
-            url: "../admin/listadoTiposProducto.php",
+            url: "../admin/listadoTiposProductos.php",
             data: "pagina=" + page,
             success: function (resp) {
                 $("#cuerpo").html(resp);
@@ -54,7 +54,7 @@ echo '
         $.ajax({
             async: true,
             type: "POST",
-            url: "../admin/listadoTiposProducto.php",
+            url: "../admin/listadoTiposProductos.php",
             data: "pagina=" + page,
             success: function (resp) {
                 $("#cuerpo").html(resp);

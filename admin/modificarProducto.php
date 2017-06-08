@@ -11,10 +11,11 @@ if(!isset($_SESSION["usuario"])){
 
 $query = "SELECT id_producto, nombre, descripcion, precio, foto, calorias, tipo_producto FROM producto WHERE id_producto = ?";
 $sentencia = $conexion->consultasPreparadas($query);
-$sentencia->bindParam('i', $id);
-$id = $_POST["id_producto"];
+$sentencia->bind_param('i', $id);
+$id = $_POST["id"];
 $sentencia->execute();
 $sentencia->bind_result($id, $nombre, $descripcion, $precio, $foto, $calorias, $tipo);
+$sentencia->fetch();
 $sentencia->close();
 
 ?>
@@ -67,12 +68,12 @@ $sentencia->close();
                     <div class="form-group">
                         <label for="tipo" class="control-label">Tipo</label>
                         <select name="tipo" class="form-control" id="tipo" required> <?php
-                        $query = "SELECT id_tipo_producto, nombre FROM tipo_producto WHERE id_tipo_producto = '".$tipo."' ";
+                        $query = "SELECT id_tipo_producto, nombre FROM tipo_producto ";
                         $conexion->consultas($query);
                         while ($resultado = $conexion->devolverFilas()){ ?>
-                            <option value="<?php echo $resultado["id_tipo_producto"] ?>"><?php echo $resultado["nombre"] ?> </option>
-                        </select> <?php
+                            <option value="<?php echo $resultado["id_tipo_producto"] ?>"><?php echo $resultado["nombre"] ?> </option><?php
                         } ?>
+                        </select>
                     </div>
                 </div>
             </div>
