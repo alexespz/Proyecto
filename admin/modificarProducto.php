@@ -12,7 +12,7 @@ if(!isset($_SESSION["usuario"])){
 $query = "SELECT id_producto, nombre, descripcion, precio, foto, calorias, tipo_producto FROM producto WHERE id_producto = ?";
 $sentencia = $conexion->consultasPreparadas($query);
 $sentencia->bindParam('i', $id);
-$id = $_GET["id_producto"];
+$id = $_POST["id_producto"];
 $sentencia->execute();
 $sentencia->bind_result($id, $nombre, $descripcion, $precio, $foto, $calorias, $tipo);
 $sentencia->close();

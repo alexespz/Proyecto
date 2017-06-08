@@ -11,8 +11,8 @@ $conexion->conect();
             url: "../consultas/aniadirProducto.php",
             data: "id=" + id,
             success: function (resp) {
-            $('#pedido').html(resp);
-        }
+                $('#pedido').html(resp);
+            }
         });
     }
 </script>

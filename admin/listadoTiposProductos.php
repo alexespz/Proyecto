@@ -9,10 +9,10 @@ if(!isset($_SESSION["usuario"])){
   header("Location: ../admin/index.html");
 }
 
-if(!isset($_GET["page"])){
+if(!isset($_POST["pagina"])){
     $page=1;
 }else{
-    $page = $_GET["page"];
+    $page = $_POST["pagina"];
 }
 $results_per_page = 10;
 $start_from = ($page-1) * $results_per_page;
@@ -25,6 +25,43 @@ echo '
     $(function() {
         $("#miToggle-").bootstrapToggle();
     });
+    
+    function primeraPagina(page){
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../admin/listadoTiposProducto.php",
+            data: "pagina=" + page,
+            success: function (resp) {
+                $("#cuerpo").html(resp);
+            }
+        });
+    }
+    
+    function pagina(page){
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../admin/listadoTiposProducto.php",
+            data: "pagina=" + page,
+            success: function (resp) {
+                $("#cuerpo").html(resp);
+            }
+        });
+    }
+    
+    function ultimaPagina(page){
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../admin/listadoTiposProducto.php",
+            data: "pagina=" + page,
+            success: function (resp) {
+                $("#cuerpo").html(resp);
+            }
+        });
+    }
+    
 </script>
 
 <table class="table table-striped col-md-9">
@@ -63,13 +100,25 @@ $resultado = $conexion->devolverFilas();
 
 $total_pages = ceil($resultado["total"] / $results_per_page);
 echo '
-<ul class="pagination">';
-for ($i=1; $i<=$total_pages; $i++){
+<ul class="pagination justify-content-center">';
+for ($i=1; $i<=$total_pages; $i++){ echo'
+    <li class="page-item">
+      <a class="page-link" onclick="primeraPagina(1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>';
     if($page == $i){
-        echo "<li class='active'><a href='listadoTiposProductos.php?page=" . $i . "'>" . $i . "</a></li>";
+        echo '<li class="page-item active"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
     }else {
-        echo "<li><a href='listadoTiposProductos.php?page=" . $i . "'>" . $i . "</a></li>";
-    }
+        echo '<li class="page-item"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
+    }echo '
+    <li class="page-item">
+      <a class="page-link" onclick="ultimaPagina('.$total_pages.')" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>';
 }echo '
 </ul>
 ';
