@@ -26,7 +26,7 @@ $tipo = $_POST["tipo"];
 $sentenciaProductos->execute();
 $sentenciaProductos->bind_result($id_producto, $nombre, $precio);
 
-echo '<table class="table table-striped col-md-9">
+echo '<table class="table table-striped table-responsive col-md-9">
             <tr>
                 <td class="col-md-6">Nombre</td>
                 <td class="col-md-2 text-center">Precio </td>

@@ -12,9 +12,10 @@ if(!isset($_SESSION["usuario"])){
 $query = "SELECT id_tipo_producto, nombre FROM tipo_producto WHERE id_tipo_producto = ?";
 $sentencia = $conexion->consultasPreparadas($query);
 $sentencia->bindParam('i', $id);
-$id = $_GET["id_tipo_producto"];
+$id = $_POST["id"];
 $sentencia->execute();
 $sentencia->bind_result($id, $tipo);
+$sentencia->fetch();
 $sentencia->close();
 ?>
 <script>

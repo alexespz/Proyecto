@@ -55,12 +55,12 @@ if(!isset($_SESSION["usuario"])){
           });
         });
       
-        function Validar(nombre, comensales, fecha, hora, alergeno1, alergeno2, alergeno3, alergeno4, alergeno5, alergeno6, alergeno7, alergeno8, alergeno9, alergeno10, alergeno11, alergeno12, alergeno13, alergeno14) {
+        function Validar(nombre, comensales, fecha, hora, alergeno) {
             $.ajax({
                 async: true,
                 type: "POST",
                 url: "../consultas/realizarReserva.php",
-                data: "nombre="+nombre+"&comensales="+comensales+"&fecha="+fecha+"&hora="+hora+"&alergeno1="+alergeno1+"&alergeno2="+alergeno2+"&alergeno3="+alergeno3+"&alergeno4="+alergeno4+"&alergeno5="+alergeno5+"&alergeno6="+alergeno6+"&alergeno7="+alergeno7+"&alergeno8="+alergeno8+"&alergeno9="+alergeno9+"&alergeno10="+alergeno10+"&alergeno11="+alergeno11+"&alergeno12="+alergeno12+"&alergeno13="+alergeno13+"&alergeno14="+alergeno14,
+                data: "nombre="+nombre+"&comensales="+comensales+"&fecha="+fecha+"&hora="+hora+"&alergeno="+alergeno,
                 success: function(resp){
                     $('#resultado').html(resp);
                 }
@@ -126,7 +126,7 @@ if(!isset($_SESSION["usuario"])){
                         while($resultado = $conexion->devolverFilas()){echo'
                             <td>
                                 <label id="contenedorImagen">
-                                    <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
+                                    <input type="checkbox" class="checkImagen" name="alergeno[]" id="alergeno" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
                                     <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
                                 </label>
                             </td>';
@@ -139,7 +139,7 @@ if(!isset($_SESSION["usuario"])){
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
             <div class="col-md-12 text-center" id="boton">
-                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, $('#check1').prop('checked'),$('#check2').prop('checked'), $('#check3').prop('checked'), $('#check4').prop('checked'), $('#check5').prop('checked'), $('#check6').prop('checked'), $('#check7').prop('checked'), $('#check8').prop('checked'), $('#check9').prop('checked'), $('#check10').prop('checked'), $('#check11').prop('checked'), $('#check12').prop('checked'),$('#check13').prop('checked'), $('#check14').prop('checked'));">Reservar</button>
+                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, document.getElementById('alergeno'));">Reservar</button>
             </div>
         </form>
     </div>

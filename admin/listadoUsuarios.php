@@ -6,7 +6,7 @@ $conexion = new procedimientos();
 $conexion->conect();
 
 if(!isset($_SESSION["usuario"])){
-  header("Location: ../admin/index.html");
+    header("Location: ../admin/index.html");
 }
 
 if(!isset($_POST["pagina"])){
@@ -17,7 +17,7 @@ if(!isset($_POST["pagina"])){
 $results_per_page = 10;
 $start_from = ($page-1) * $results_per_page;
 
-$sql = "SELECT * FROM producto ORDER BY id_producto ASC LIMIT ".$start_from.", ".$results_per_page;
+$sql = "SELECT * FROM usuarios ORDER BY id_usuario ASC LIMIT ".$start_from.", ".$results_per_page;
 $conexion->consultas($sql);
 
 echo '
@@ -26,23 +26,11 @@ echo '
         $("input:checkbox").bootstrapToggle();
     });
     
-    function modificarProducto(id){
-        $.ajax({
-            async: true,
-            type: "POST",
-            url: "../admin/modificarProducto.php",
-            data: "id=" + id,
-            success: function (resp) {
-                $("#cuerpo").html(resp);
-            }
-        });
-    }
-    
     function primeraPagina(page){
         $.ajax({
             async: true,
             type: "POST",
-            url: "../admin/listadoProductos.php",
+            url: "../admin/listadoUsuarios.php",
             data: "pagina=" + page,
             success: function (resp) {
                 $("#cuerpo").html(resp);
@@ -54,7 +42,7 @@ echo '
         $.ajax({
             async: true,
             type: "POST",
-            url: "../admin/listadoProductos.php",
+            url: "../admin/listadoUsuarios.php",
             data: "pagina=" + page,
             success: function (resp) {
                 $("#cuerpo").html(resp);
@@ -66,7 +54,7 @@ echo '
         $.ajax({
             async: true,
             type: "POST",
-            url: "../admin/listadoProductos.php",
+            url: "../admin/listadoUsuarios.php",
             data: "pagina=" + page,
             success: function (resp) {
                 $("#cuerpo").html(resp);
@@ -75,31 +63,26 @@ echo '
     }
 </script>
 
-<table class="table table-striped table-responsive col-md-10">
+<table class="table table-striped table-responsive col-md-12">
     <tr>
         <td class="col-md-1">ID</td>
-        <td class="col-md-1">Activo</td>
-        <td class="col-md-3">Nombre</td>
-        <td class="col-md-3">Descripcion</td>
+        <td class="col-md-3">Nombre completo</td>
+        <td class="col-md-1">DNI</td>
+        <td class="col-md-1">Telefono</td>
+        <td class="col-md-2">Usuario</td>
+        <td class="col-md-2">E-mail</td>
         <td class="col-md-2">Acciones</td>
     </tr>
     <tr>';
 while($resultado = $conexion->devolverFilas()){
-    echo '<td>' .$resultado["id_producto"]. '</td>';
-    if($resultado["is_delete"] == "1"){
-        echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_producto"].'" data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
-    }else{
-        echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_producto"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
-    }echo'
-        <td>' .$resultado["nombre"]. '</td>
-        <td>' .$resultado["descripcion"]. '</td>
-        <td>';
-        if($resultado["is_delete"] == 0){ echo '
-            <button type="button" class="btn btn-info" onclick="modificarProducto('.$resultado["id_producto"].')"><span class="glyphicon glyphicon-pencil"></span></button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminar" href="../consultas/confirmarEliminarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
-        }else{ echo '
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalRecuperar" href="../consultas/confirmarRecuperarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
-        }echo '
+    echo '<td>' .$resultado["id_usuario"]. '</td>
+        <td>' .$resultado["nombre"].' '.$resultado["apellidos"].'</td>
+        <td>' .$resultado["dni"]. '</td>
+        <td>' .$resultado["telefono"]. '</td>
+        <td>' .$resultado["usuario"]. '</td>
+        <td>' .$resultado["email"].' </td>
+        <td>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminar" href="../consultas/confirmarEliminarUsuario.php?id='.$resultado["id_usuario"].'"><span class="glyphicon glyphicon-trash"></span></button>
         </td>
     </tr>';
 }
@@ -107,7 +90,7 @@ echo '</table>';
 echo 'Resultados obtenidos: ' .$conexion->numFilas();
 echo "<br/>";
 
-$sql = "SELECT COUNT(id_producto) AS total FROM producto";
+$sql = "SELECT COUNT(id_usuario) AS total FROM usuarios";
 $conexion->consultas($sql);
 $resultado = $conexion->devolverFilas();
 
@@ -140,17 +123,6 @@ for ($i=1; $i<=$total_pages; $i++){ echo'
 echo'
 <!-- Modal -->
 <div class="modal" id="ModalEliminar" tabindex="-1" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            
-        </div>
-    </div>
-</div>';
-
-
-echo'
-<!-- Modal -->
-<div class="modal" id="ModalRecuperar" tabindex="-1" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             

@@ -14,7 +14,7 @@ if(!isset($_SESSION["usuario"])){
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/productos/nuevoProducto.php",
+            url: "../consultas/nuevoProducto.php",
             data: "nombre="+nombre+"&descripcion="+descripcion+"&precio="+precio+"&calorias="+calorias+"&foto="+foto+"&tipo="+tipo+"&alergeno1="+alergeno1+"&alergeno2="+alergeno2+"&alergeno3="+alergeno3+"&alergeno4="+alergeno4+"&alergeno5="+alergeno5+"&alergeno6="+alergeno6+"&alergeno7="+alergeno7+"&alergeno8="+alergeno8+"&alergeno9="+alergeno9+"&alergeno10="+alergeno10+"&alergeno11="+alergeno11+"&alergeno12="+alergeno12+"&alergeno13="+alergeno13+"&alergeno14="+alergeno14,
             success: function(resp){
                 $('#resultado').html(resp);

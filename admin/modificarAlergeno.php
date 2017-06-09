@@ -11,9 +11,10 @@ if(!isset($_SESSION["usuario"])){
 $query = "SELECT id_alergeno, nombre FROM alergeno WHERE id_alergeno = ?";
 $sentencia = $conexion->consultasPreparadas($query);
 $sentencia->bindParam('i', $id);
-$id = $_GET["id_alergeno"];
+$id = $_POST["id"];
 $sentencia->execute();
 $sentencia->bind_result($id, $nombre);
+$sentencia->fetch();
 $sentencia->close();
 ?>
 <script>
@@ -21,7 +22,7 @@ $sentencia->close();
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/alergenos/modificarAlergeno.php",
+            url: "../consultas/modificarAlergeno.php",
             data: "id="+id+"nombre="+nombre,
             success: function(resp){
                 $('#cuerpo').load("resp");

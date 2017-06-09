@@ -48,6 +48,12 @@ $(document).ready(function() {
         $('#nuevosAlergenos').css({"cursor": "auto"});
     });
 
+    $('#listadoUsuarios').hover(function(){
+        $('#listadoUsuarios').css({"cursor": "pointer"});
+    }, function(){
+        $('#listadoUsuarios').css({"cursor": "auto"});
+    });
+
     $('#cerrarSesion').hover(function(){
         $('#cerrarSesion').css({"cursor": "pointer"});
     }, function(){
@@ -92,6 +98,11 @@ $(document).ready(function() {
     $('#nuevosAlergenos').on('click', function(e){
         e.preventDefault();
         $('#cuerpo').load("aniadirAlergeno.php")
+    });
+
+    $('#listadoUsuarios').on('click', function(e){
+        e.preventDefault();
+        $('#cuerpo').load("listadoUsuarios.php");
     });
 
     $('#cerrarSesion').on('click', function(){

@@ -43,13 +43,12 @@ if(!isset($_SESSION["usuario"])){
                     <div class="panel panel-default">
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    <span class="glyphicon glyphicon-book text-success"></span> Productos</a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-book text-success"></span> Productos</a>
                             </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <table class="table table-striped col-md-8">
+                                <table class="table">
                                     <tr>
                                         <td><a id="listadoProductos">Listado de productos</a></td>
                                     </tr>
@@ -63,13 +62,12 @@ if(!isset($_SESSION["usuario"])){
                     <div class="panel panel-default">
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                    <span class="fa fa-tags text-success"></span> Tipos de Productos</a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="fa fa-tags text-success"></span> Tipos de Productos</a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse in">
+                        <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <table class="table table-striped col-md-8">
+                                <table class="table">
                                     <tr>
                                         <td><a id="listadoTipos">Listado de Tipos</a></td>
                                     </tr>
@@ -83,13 +81,12 @@ if(!isset($_SESSION["usuario"])){
                     <div class="panel panel-default">
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                    <span class="fa fa-clock-o text-success"></span> Horas de reserva</a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="fa fa-clock-o text-success"></span> Horas de reserva</a>
                             </h4>
                         </div>
-                        <div id="collapseThree" class="panel-collapse collapse in">
+                        <div id="collapseThree" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <table class="table table-striped col-md-8">
+                                <table class="table">
                                     <tr>
                                         <td><a id="listadoHoras">Listado de horas</a></td>
                                     </tr>
@@ -103,18 +100,33 @@ if(!isset($_SESSION["usuario"])){
                     <div class="panel panel-default">
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                    <span class="glyphicon glyphicon-grain text-success"></span> Tipos de alergenos</a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-grain text-success"></span> Tipos de alergenos</a>
                             </h4>
                         </div>
-                        <div id="collapseFour" class="panel-collapse collapse in">
+                        <div id="collapseFour" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <table class="table table-striped col-md-8">
+                                <table class="table">
                                     <tr>
                                         <td><a id="listadoAlergenos">Listado de alergenos</a></td>
                                     </tr>
                                     <tr>
                                         <td><a id="nuevosAlergenos">Añadir nuevo alergeno</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive"><span class="glyphicon glyphicon-user text-success"></span> Usuarios</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr>
+                                        <td><a id="listadoUsuarios">Listado de alergenos</a></td>
                                     </tr>
                                 </table>
                             </div>

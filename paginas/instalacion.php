@@ -2,7 +2,11 @@
 include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conectado = $conexion->conect();
-if($conectado){
+
+$query = "SLECT * FROM administrador";
+$conexion->consultas($query);
+
+if($conexion->devolverFilas() > 0){
     header ("Location: ../paginas/inicioSesion.php");
 }
 ?>
@@ -24,14 +28,22 @@ if($conectado){
                 type: "POST",
                 url: "../consultas/validarInstalacion.php",
                 data: "usuario="+user+"&contrasenia="+pass+"&repetirContrasenia="+pass2+"&email="+email,
+                beforeSend: function(){
+                    $("#carga").show("slow");
+                },
                 success: function(resp){
-                    $('#resultado').html(resp);
+                    $("#carga").hide("slow",function(){
+                        $('#resultado').html(resp);
+                    });
                 }
             });
         }
     </script>
 </head>
 <body>
+<div id="carga" style="display: none;">
+    <img src="../imagenes/loading.gif" />
+</div>
 <div id="contenedorPrincipal" class="col-md-12 container cajaInstalacion">
     <div class="col-md-12"><h1><p>BIENVENIDO</p></h1></div>
     <div class="col-md-12"><hr /></div>

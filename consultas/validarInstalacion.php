@@ -1,15 +1,19 @@
 <?php
+include_once '../procedimientos/procedimientos.php';
+
+$conexion = new procedimientos();
+$conexion->conect();
+
 if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
     echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Error. Las contrasñas no coinciden</span>';
 }else {
-    $db = new mysqli("localhost", "root", "");
-    $db->set_charset("UTF8");
+
     $passwordEncrypted = password_hash($_POST["contrasenia"], PASSWORD_DEFAULT);
 
     $sql = file_get_contents('../baseDatos/script.sql');
     $sql .= "INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES ('".$_POST["usuario"]."', '".$passwordEncrypted."' )";
 
-    if(!$db->multi_query($sql)){
+    if(!$conexion->multiConsultas($sql)){
         echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ha ocurrido algún error. Vuelve a intentarlo</span>';
     }else{
         //Si la ejecución del archivo sql no ha dado ningun problema se le manda al usuario un correo con los datos de la cuenta del administrador.

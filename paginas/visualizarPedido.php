@@ -47,7 +47,7 @@ $conexion->conect();
     <!-- CUERPO DE LA PÁGINA -->
     <div class="col-md-8" id="cuerpo">
         <div class="tab-content clearfix" id="contenidoPedido">
-            <table class="table table-striped col-md-9">
+            <table class="table table-striped table-responsive col-md-9">
                 <tr>
                     <td class="col-md-1">ID Producto</td>
                     <td class="col-md-3">Nombre</td>
@@ -79,7 +79,7 @@ $conexion->conect();
 
     <!-- Modal -->
     <div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
             </div>

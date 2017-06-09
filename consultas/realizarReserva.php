@@ -26,6 +26,11 @@ $codigoReserva = implode($codigo); //devolvemos el array convertido a string
 $sql = "INSERT INTO reserva VALUES ('', ".$idUsuario.", ".$_POST["comensales"].", '".$_POST["fecha"]."', '".$_POST["hora"]."', '".$codigoReserva."')";
 $conexion->consultas($sql);
 
+$listaAlergeno = $_POST["alergeno"];
+foreach ($listaAlergeno as $alergeno){
+    echo $alergeno. '<br/>';
+}
+
 //obtenemos el ultimo id insertado e introducimos los alergenos indicados en la reserva
 $lastId = $conexion->ultimoId();
 $query = "";

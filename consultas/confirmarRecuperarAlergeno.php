@@ -1,17 +1,12 @@
-<?php
-include_once '../../procedimientos/procedimientos.php';
-$conexion = new procedimientos();
-$conexion->conect();
-?>
 <script>
-    function eliminarTipoProdcuto(id) {
+    function recuperarAlergeno(id) {
         $.ajax({
             async: true,
             type: "POST",
-            url: "eliminarTipoProducto.php",
+            url: "../consultas/recuperarAlergeno.php",
             data: "id=" + id,
             success: function (resp) {
-
+                $("#cuerpo").html(resp);
             }
         });
     }
@@ -23,9 +18,9 @@ echo '
     <h4 class="modal-title" id="Modal_Label_' . $_GET["id"] . '">Aviso</h4>
 </div>
 <div class="modal-body col-md-12">
-    <p>¿Seguro que desea eliminar el elemento seleccionado?</p>
+    <p>¿Seguro que desea restablecer el elemento seleccionado?</p>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary pull-right" onclick="eliminarTipoProdcuto('.$_GET["id"].')">Si</button>
+    <button type="button" class="btn btn-primary pull-right" onclick="recuperarAlergeno('.$_GET["id"].')" data-dismiss="modal">Si</button>
     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">No</button>
 </div>';

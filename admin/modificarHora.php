@@ -11,9 +11,10 @@ if(!isset($_SESSION["usuario"])){
 $query = "SELECT id_hora, hora FROM hora_reserva WHERE id_hora = ?";
 $sentencia = $conexion->consultasPreparadas($query);
 $sentencia->bindParam('i', $id);
-$id = $_GET["id_hora"];
+$id = $_POST["id"];
 $sentencia->execute();
 $sentencia->bind_result($id, $hora);
+$sentencia->fetch();
 $sentencia->close();
 ?>
 <script>
@@ -21,7 +22,7 @@ $sentencia->close();
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/horas/modificarHora.php",
+            url: "../consultas/modificarHora.php",
             data: "id="+id+"hora="+hora,
             success: function(resp){
                 $('#cuerpo').load("resp");

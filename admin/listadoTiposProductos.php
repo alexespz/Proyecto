@@ -26,6 +26,30 @@ echo '
         $("input:checkbox").bootstrapToggle();
     });
     
+    function recuperarTipoProducto(id){
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../consultas/recuperarTipoProducto.php",
+            data: "id=" + id,
+            success: function (resp) {
+                $("#cuerpo").html(resp);
+            }
+        });
+    }
+    
+    function modificarTipoProducto(id){
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../admin/modificarTipoProducto.php",
+            data: "id=" + id,
+            success: function (resp) {
+                $("#cuerpo").html(resp);
+            }
+        });
+    }
+    
     function primeraPagina(page){
         $.ajax({
             async: true,
@@ -64,7 +88,7 @@ echo '
     
 </script>
 
-<table class="table table-striped col-md-9">
+<table class="table table-striped table-responsive col-md-9">
     <tr>
         <td class="col-md-1">ID</td>
         <td class="col-md-1">Activo</td>
@@ -82,10 +106,10 @@ while($resultado = $conexion->devolverFilas()){
         <td>' .$resultado["nombre"]. '</td>
         <td>';
             if($resultado["is_delete"] == 0){ echo '
-                <button type="button" class="btn btn-info" href="../admin/modificarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-pencil"></span></button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal" href="../consultas/tiposProducto/confirmarEliminarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+                <button type="button" class="btn btn-info" href="modificarTipoProducto('.$resultado["id_tipo_producto"].')"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminar" href="../consultas/confirmarEliminarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
             }else { echo '
-                <button type="button" class="btn btn-warning" href="../consultas/tiposProducto/recuperarTipoProducto.php?id='.$resultado["id_tipo_producto"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalRecuperar" href="../consultas/confirmarRecuperarTipoProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
             }echo '
         </td>
     </tr>';
@@ -100,32 +124,44 @@ $resultado = $conexion->devolverFilas();
 
 $total_pages = ceil($resultado["total"] / $results_per_page);
 echo '
-<ul class="pagination justify-content-center">';
+<div class="text-center">
+    <ul class="pagination">';
 for ($i=1; $i<=$total_pages; $i++){ echo'
-    <li class="page-item">
-      <a class="page-link" onclick="primeraPagina(1)" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>';
+        <li class="page-item">
+          <a class="page-link" onclick="primeraPagina(1)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>';
     if($page == $i){
         echo '<li class="page-item active"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
     }else {
         echo '<li class="page-item"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
     }echo '
-    <li class="page-item">
-      <a class="page-link" onclick="ultimaPagina('.$total_pages.')" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>';
+        <li class="page-item">
+          <a class="page-link" onclick="ultimaPagina('.$total_pages.')" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>';
 }echo '
-</ul>
-';
+    </ul>
+</div>';
+
 echo'
 <!-- Modal -->
-<div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal" id="ModalEliminar" tabindex="-1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            
+        </div>
+    </div>
+</div>';
+
+echo'
+<!-- Modal -->
+<div class="modal" id="ModalRecuperar" tabindex="-1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             
         </div>
