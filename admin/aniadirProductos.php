@@ -11,11 +11,36 @@ if(!isset($_SESSION["usuario"])){
 ?>
 <script>
     function aniadirProducto(nombre, descripcion, precio, calorias, foto, tipo, alergeno1, alergeno2, alergeno3, alergeno4, alergeno5, alergeno6, alergeno7, alergeno8, alergeno9, alergeno10, alergeno11, alergeno12, alergeno13, alergeno14) {
+        var formData = new FormData();
+        formData.append("nombre", $("#nombre").val());
+        formData.append("descripcion", $("#descipcion").val());
+        formData.append("precio", $("#precio").val());
+        formData.append("calorias", $("#calorias").val());
+        formData.append("foto", $("#foto")[0].files[0]);
+        formData.append("tipo", $("#tipo").val());
+        formData.append("alergeno1", $("#alergeno1").val());
+        formData.append("alergeno2", $("#alergeno2").val());
+        formData.append("alergeno3", $("#alergeno3").val());
+        formData.append("alergeno4", $("#alergeno4").val());
+        formData.append("alergeno5", $("#alergeno5").val());
+        formData.append("alergeno6", $("#alergeno6").val());
+        formData.append("alergeno7", $("#alergeno7").val());
+        formData.append("alergeno8", $("#alergeno8").val());
+        formData.append("alergeno9", $("#alergeno9").val());
+        formData.append("alergeno10", $("#alergeno10").val());
+        formData.append("alergeno11", $("#alergeno11").val());
+        formData.append("alergeno12", $("#alergeno12").val());
+        formData.append("alergeno13", $("#alergeno13").val());
+        formData.append("alergeno14", $("#alergeno14").val());
+
         $.ajax({
             async: true,
             type: "POST",
             url: "../consultas/nuevoProducto.php",
-            data: "nombre="+nombre+"&descripcion="+descripcion+"&precio="+precio+"&calorias="+calorias+"&foto="+foto+"&tipo="+tipo+"&alergeno1="+alergeno1+"&alergeno2="+alergeno2+"&alergeno3="+alergeno3+"&alergeno4="+alergeno4+"&alergeno5="+alergeno5+"&alergeno6="+alergeno6+"&alergeno7="+alergeno7+"&alergeno8="+alergeno8+"&alergeno9="+alergeno9+"&alergeno10="+alergeno10+"&alergeno11="+alergeno11+"&alergeno12="+alergeno12+"&alergeno13="+alergeno13+"&alergeno14="+alergeno14,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp){
                 $('#resultado').html(resp);
             }
@@ -46,6 +71,7 @@ if(!isset($_SESSION["usuario"])){
                       while($resultado = $conexion->devolverFilas()){
                         echo '<option value="'.$resultado["id_tipo_producto"].'">'.$resultado["nombre"].'</option>';
                       }?>
+                    </select>
                 </div>
             </div>
             <div class="col-md-6 form-group">
@@ -62,34 +88,33 @@ if(!isset($_SESSION["usuario"])){
             <div class="col-md-8 form-group">
                 <div class="form-group">
                     <label for="foto" class="control-label">Foto</label>
-                    <input type="file" name="imagen" id="foto" class="form-control">
+                    <input type="file" name="foto" id="foto" class="form-control">
                 </div>
             </div>
             <div class="divider"></div>
-            <div class="col-md-12 form-group">
-                <div class="col-md-12 form-group">
-                    <label for="nombre" class="control-label">Puede contener</label>
-                    <?php
+            <div class="col-md-10 form-group">
+                <div class="form-group">
+                    <label for="nombre" class="control-label">Puede contener</label><?php
                     $query = "SELECT * FROM alergeno";
                     $conexion->consultas($query);echo '
-                        <table>
-                        <tr>';
-                    while($resultado = $conexion->devolverFilas()){echo'
-                            <td>
-                                <label id="contenedorImagen">
-                                    <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
-                                    <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
-                                </label>
-                            </td>';
-                    }echo '
-                        </tr>
+                        <table class="table-responsive">
+                            <tr>';
+                            while($resultado = $conexion->devolverFilas()){echo'
+                                <td>
+                                    <label id="contenedorImagen">
+                                        <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
+                                        <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
+                                    </label>
+                                </td>';
+                            }echo '
+                            </tr>
                         </table>';
                     ?>
                 </div>
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="aniadirProducto($('#nombre').val(), $('#descripcion').val(), $('#precio').val(), $('#calorias').val(), $('#foto').val(), $('#tipo').val(), $('#check1').prop('checked'),$('#check2').prop('checked'), $('#check3').prop('checked'), $('#check4').prop('checked'), $('#check5').prop('checked'), $('#check6').prop('checked'), $('#check7').prop('checked'), $('#check8').prop('checked'), $('#check9').prop('checked'), $('#check10').prop('checked'), $('#check11').prop('checked'), $('#check12').prop('checked'),$('#check13').prop('checked'), $('#check14').prop('checked'));">Añadir</button>
+            <button type="button" class="btn btn-info" id="submit" onclick="aniadirProducto($('#nombre').val(), $('#descripcion').val(), $('#precio').val(), $('#calorias').val(), $('#foto').val(), $('#tipo').val(), $('#check1').prop('checked'),$('#check2').prop('checked'), $('#check3').prop('checked'), $('#check4').prop('checked'), $('#check5').prop('checked'), $('#check6').prop('checked'), $('#check7').prop('checked'), $('#check8').prop('checked'), $('#check9').prop('checked'), $('#check10').prop('checked'), $('#check11').prop('checked'), $('#check12').prop('checked'),$('#check13').prop('checked'), $('#check14').prop('checked'));">Añadir</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

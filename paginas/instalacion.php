@@ -6,7 +6,7 @@ $conectado = $conexion->conect();
 $query = "SLECT * FROM administrador";
 $conexion->consultas($query);
 
-if($conexion->devolverFilas() > 0){
+if($conexion->filasAfectadas() > 0){
     header ("Location: ../paginas/inicioSesion.php");
 }
 ?>

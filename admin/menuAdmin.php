@@ -126,7 +126,7 @@ if(!isset($_SESSION["usuario"])){
                             <div class="panel-body">
                                 <table class="table">
                                     <tr>
-                                        <td><a id="listadoUsuarios">Listado de alergenos</a></td>
+                                        <td><a id="listadoUsuarios">Listado de usuarios</a></td>
                                     </tr>
                                 </table>
                             </div>

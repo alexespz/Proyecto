@@ -114,26 +114,26 @@ $resultado = $conexion->devolverFilas();
 $total_pages = ceil($resultado["total"] / $results_per_page);
 echo '
 <div class="text-center">
-    <ul class="pagination">';
-    for ($i=1; $i<=$total_pages; $i++){ echo'
+    <ul class="pagination">
         <li class="page-item">
-          <a class="page-link" onclick="primeraPagina(1)" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>';
-        if($page == $i){
-            echo '<li class="page-item active"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
-        }else {
-            echo '<li class="page-item"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
-        }echo '
+              <a class="page-link" onclick="primeraPagina(1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>';
+for ($i=1; $i<=$total_pages; $i++){
+    if($page == $i){
+        echo '<li class="page-item active"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
+    }else {
+        echo '<li class="page-item"><a onclick="pagina('.$i.')">' . $i . '</a></li>';
+    }
+}echo '
         <li class="page-item">
-          <a class="page-link" onclick="ultimaPagina('.$total_pages.')" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>';
-    }echo '
+            <a class="page-link" onclick="ultimaPagina('.$total_pages.')" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
     </ul>
 </div>';
 

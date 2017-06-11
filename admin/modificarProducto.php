@@ -41,7 +41,7 @@ $sentencia->close();
                 <div class="col-md-6 form-group">
                     <div class="form-group">
                         <label for="id" class="control-label">Id Producto</label>
-                        <input type="text" name="id" id="id" class="form-control" placeholder="<?php echo $id ?>" disabled>
+                        <input type="text" name="id" id="id" class="form-control" value="<?php echo $id ?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="nombre" class="control-label">Nombre</label>

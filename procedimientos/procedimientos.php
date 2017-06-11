@@ -49,4 +49,8 @@ class procedimientos{
     public function numFilas(){
         return $this->resultado->num_rows;
     }
+
+    public function escapaCaracteres($string){
+        return $this->conexion->escape_string($string);
+    }
 }
