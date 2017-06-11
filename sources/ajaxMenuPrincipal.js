@@ -1,27 +1,27 @@
 $(document).ready(function(){
     //Estilos al pasar el raton por las diferentes opciones.
     $('#reserva').hover(function(){
-        $('#reserva').css({"background-color": "black", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer"});
+        $('#reserva').css({"transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer", "color": "rgb(122,0,38)"});
     }, function(){
-        $('#reserva').css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto"});
+        $('#reserva').css({"transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto", "color": "black"});
     });
 
     $('#pedido').hover(function(){
-        $('#pedido').css({"background-color": "black", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer"});
+        $('#pedido').css({"transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer", "color": "rgb(122,0,38)"});
     }, function(){
-        $('#pedido').css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto"});
+        $('#pedido').css({"transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto", "color": "black"});
     });
 
     $('#perfil').hover(function(){
-        $('#perfil').css({"background-color": "black", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer"});
+        $('#perfil').css({"transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer", "color": "rgb(122,0,38)"});
     }, function(){
-        $('#perfil').css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto"});
+        $('#perfil').css({"transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto", "color": "black"});
     });
 
     $('#cerrar').hover(function(){
-        $('#cerrar').css({"background-color": "black", "transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer"});
+        $('#cerrar').css({"transform": "scale(1.2,1.2)", "transition": "all .2s ease-in-out", "cursor": "pointer", "color": "rgb(122,0,38)"});
     }, function(){
-        $('#cerrar').css({"background-color": "transparent", "transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto"});
+        $('#cerrar').css({"transform": "scale(1,1)", "transition": "all .2s ease-in-out", "cursor": "auto", "color": "black"});
     });
 
     //Localización a la que hace referencia cada elemento al hacer click sobre el.

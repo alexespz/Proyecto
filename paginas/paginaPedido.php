@@ -40,7 +40,44 @@ if(!isset($_SESSION["usuario"])){
             $query = "SELECT * FROM tipo_producto";
             $conexion->consultas($query);
             while($resultado = $conexion->devolverFilas()){
-                echo '<li class=""><a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab">'.$resultado["nombre"].'</a></li>';
+                if($resultado["nombre"] == "Entrantes"){
+                    echo '<li>
+                        <div style="margin-right: 25px">
+                            <a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab"><img src="../imagenes/cheese.png" style="width: 60px;"> '.$resultado["nombre"].'</a>
+                        </div>
+                      </li>';
+                }else if($resultado["nombre"] == "Ensaladas"){
+                    echo '<li>
+                        <div style="margin-right: 25px">
+                            <a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab"><img src="../imagenes/salad.png" style="width: 60px;"> '.$resultado["nombre"].'</a>
+                        </div>
+                      </li>';
+                }else if($resultado["nombre"] == "Carnes"){
+                    echo '<li>
+                        <div style="margin-right: 25px">
+                            
+                            <a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab"><img src="../imagenes/meat.png" style="width: 60px;"> '.$resultado["nombre"].'</a>
+                        </div>
+                      </li>';
+                }else if($resultado["nombre"] == "Pescados"){
+                    echo '<li>
+                        <div style="margin-right: 25px">
+                            <a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab"><img src="../imagenes/salmon.png" style="width: 60px;"> '.$resultado["nombre"].'</a>
+                        </div>
+                      </li>';
+                }else if($resultado["nombre"] == "Bebidas"){
+                    echo '<li>
+                        <div style="margin-right: 25px">
+                            <a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab"><img src="../imagenes/cocktail.png" style="width: 60px;"> '.$resultado["nombre"].'</a>
+                        </div>
+                      </li>';
+                }else if($resultado["nombre"] == "Postres"){
+                    echo '<li>
+                        <div style="margin-right: 25px">
+                            <a onclick="validarTipo('.$resultado["id_tipo_producto"].');" data-toggle="tab"><img src="../imagenes/ice-cream-1.png" style="width: 60px;"> '.$resultado["nombre"].'</a>
+                        </div>
+                      </li>';
+                }
             }?>
         </ul>
         <div class="tab-content clearfix" id="contenidoProductos">
