@@ -10,6 +10,12 @@ if(!isset($_SESSION["usuario"])){
 }
 ?>
 <script>
+    $('#hora').on('click', function() {
+        $('#hora').datetimepicker({
+            pickDate: false
+        });
+    });
+
     function aniadirHora(hora) {
         $.ajax({
             async: true,
@@ -30,7 +36,10 @@ if(!isset($_SESSION["usuario"])){
             <div class="col-md-6 form-group">
                 <div class="form-group">
                     <label for="hora" class="control-label">Hora</label>
-                    <input type="text" name="hora" id="hora" class="form-control" required>
+                    <input type="text" name="hora" id="hora" class="form-control" data-format="hh:mm" required>
+                    <span class="add-on">
+                      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                    </span>
                 </div>
             </div>
         </div>

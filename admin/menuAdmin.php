@@ -12,6 +12,7 @@ if(!isset($_SESSION["usuario"])){
 <head>
     <meta charset="UTF-8">
     <title>Pagina principal</title>
+    <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <link type="text/css" href="../sources/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="../sources/cssPropio.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -19,11 +20,10 @@ if(!isset($_SESSION["usuario"])){
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap2-toggle.min.css" rel="stylesheet">
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap2-toggle.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="../sources/bootstrap.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" media="screen"href="../sources/bootstrap-datetimepicker.min.css"></head>
+    <script type="text/javascript" src="../sources/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="../sources/ajaxAdmin.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
 <div class="container caja">
