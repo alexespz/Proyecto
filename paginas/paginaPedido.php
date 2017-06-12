@@ -15,15 +15,33 @@ if(!isset($_SESSION["usuario"])){
 <head>
     <meta charset="UTF-8">
     <title>Pagina pedido</title>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../sources/animate.css">
-    <link rel="stylesheet" href="../sources/style.css">
     <link type="text/css" href="../sources/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="../sources/cssPropio.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic' rel='stylesheet' type='text/css'>
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="../sources/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="../sources/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="../sources/style.css">
+    <!-- jQuery -->
+    <script src="../sources/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="../sources/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="../sources/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="../sources/jquery.waypoints.min.js"></script>
+    <!-- Stellar Parallax -->
+    <script src="../sources/jquery.stellar.min.js"></script>
+    <!-- Flexslider -->
+    <script src="../sources/jquery.flexslider-min.js"></script>
+    <!-- Main JS -->
+    <script src="../sources/main.js"></script>
+    <!-- Modernizr JS -->
+    <script src="../sources/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript" src="../sources/tabsPedido.js"></script>
     <script>
         function aniadirProducto(id) {
@@ -57,19 +75,23 @@ if(!isset($_SESSION["usuario"])){
                             <?php
                                 $query = "SELECT * FROM producto INNER JOIN tipo_producto ON (producto.tipo_producto = tipo_producto.id_tipo_producto) WHERE tipo_producto.nombre = 'Entrantes' LIMIT 4";
                                 $conexion->consultas($query);
-                                while($resultado = $conexion->devolverFilas()){ echo '
+                                while($resultado = $conexion->devolverFilas()){echo '
                                     <li>
-                                        <div class="fh5co-food-desc">
-                                            <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>
+                                        <div class="fh5co-food-desc">';
+                                            if($resultado["foto"] == null ){echo'
+                                                <figure> <img src="../imagenes/imagen-no-disponible.gif" class="img-responsive"></figure>';
+                                            }else {echo'
+                                                <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>';
+                                            }echo'
                                             <div>
-                                                <h3>'.$resultado["nombre"].'</h3>
+                                                <h3>'.$resultado["1"].'</h3>
                                                 <p>'.$resultado["descripcion"].'</p>
                                             </div>
                                         </div>
                                         <div class="fh5co-food-pricing">
                                             '.$resultado["precio"].' €
                                         </div>
-                                        <div>
+                                        <div class="fh5co-food-pricing">
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
@@ -92,23 +114,32 @@ if(!isset($_SESSION["usuario"])){
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                     <li>
-                                        <div class="fh5co-food-desc">
-                                            <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>
+                                        <div class="fh5co-food-desc">';
+                                            if($resultado["foto"] == null ){echo'
+                                                <figure> <img src="../imagenes/imagen-no-disponible.gif" class="img-responsive"></figure>';
+                                            }else {echo'
+                                                <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>';
+                                            }echo'
                                             <div>
-                                                <h3>'.$resultado["nombre"].'</h3>
+                                                <h3>'.$resultado["1"].'</h3>
                                                 <p>'.$resultado["descripcion"].'</p>
                                             </div>
                                         </div>
                                         <div class="fh5co-food-pricing">
                                             '.$resultado["precio"].' €
                                         </div>
-                                        <div>
+                                        <div class="fh5co-food-pricing">
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
                             }
                             ?>
                         </ul>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
+                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas ensaladas</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -120,23 +151,32 @@ if(!isset($_SESSION["usuario"])){
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                     <li>
-                                        <div class="fh5co-food-desc">
-                                            <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>
+                                        <div class="fh5co-food-desc">';
+                                            if($resultado["foto"] == null ){echo'
+                                                <figure> <img src="../imagenes/imagen-no-disponible.gif" class="img-responsive"></figure>';
+                                            }else {echo'
+                                                <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>';
+                                            }echo'
                                             <div>
-                                                <h3>'.$resultado["nombre"].'</h3>
+                                                <h3>'.$resultado["1"].'</h3>
                                                 <p>'.$resultado["descripcion"].'</p>
                                             </div>
                                         </div>
                                         <div class="fh5co-food-pricing">
                                             '.$resultado["precio"].' €
                                         </div>
-                                        <div>
+                                        <div class="fh5co-food-pricing">
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
                             }
                             ?>
                         </ul>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
+                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas carnes</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -148,23 +188,32 @@ if(!isset($_SESSION["usuario"])){
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                     <li>
-                                        <div class="fh5co-food-desc">
-                                            <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>
+                                        <div class="fh5co-food-desc">';
+                                            if($resultado["foto"] == null ){echo'
+                                                <figure> <img src="../imagenes/imagen-no-disponible.gif" class="img-responsive"></figure>';
+                                            }else {echo'
+                                                <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>';
+                                            }echo'
                                             <div>
-                                                <h3>'.$resultado["nombre"].'</h3>
+                                                <h3>'.$resultado["1"].'</h3>
                                                 <p>'.$resultado["descripcion"].'</p>
                                             </div>
                                         </div>
                                         <div class="fh5co-food-pricing">
                                             '.$resultado["precio"].' €
                                         </div>
-                                        <div>
+                                        <div class="fh5co-food-pricing">
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
                             }
                             ?>
                         </ul>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
+                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas pescados</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -176,23 +225,32 @@ if(!isset($_SESSION["usuario"])){
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                     <li>
-                                        <div class="fh5co-food-desc">
-                                            <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>
+                                        <div class="fh5co-food-desc">';
+                                            if($resultado["foto"] == null ){echo'
+                                                <figure> <img src="../imagenes/imagen-no-disponible.gif" class="img-responsive"></figure>';
+                                            }else {echo'
+                                                <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>';
+                                            }echo'
                                             <div>
-                                                <h3>'.$resultado["nombre"].'</h3>
+                                                <h3>'.$resultado["1"].'</h3>
                                                 <p>'.$resultado["descripcion"].'</p>
                                             </div>
                                         </div>
                                         <div class="fh5co-food-pricing">
                                             '.$resultado["precio"].' €
                                         </div>
-                                        <div>
+                                        <div class="fh5co-food-pricing">
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
                             }
                             ?>
                         </ul>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
+                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas bebidas</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -204,23 +262,30 @@ if(!isset($_SESSION["usuario"])){
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                     <li>
-                                        <div class="fh5co-food-desc">
-                                            <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>
+                                        <div class="fh5co-food-desc">';
+                                            if($resultado["foto"] == null ){echo'
+                                                <figure> <img src="../imagenes/imagen-no-disponible.gif" class="img-responsive"></figure>';
+                                            }else {echo'
+                                                <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>';
+                                            }echo'
                                             <div>
-                                                <h3>'.$resultado["nombre"].'</h3>
+                                                <h3>'.$resultado["1"].'</h3>
                                                 <p>'.$resultado["descripcion"].'</p>
                                             </div>
                                         </div>
+                                        <div class="fh5co-food-pricing">'.$resultado["precio"].' € </div>
                                         <div class="fh5co-food-pricing">
-                                            '.$resultado["precio"].' €
-                                        </div>
-                                        <div>
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
                             }
                             ?>
                         </ul>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
+                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas postres</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </div>

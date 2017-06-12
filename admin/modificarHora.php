@@ -10,7 +10,7 @@ if(!isset($_SESSION["usuario"])){
 }
 $query = "SELECT id_hora, hora FROM hora_reserva WHERE id_hora = ?";
 $sentencia = $conexion->consultasPreparadas($query);
-$sentencia->bindParam('i', $id);
+$sentencia->bind_param('i', $id);
 $id = $_POST["id"];
 $sentencia->execute();
 $sentencia->bind_result($id, $hora);

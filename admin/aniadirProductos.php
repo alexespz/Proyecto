@@ -92,8 +92,8 @@ if(!isset($_SESSION["usuario"])){
                 </div>
             </div>
             <div class="divider"></div>
-            <div class="col-md-10 form-group">
-                <div class="form-group">
+            <div class="col-md-12 form-group">
+                <div class="col-md-12 form-group">
                     <label for="nombre" class="control-label">Puede contener</label><?php
                     $query = "SELECT * FROM alergeno";
                     $conexion->consultas($query);echo '
@@ -101,10 +101,10 @@ if(!isset($_SESSION["usuario"])){
                             <tr>';
                             while($resultado = $conexion->devolverFilas()){echo'
                                 <td>
-                                    <div id="contenedorImagen">
+                                    <label id="contenedorImagen">
                                         <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
                                         <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
-                                    </div>
+                                    </label>
                                 </td>';
                             }echo '
                             </tr>

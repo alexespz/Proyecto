@@ -24,7 +24,7 @@ if($_POST["foto"] == "undefined"){
     $imagen = 'NULL';
 }
 
-$query = "INSERT INTO alergeno VALUES('','".$_POST["nombre"]."', '".$imagen."' )";
+$query = "INSERT INTO alergeno VALUES('','".$_POST["nombre"]."', '".$imagen."', 0)";
 $conexion->consultas($query);
 
 if($conexion->filasAfectadas() > 0){

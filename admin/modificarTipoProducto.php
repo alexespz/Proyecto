@@ -11,7 +11,7 @@ if(!isset($_SESSION["usuario"])){
 
 $query = "SELECT id_tipo_producto, nombre FROM tipo_producto WHERE id_tipo_producto = ?";
 $sentencia = $conexion->consultasPreparadas($query);
-$sentencia->bindParam('i', $id);
+$sentencia->bind_param('i', $id);
 $id = $_POST["id"];
 $sentencia->execute();
 $sentencia->bind_result($id, $tipo);
@@ -23,10 +23,10 @@ $sentencia->close();
         $.ajax({
             async: true,
             type: "POST",
-            url: "../consultas/tiposProducto/modificarTipoProducto.php",
+            url: "../consultas/modificarTipoProducto.php",
             data: "id="+id+"&tipo="+tipo,
             success: function(resp){
-                $('#cuerpo').load("resp");
+                $('#cuerpo').html(resp);
             }
         });
     }
@@ -50,7 +50,7 @@ $sentencia->close();
                 </div>
             </div>
             <div class="col-md-12 " id="boton">
-                <button class="btn btn-info" id="submit" onclick="modificarTipoProducto($('#id').val(), $('#tipo').val();">Modificar</button>
+                <button class="btn btn-info" id="submit" onclick="modificarTipoProducto($('#id').val(), $('#tipo').val());">Modificar</button>
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
         </form>

@@ -105,10 +105,10 @@ while($resultado = $conexion->devolverFilas()){
         <td>' .$resultado["hora"]. '</td>
         <td>';
             if($resultado["is_delete"] == 0){echo '
-                <button type="button" class="btn btn-info" href="modificarHora('.$resultado["id_hora"].')"><span class="glyphicon glyphicon-pencil"></span></button>
+                <button type="button" class="btn btn-info" onclick="modificarHora('.$resultado["id_hora"].')"><span class="glyphicon glyphicon-pencil"></span></button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminar" href="../consultas/confirmarEliminarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-trash"></span></button>';
             }else{ echo '
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalRecuperar" href="../consultas/confirmarRecuperarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalRecuperar" href="../consultas/confirmarRecuperarHora.php?id='.$resultado["id_hora"].'"><span class="glyphicon glyphicon-repeat"></span></button>';
             }echo '
         </td>
     </tr>';

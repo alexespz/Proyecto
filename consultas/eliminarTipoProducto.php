@@ -8,6 +8,6 @@ $conexion->consultas($query);
 
 echo '
 <script>
-    $("#cuerpo").load("listadoTiposProducto.php");
+    $("#cuerpo").load("listadoTiposProductos.php");
 </script>';
 

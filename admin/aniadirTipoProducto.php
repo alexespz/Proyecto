@@ -35,7 +35,7 @@ if(!isset($_SESSION["usuario"])){
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="aniadirTipoProducto($('#nombre').text());">Añadir</button>
+            <button class="btn btn-info" id="submit" onclick="aniadirTipoProducto($('#nombre').val());">Añadir</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

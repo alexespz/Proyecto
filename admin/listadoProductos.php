@@ -98,7 +98,7 @@ while($resultado = $conexion->devolverFilas()){
             <button type="button" class="btn btn-info" onclick="modificarProducto('.$resultado["id_producto"].')"><span class="glyphicon glyphicon-pencil"></span></button>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminar" href="../consultas/confirmarEliminarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
         }else{ echo '
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalRecuperar" href="../consultas/confirmarRecuperarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-trash"></span></button>';
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalRecuperar" href="../consultas/confirmarRecuperarProducto.php?id='.$resultado["id_producto"].'"><span class="glyphicon glyphicon-refresh"></span></button>';
         }echo '
         </td>
     </tr>';

@@ -10,9 +10,9 @@ if(!isset($_SESSION["usuario"])){
 }
 ?>
 <script>
-    $('#hora').on('click', function() {
-        $('#hora').datetimepicker({
-            pickDate: false
+    $(function() {
+        $('#datetimepicker3').datetimepicker({
+            format: 'LT'
         });
     });
 
@@ -33,18 +33,20 @@ if(!isset($_SESSION["usuario"])){
     <div class="col-md-12 text-center"><h1><p>AÑADIR HORAS PARA RESERVA</p></h1></div>
     <form action="return false" onsubmit="return false" method="POST">
         <div class="row">
-            <div class="col-md-6 form-group">
-                <div class="form-group">
+            <div class="col-md-6">
+                <div class="form-group" id="datepicker">
                     <label for="hora" class="control-label">Hora</label>
-                    <input type="text" name="hora" id="hora" class="form-control" data-format="hh:mm" required>
-                    <span class="add-on">
-                      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    </span>
+                    <div class='input-group date' id='datetimepicker3'>
+                        <input type='text' class="form-control" id="hora"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="aniadirHora($('#hora').text());">Añadir</button>
+            <button class="btn btn-info" id="submit" onclick="aniadirHora($('#hora').val());">Añadir</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

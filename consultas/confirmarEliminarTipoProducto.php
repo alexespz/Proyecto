@@ -21,6 +21,6 @@ echo '
     <p>¿Seguro que desea eliminar el elemento seleccionado?</p>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary pull-right" onclick="eliminarTipoProdcuto('.$_GET["id"].')" data-dismiss="modal">Si</button>
+    <button type="button" class="btn btn-primary pull-right" onclick="eliminarTipoProducto('.$_GET["id"].')" data-dismiss="modal">Si</button>
     <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">No</button>
 </div>';

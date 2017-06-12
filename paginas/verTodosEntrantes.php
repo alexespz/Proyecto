@@ -15,15 +15,33 @@ if(!isset($_SESSION["usuario"])){
 <head>
     <meta charset="UTF-8">
     <title>Pagina pedido</title>
-    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../sources/animate.css">
-    <link rel="stylesheet" href="../sources/style.css">
     <link type="text/css" href="../sources/bootstrap.css" rel="stylesheet">
     <link type="text/css" href="../sources/cssPropio.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic|Merriweather:300,400italic,300italic,400,700italic' rel='stylesheet' type='text/css'>
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="../sources/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="../sources/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="../sources/style.css">
+    <!-- jQuery -->
+    <script src="../sources/jquery.min.js"></script>
+    <!-- jQuery Easing -->
+    <script src="../sources/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="../sources/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="../sources/jquery.waypoints.min.js"></script>
+    <!-- Stellar Parallax -->
+    <script src="../sources/jquery.stellar.min.js"></script>
+    <!-- Flexslider -->
+    <script src="../sources/jquery.flexslider-min.js"></script>
+    <!-- Main JS -->
+    <script src="../sources/main.js"></script>
+    <!-- Modernizr JS -->
+    <script src="../sources/modernizr-2.6.2.min.js"></script>
     <script type="text/javascript" src="../sources/tabsPedido.js"></script>
     <script>
         function aniadirProducto(id) {
@@ -50,7 +68,7 @@ if(!isset($_SESSION["usuario"])){
                 </div>
             </div>
             <div class="row row-padded">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="fh5co-food-menu to-animate-2">
                         <h2 class="fh5co-starters">Entrantes</h2>
                         <ul>
@@ -59,17 +77,21 @@ if(!isset($_SESSION["usuario"])){
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                     <li>
-                                        <div class="fh5co-food-desc">
-                                            <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>
+                                        <div class="fh5co-food-desc">';
+                                            if($resultado["foto"] == null ){echo'
+                                                <figure> <img src="../imagenes/imagen-no-disponible.gif" class="img-responsive"></figure>';
+                                            }else {echo'
+                                                <figure> <img src="../imagenes/productos/'.$resultado["foto"].'" class="img-responsive"></figure>';
+                                            }echo'
                                             <div>
-                                                <h3>'.$resultado["nombre"].'</h3>
+                                                <h3>'.$resultado["1"].'</h3>
                                                 <p>'.$resultado["descripcion"].'</p>
                                             </div>
                                         </div>
                                         <div class="fh5co-food-pricing">
                                             '.$resultado["precio"].' €
                                         </div>
-                                        <div>
+                                        <div class="fh5co-food-pricing">
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$resultado["id_producto"].'"><span class="fa fa-eye"></span></button> 
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>

@@ -780,7 +780,7 @@ p {
   width: 64px;
   position: absolute;
   content: "";
-  background: url(../images/0401-vegan.png) no-repeat;
+  background: url(../imagenes/tipo_producto/dish.png) no-repeat;
   top: 0;
   left: 50%;
   margin-top: -50px;
@@ -808,7 +808,7 @@ p {
   position: relative;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-starters {
-  padding-left: 50px;
+  padding-left: 90px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-starters:before {
   background: url(../imagenes/tipo_producto/cheese.png) no-repeat;
@@ -816,11 +816,11 @@ p {
   position: absolute;
   top: -20px;
   left: 0;
-  width: 64px;
-  height: 64px;
+  width: 74px;
+  height: 74px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-salads {
-  padding-left: 50px;
+  padding-left: 90px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-salads:before {
   background: url(../imagenes/tipo_producto/salad.png) no-repeat;
@@ -828,11 +828,11 @@ p {
   position: absolute;
   top: -20px;
   left: 0;
-  width: 64px;
-  height: 64px;
+  width: 74px;
+  height: 74px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-meat {
-  padding-left: 50px;
+  padding-left: 90px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-meat:before {
   background: url(../imagenes/tipo_producto/meat.png) no-repeat;
@@ -840,11 +840,11 @@ p {
   position: absolute;
   top: -20px;
   left: 0;
-  width: 64px;
-  height: 64px;
+  width: 74px;
+  height: 74px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-fish {
-  padding-left: 50px;
+  padding-left: 90px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-fish:before {
   background: url(../imagenes/tipo_producto/salmon.png) no-repeat;
@@ -852,11 +852,11 @@ p {
   position: absolute;
   top: -20px;
   left: 0;
-  width: 64px;
-  height: 64px;
+  width: 74px;
+  height: 74px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-drinks {
-  padding-left: 50px;
+  padding-left: 90px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-drinks:before {
   background: url(../imagenes/tipo_producto/cocktail.png) no-repeat;
@@ -864,11 +864,11 @@ p {
   position: absolute;
   top: -20px;
   left: 0;
-  width: 64px;
-  height: 64px;
+  width: 74px;
+  height: 74px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-desserts {
-  padding-left: 80px;
+  padding-left: 90px;
 }
 #fh5co-menus .fh5co-food-menu h2.fh5co-desserts:before {
   background: url(../imagenes/tipo_producto/ice-cream-1.png) no-repeat;
@@ -876,8 +876,8 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  width: 64px;
-  height: 45px;
+  width: 74px;
+  height: 75px;
 }
 #fh5co-menus .fh5co-food-menu ul {
   padding: 0;

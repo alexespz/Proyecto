@@ -122,16 +122,16 @@ if(!isset($_SESSION["usuario"])){
                         $query = "SELECT * FROM alergeno";
                         $conexion->consultas($query);echo '
                         <table>
-                        <tr>';
-                        while($resultado = $conexion->devolverFilas()){echo'
-                            <td>
-                                <label id="contenedorImagen">
-                                    <input type="checkbox" class="checkImagen" name="alergeno[]" id="alergeno" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
-                                    <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
-                                </label>
-                            </td>';
-                        }echo '
-                        </tr>
+                            <tr>';
+                            while($resultado = $conexion->devolverFilas()){echo'
+                                <td>
+                                    <label id="contenedorImagen">
+                                        <input type="checkbox" class="checkImagen" name="alergeno[]" id="alergeno" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
+                                        <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
+                                    </label>
+                                </td>';
+                        }   echo '
+                            </tr>
                         </table>';
                         ?>
                     </div>

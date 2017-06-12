@@ -12,8 +12,9 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
 
     $sql = file_get_contents('../baseDatos/script.sql');
     $sql .= "INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES ('".$_POST["usuario"]."', '".$passwordEncrypted."' )";
+    $conexion->multiConsultas($sql);
 
-    if(!$conexion->multiConsultas($sql)){
+    if($conexion->filasAfectadas() > 0){
         echo '<script>$.growl.error({ message: "Ha ocurrido algún error vuelve ha intentarlo" });</script>';
     }else{
         //Si la ejecución del archivo sql no ha dado ningun problema se le manda al usuario un correo con los datos de la cuenta del administrador.

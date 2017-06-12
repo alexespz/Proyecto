@@ -32,15 +32,12 @@ if($conexion->filasAfectadas() > 0){
                 type: "POST",
                 url: "../consultas/validarInstalacion.php",
                 data: "usuario="+user+"&contrasenia="+pass+"&repetirContrasenia="+pass2+"&email="+email,
-                beforeSend: function(){
-                    setTimeout(function(){
-                        $.blockUI({ message: '<h1><img src="busy.gif" /> Espera un momento...</h1>' });
-                    }, 3000);
-                },
                 success: function(resp){
-                    $("#carga").hide("slow",function(){
+                    $.blockUI({ message: '<h1><img src="../imagenes/busy.gif" /> Espera un momento...</h1>' });
+                    setTimeout($.unblockUI, 2000);
+                    setTimeout(function () {
                         $('#resultado').html(resp);
-                    });
+                    }, 2500);
                 }
             });
         }
