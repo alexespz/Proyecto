@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
 CREATE TABLE IF NOT EXISTS tipo_producto(
   id_tipo_producto TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(15) NOT NULL,
+  icono VARCHAR(100) NOT NULL,
   is_delete CHAR(1) NOT NULL DEFAULT 0
 );
 
@@ -107,13 +108,13 @@ CREATE TABLE IF NOT EXISTS administrador(
   contrasenia VARCHAR(255) NOT NULL
 );
 
-INSERT INTO `tipo_producto` (`id_tipo_producto`, `nombre`) VALUES
-  ('1', 'Entrantes'),
-  ('2', 'Ensaladas'),
-  ('3', 'Carnes'),
-  ('4', 'Pescados'),
-  ('5', 'Bebidas'),
-  ('6', 'Postres');
+INSERT INTO `tipo_producto` (`id_tipo_producto`, `nombre`, `icono`) VALUES
+  ('1', 'Entrantes', 'cheese.png'),
+  ('2', 'Ensaladas', 'salad.png'),
+  ('3', 'Carnes', 'meat.png'),
+  ('4', 'Pescados', 'salmon.png'),
+  ('5', 'Bebidas', 'cocktail.png'),
+  ('6', 'Postres', 'ice-cream-1.png');
 
 INSERT INTO `hora_reserva` (`id_hora`, `hora`) VALUES
   ('1', '13:00'),

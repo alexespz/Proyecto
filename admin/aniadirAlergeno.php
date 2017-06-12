@@ -11,11 +11,18 @@ if(!isset($_SESSION["usuario"])){
 ?>
 <script>
     function aniadirAlergeno(nombre, foto) {
+        var formData = new FormData();
+        formData.append("nombre", nombre);
+        formData.append("foto", $("#foto")[0].files[0]);;
+
         $.ajax({
             async: true,
             type: "POST",
             url: "../consultas/nuevoAlergeno.php",
-            data: "nombre="+nombre+"&foto="+foto,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp){
                 $('#resultado').html(resp);
             }
@@ -37,7 +44,7 @@ if(!isset($_SESSION["usuario"])){
             <div class="col-md-8 form-group">
                 <div class="form-group">
                     <label for="foto" class="control-label">Foto</label>
-                    <input type="file" name="imagen" id="foto" class="form-control">
+                    <input type="file" name="foto" id="foto" class="form-control">
                 </div>
             </div>
         </div>

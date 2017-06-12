@@ -19,7 +19,11 @@ if($conexion->filasAfectadas() > 0){
     <link type="text/css" href="../sources/cssPropio.css" rel ="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../sources/jquery.growl.js" type="text/javascript"></script>
+    <link href="../sources/jquery.growl.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
+    <!-- include BlockUI -->
+    <script src="../sources/jquery.blockUI.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script>
         function Validar(user, pass, pass2, email) {
@@ -29,7 +33,9 @@ if($conexion->filasAfectadas() > 0){
                 url: "../consultas/validarInstalacion.php",
                 data: "usuario="+user+"&contrasenia="+pass+"&repetirContrasenia="+pass2+"&email="+email,
                 beforeSend: function(){
-                    $("#carga").show("slow");
+                    setTimeout(function(){
+                        $.blockUI({ message: '<h1><img src="busy.gif" /> Espera un momento...</h1>' });
+                    }, 3000);
                 },
                 success: function(resp){
                     $("#carga").hide("slow",function(){
@@ -41,9 +47,6 @@ if($conexion->filasAfectadas() > 0){
     </script>
 </head>
 <body>
-<div id="carga" style="display: none;">
-    <img src="../imagenes/loading.gif" />
-</div>
 <div id="contenedorPrincipal" class="col-md-12 container cajaInstalacion">
     <div class="col-md-12"><h1><p>BIENVENIDO</p></h1></div>
     <div class="col-md-12"><hr /></div>

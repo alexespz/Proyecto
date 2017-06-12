@@ -93,6 +93,7 @@ echo '
         <td class="col-md-1">ID</td>
         <td class="col-md-1">Activo</td>
         <td class="col-md-3">Nombre</td>
+        <td class="col-md-2">Icono</td>
         <td class="col-md-2">Acciones</td>
     </tr>
     <tr>';
@@ -104,6 +105,7 @@ while($resultado = $conexion->devolverFilas()){
             echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_tipo_producto"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
         }echo'
         <td>' .$resultado["nombre"]. '</td>
+        <td><img src="../imagenes/tipo_producto/'.$resultado["icono"].'" style="width: 60px;"></td>
         <td>';
             if($resultado["is_delete"] == 0){ echo '
                 <button type="button" class="btn btn-info" href="modificarTipoProducto('.$resultado["id_tipo_producto"].')"><span class="glyphicon glyphicon-pencil"></span></button>

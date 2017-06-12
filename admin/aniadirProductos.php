@@ -12,26 +12,26 @@ if(!isset($_SESSION["usuario"])){
 <script>
     function aniadirProducto(nombre, descripcion, precio, calorias, foto, tipo, alergeno1, alergeno2, alergeno3, alergeno4, alergeno5, alergeno6, alergeno7, alergeno8, alergeno9, alergeno10, alergeno11, alergeno12, alergeno13, alergeno14) {
         var formData = new FormData();
-        formData.append("nombre", $("#nombre").val());
-        formData.append("descripcion", $("#descipcion").val());
-        formData.append("precio", $("#precio").val());
-        formData.append("calorias", $("#calorias").val());
+        formData.append("nombre", nombre);
+        formData.append("descripcion", descripcion);
+        formData.append("precio", precio);
+        formData.append("calorias", calorias);
         formData.append("foto", $("#foto")[0].files[0]);
-        formData.append("tipo", $("#tipo").val());
-        formData.append("alergeno1", $("#alergeno1").val());
-        formData.append("alergeno2", $("#alergeno2").val());
-        formData.append("alergeno3", $("#alergeno3").val());
-        formData.append("alergeno4", $("#alergeno4").val());
-        formData.append("alergeno5", $("#alergeno5").val());
-        formData.append("alergeno6", $("#alergeno6").val());
-        formData.append("alergeno7", $("#alergeno7").val());
-        formData.append("alergeno8", $("#alergeno8").val());
-        formData.append("alergeno9", $("#alergeno9").val());
-        formData.append("alergeno10", $("#alergeno10").val());
-        formData.append("alergeno11", $("#alergeno11").val());
-        formData.append("alergeno12", $("#alergeno12").val());
-        formData.append("alergeno13", $("#alergeno13").val());
-        formData.append("alergeno14", $("#alergeno14").val());
+        formData.append("tipo", tipo);
+        formData.append("alergeno1", alergeno1);
+        formData.append("alergeno2", alergeno2);
+        formData.append("alergeno3", alergeno3);
+        formData.append("alergeno4", alergeno4);
+        formData.append("alergeno5", alergeno5);
+        formData.append("alergeno6", alergeno6);
+        formData.append("alergeno7", alergeno7);
+        formData.append("alergeno8", alergeno8);
+        formData.append("alergeno9", alergeno9);
+        formData.append("alergeno10", alergeno10);
+        formData.append("alergeno11", alergeno11);
+        formData.append("alergeno12", alergeno12);
+        formData.append("alergeno13", alergeno13);
+        formData.append("alergeno14", alergeno14);
 
         $.ajax({
             async: true,
@@ -101,10 +101,10 @@ if(!isset($_SESSION["usuario"])){
                             <tr>';
                             while($resultado = $conexion->devolverFilas()){echo'
                                 <td>
-                                    <label id="contenedorImagen">
+                                    <div id="contenedorImagen">
                                         <input type="checkbox" class="checkImagen" id="check'.$resultado["id_alergeno"].'" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
                                         <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
-                                    </label>
+                                    </div>
                                 </td>';
                             }echo '
                             </tr>

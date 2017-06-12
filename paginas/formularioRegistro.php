@@ -60,7 +60,6 @@
                         <label for="dni" class="control-label">DNI</label>
                         <input type="text" name="dni" id="dni" class="form-control" placeholder="DNI *" maxlength="9" required>
                     </div>
-
                 </div>
                 <div class="divider"></div>
                 <div class="col-md-12 form-group">

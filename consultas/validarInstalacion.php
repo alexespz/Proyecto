@@ -5,7 +5,7 @@ $conexion = new procedimientos();
 $conexion->conect();
 
 if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
-    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Error. Las contrasñas no coinciden</span>';
+    echo '<script>$.growl.error({ message: "Las contraseñas no coinciden" });</script>';
 }else {
 
     $passwordEncrypted = password_hash($_POST["contrasenia"], PASSWORD_DEFAULT);
@@ -14,7 +14,7 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
     $sql .= "INSERT INTO `administrador` (`usuario`, `contrasenia`) VALUES ('".$_POST["usuario"]."', '".$passwordEncrypted."' )";
 
     if(!$conexion->multiConsultas($sql)){
-        echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ha ocurrido algún error. Vuelve a intentarlo</span>';
+        echo '<script>$.growl.error({ message: "Ha ocurrido algún error vuelve ha intentarlo" });</script>';
     }else{
         //Si la ejecución del archivo sql no ha dado ningun problema se le manda al usuario un correo con los datos de la cuenta del administrador.
         $para      = $_POST["email"];
@@ -29,8 +29,9 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
 
         mail($para, $titulo, $mensaje, $cabeceras);
 
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Se ha realizado la instalación con existo. Le enviaremos los datos a su direccion de correo</span>
+        echo '
             <script>
+                $.growl.notice({ message: "Se ha realizado la instalacion con exito. Le enviaremos los datos a su direccion de correo" });
                 setTimeout(function(){
                     window.location="../paginas/inicioSesion.php ";
                 }, 2000);

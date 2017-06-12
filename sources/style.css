@@ -807,11 +807,11 @@ p {
   font-style: italic;
   position: relative;
 }
-#fh5co-menus .fh5co-food-menu h2.fh5co-drinks {
+#fh5co-menus .fh5co-food-menu h2.fh5co-starters {
   padding-left: 50px;
 }
-#fh5co-menus .fh5co-food-menu h2.fh5co-drinks:before {
-  background: url(../images/0301-pina-colada.png) no-repeat;
+#fh5co-menus .fh5co-food-menu h2.fh5co-starters:before {
+  background: url(../imagenes/tipo_producto/cheese.png) no-repeat;
   content: "";
   position: absolute;
   top: -20px;
@@ -819,11 +819,59 @@ p {
   width: 64px;
   height: 64px;
 }
-#fh5co-menus .fh5co-food-menu h2.fh5co-dishes {
+#fh5co-menus .fh5co-food-menu h2.fh5co-salads {
+  padding-left: 50px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-salads:before {
+  background: url(../imagenes/tipo_producto/salad.png) no-repeat;
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-meat {
+  padding-left: 50px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-meat:before {
+  background: url(../imagenes/tipo_producto/meat.png) no-repeat;
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-fish {
+  padding-left: 50px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-fish:before {
+  background: url(../imagenes/tipo_producto/salmon.png) no-repeat;
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-drinks {
+  padding-left: 50px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-drinks:before {
+  background: url(../imagenes/tipo_producto/cocktail.png) no-repeat;
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 64px;
+  height: 64px;
+}
+#fh5co-menus .fh5co-food-menu h2.fh5co-desserts {
   padding-left: 80px;
 }
-#fh5co-menus .fh5co-food-menu h2.fh5co-dishes:before {
-  background: url(../images/0302-steak.png) no-repeat;
+#fh5co-menus .fh5co-food-menu h2.fh5co-desserts:before {
+  background: url(../imagenes/tipo_producto/ice-cream-1.png) no-repeat;
   content: "";
   position: absolute;
   top: 0;
@@ -883,7 +931,7 @@ p {
   width: 20%;
   text-align: right;
   font-size: 20px;
-  color: #fb6e14;
+  color: #7a0026;
 }
 
 #fh5co-events {
