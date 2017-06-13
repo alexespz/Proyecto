@@ -70,10 +70,10 @@ if(!isset($_SESSION["usuario"])){
             <div class="row row-padded">
                 <div class="col-md-8">
                     <div class="fh5co-food-menu to-animate-2">
-                        <h2 class="fh5co-starters">Entrantes</h2>
+                        <h2 class="fh5co-salads">Ensaladas</h2>
                         <ul>
                             <?php
-                            $query = "SELECT * FROM producto INNER JOIN tipo_producto ON (producto.tipo_producto = tipo_producto.id_tipo_producto) WHERE tipo_producto.nombre = 'Entrantes'";
+                            $query = "SELECT * FROM producto INNER JOIN tipo_producto ON (producto.tipo_producto = tipo_producto.id_tipo_producto) WHERE tipo_producto.nombre = 'Ensaladas'";
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                 <li>

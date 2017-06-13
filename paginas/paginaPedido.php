@@ -137,7 +137,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas ensaladas</a></p>
+                                <p><a href="../paginas/verTodosEnsaladas.php" class="btn btn-primary btn-outline">Ver mas ensaladas</a></p>
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas carnes</a></p>
+                                <p><a href="../paginas/verTodosCarnes.php" class="btn btn-primary btn-outline">Ver mas carnes</a></p>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas pescados</a></p>
+                                <p><a href="../paginas/verTodosPescados.php" class="btn btn-primary btn-outline">Ver mas pescados</a></p>
                             </div>
                         </div>
                     </div>
@@ -248,7 +248,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas bebidas</a></p>
+                                <p><a href="../paginas/verTodosBebedias.php" class="btn btn-primary btn-outline">Ver mas bebidas</a></p>
                             </div>
                         </div>
                     </div>
@@ -283,66 +283,13 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas postres</a></p>
+                                <p><a href="../paginas/verTodosPostres.php" class="btn btn-primary btn-outline">Ver mas postres</a></p>
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
     </div>
-    <!--<div class="col-md-8" id="cuerpo">
-        <ul class="nav nav-tabs"><?php
-            /*$query = "SELECT * FROM tipo_producto";
-            $conexion->consultas($query);
-            while($resultado = $conexion->devolverFilas()){
-                if($resultado["nombre"] == "Entrantes"){
-                    echo '<li>
-                        <div style="margin-right: 25px">
-                            <a onclick="validarTipo('.$resultado["id_tipo_producto"]. ');" data-toggle="tab"><img src="../imagenes/tipo_producto/cheese.png" style="width: 60px;"> ' .$resultado["nombre"].'</a>
-                        </div>
-                      </li>';
-                }else if($resultado["nombre"] == "Ensaladas"){
-                    echo '<li>
-                        <div style="margin-right: 25px">
-                            <a onclick="validarTipo('.$resultado["id_tipo_producto"]. ');" data-toggle="tab"><img src="../imagenes/tipo_producto/salad.png" style="width: 60px;"> ' .$resultado["nombre"].'</a>
-                        </div>
-                      </li>';
-                }else if($resultado["nombre"] == "Carnes"){
-                    echo '<li>
-                        <div style="margin-right: 25px">
-                            
-                            <a onclick="validarTipo('.$resultado["id_tipo_producto"]. ');" data-toggle="tab"><img src="../imagenes/tipo_producto/meat.png" style="width: 60px;"> ' .$resultado["nombre"].'</a>
-                        </div>
-                      </li>';
-                }else if($resultado["nombre"] == "Pescados"){
-                    echo '<li>
-                        <div style="margin-right: 25px">
-                            <a onclick="validarTipo('.$resultado["id_tipo_producto"]. ');" data-toggle="tab"><img src="../imagenes/tipo_producto/salmon.png" style="width: 60px;"> ' .$resultado["nombre"].'</a>
-                        </div>
-                      </li>';
-                }else if($resultado["nombre"] == "Bebidas"){
-                    echo '<li>
-                        <div style="margin-right: 25px">
-                            <a onclick="validarTipo('.$resultado["id_tipo_producto"]. ');" data-toggle="tab"><img src="../imagenes/tipo_producto/cocktail.png" style="width: 60px;"> ' .$resultado["nombre"].'</a>
-                        </div>
-                      </li>';
-                }else if($resultado["nombre"] == "Postres"){
-                    echo '<li>
-                        <div style="margin-right: 25px">
-                            <a onclick="validarTipo('.$resultado["id_tipo_producto"]. ');" data-toggle="tab"><img src="../imagenes/tipo_producto/ice-cream-1.png" style="width: 60px;"> ' .$resultado["nombre"].'</a>
-                        </div>
-                      </li>';
-                }
-            }*/?>
-        </ul>
-        <div class="tab-content clearfix" id="contenidoProductos">
-            <div class="tab-pane active" id="productos">
-
-            </div>
-        </div>
-        <div class="col-md-12 espacios" id="resultado"></div>
-    </div>-->
-
     <div class="container">
         <div class="row">
             <div class="col-md-3" >

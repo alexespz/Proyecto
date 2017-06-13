@@ -70,10 +70,10 @@ if(!isset($_SESSION["usuario"])){
             <div class="row row-padded">
                 <div class="col-md-8">
                     <div class="fh5co-food-menu to-animate-2">
-                        <h2 class="fh5co-starters">Entrantes</h2>
+                        <h2 class="fh5co-desserts">Postres</h2>
                         <ul>
                             <?php
-                            $query = "SELECT * FROM producto INNER JOIN tipo_producto ON (producto.tipo_producto = tipo_producto.id_tipo_producto) WHERE tipo_producto.nombre = 'Entrantes'";
+                            $query = "SELECT * FROM producto INNER JOIN tipo_producto ON (producto.tipo_producto = tipo_producto.id_tipo_producto) WHERE tipo_producto.nombre = 'Postres'";
                             $conexion->consultas($query);
                             while($resultado = $conexion->devolverFilas()){ echo '
                                 <li>
@@ -99,34 +99,6 @@ if(!isset($_SESSION["usuario"])){
                             }
                             ?>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3" >
-                <div class="panel-group" id="accordion" >
-                    <div class="panel panel-default">
-                        <div class="panel-heading" >
-                            <h4 class="panel-title ">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    <span class="glyphicon glyphicon-book text-success"></span> Tu Pedido</a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body" id="pedido">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a href="../paginas/paginaPrincipal.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
-                            </h4>
-                        </div>
                     </div>
                 </div>
             </div>
