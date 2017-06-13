@@ -67,6 +67,16 @@ if(!isset($_SESSION["usuario"])){
                     <h2 class="heading to-animate">Realizar Pedido</h2>
                 </div>
             </div>
+            <div class="dropdown">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Mi pedido <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body" id="pedido">
+
+                        </div>
+                    </div>
+                </ul>
+            </div>
             <div class="row row-padded">
                 <div class="col-md-6">
                     <div class="fh5co-food-menu to-animate-2">
@@ -294,7 +304,7 @@ if(!isset($_SESSION["usuario"])){
         <div class="row">
             <div class="col-md-3" >
                 <div class="panel-group" id="accordion" >
-                    <div class="panel panel-default">
+                    <!--<div class="panel panel-default">
                         <div class="panel-heading" >
                             <h4 class="panel-title ">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
@@ -306,7 +316,7 @@ if(!isset($_SESSION["usuario"])){
 
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
