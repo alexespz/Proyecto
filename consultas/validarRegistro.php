@@ -21,8 +21,8 @@ if(!isset($_POST['submit'])){
         echo '
         <script>
             $("#boton").attr("class", "espacios");
-        </script>
-        <span class="col-md-12 alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ese usuario ya existe</span>';
+            $.growl.error({ message: "Ya existe un usuario con ese nombre" });
+        </script>';
     }else{
         /*Si el usuario no existe, comprobamos que las dos contraseñas introducidas coincidan*/
         $contrasenia = $_POST['contrasenia'];
@@ -31,8 +31,8 @@ if(!isset($_POST['submit'])){
             echo '
             <script>
                 $("#boton").css({"margin-top": "20px", "margin-right": "20px"});
-            </script>
-            <span class="col-md-12 alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Las contraseñas no coinciden</span>';
+                $.growl.error({ message: "Las contraseñas no coinciden" });
+            </script>';
         }else{
             /*Una vez comprobado que todos los campos estan rellenos, que el usuario no exista y las contraseñas coinciden. Introducimos al usuario en la base de datos*/
             $sexo = '';
@@ -46,14 +46,14 @@ if(!isset($_POST['submit'])){
             $insert = "INSERT INTO usuarios VALUES('', '".$_POST["nombre"]."', '".$_POST["apellidos"]."', '".$_POST["dni"]."', '".$_POST["telefono"]."', '".$sexo."', '".$user."', '".$passEncrypted."', '".$_POST["email"]."', '');";
             $conexion->consultas($insert);
 
-            echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Resgistro Completado</span>
+            echo '
             <script>
+                $.growl.error({ message: "Registro completado" });
                 setTimeout(function(){
                     window.location="../paginas/inicioSesion.php ";
-                }, 1200);
+                }, 2000);
             </script>';
 
         }
     }
 }
-//echo '<span class="col-md-12 alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"> Ha ocurrido un error al registrarse. Intentelo de nuevo</p>';

@@ -18,6 +18,12 @@ $sentencia->fetch();
 $sentencia->close();
 ?>
 <script>
+    $(function() {
+        $('#datetimepicker3').datetimepicker({
+            format: 'LT'
+        });
+    });
+
     function modificarHora(id, hora){
         $.ajax({
             async: true,
@@ -44,7 +50,12 @@ $sentencia->close();
             <div class="col-md-6 form-group">
                 <div class="form-group">
                     <label for="hora" class="control-label">Hora</label>
-                    <input type="text" name="hora" id="hora" class="form-control" placeholder="<?php echo $hora ?>" >
+                    <div class='input-group date' id='datetimepicker3'>
+                        <input type='text' class="form-control" id="hora"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -10,11 +10,11 @@ if(!isset($_POST["foto"])){
     $tipoImagen = $_FILES["foto"]["type"];
 
     if(file_exists($carpeta . $_FILES["foto"]["name"])){
-        echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ya existe una imagen con ese nombre</span>';
+        echo '<script>$.growl.error({ message: "Ya existe una imagen con ese nombre" });</script>';
     }else if (strlen($_FILES["foto"]["name"]) > 30){
-        echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> El nombre del archivo es demasiado largo</span>';
+        echo '<script>$.growl.error({ message: "El nombre del archivo es demasiado largo" });</script>';
     }else if(($_FILES['foto']['type'] != "image/jpg") && ($_FILES['foto']['type'] != "image/png") && ($_FILES['foto']['type'] != "image/jpeg")){
-        echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Extension de archivo incorrecto</span>';
+        echo '<script>$.growl.error({ message: "Extensión del archivo incorrecta" });</script>';
     }
     copy($_FILES['foto']['tmp_name'], $carpeta . $_FILES['foto']['name']);
     $imagen = $_FILES['foto']['name'];
@@ -28,12 +28,13 @@ $query = "INSERT INTO alergeno VALUES('','".$_POST["nombre"]."', '".$imagen."', 
 $conexion->consultas($query);
 
 if($conexion->filasAfectadas() > 0){
-    echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Alergeno añadido.</span>
+    echo '
         <script>
+            $.growl.notice({ message: "Alergeno añadido" });
             setTimeout(function(){
                 $("#cuerpo").load("listadoAlergenos.php");
             }, 2000);
         </script>';
 }else{
-    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';
+    echo '<script>$.growl.error({ message: "Se ha producido un error. Vuelva a intentarlo" });</script>';
 }

@@ -34,7 +34,7 @@ if(!isset($_SESSION["usuario"])){
     <form action="return false" onsubmit="return false" method="POST">
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group" id="datepicker">
+                <div class="form-group">
                     <label for="hora" class="control-label">Hora</label>
                     <div class='input-group date' id='datetimepicker3'>
                         <input type='text' class="form-control" id="hora"/>

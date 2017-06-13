@@ -13,16 +13,17 @@ if($_POST["contrasenia"] == $_POST["repetirContrasenia"]){
     $sentencia->execute();
 
     if($sentencia->affected_rows > 0){
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Contraseña modificada</span>
+        echo '
             <script>
+                $.growl.notice({ message: "Contraseña modificada" });
                 setTimeout(function(){
                     window.location="../paginas/inicioSesion.php ";
                 }, 2000);
             </script>';
     }else{
-        echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ha ocurrido algún error. Vuelve a intentarlo</span>';
+        echo '<script>$.growl.error({ message: "Se ha producido un error. Vuelva a intentarlo" });</script>';
     }
 }else{
-    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Error. Las contrasñas no coinciden</span>';
+    echo '<script>$.growl.error({ message: "Las contraseñas no coinciden" });</script>';
 }
 

@@ -23,6 +23,7 @@ if(password_verify($_POST['contrasenia'], $pass)){
         $("#pass").attr("class", "bg-danger");
         $("#mensaje").fadeIn("slow","linear");
         $("#boton").css({"margin-top": "20px", "margin-right": "20px"});
-    </script>
-    <span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p>Usuario y/o contraseña incorrectos, vuelve a intentarlo.</span>';
+        
+        $.growl.error({ message: "El usuario y/o contraseña son incorrectos, vuelva a intentarlo." });
+    </script>';
 }

@@ -8,7 +8,7 @@ $conexion->conect();
 $sql = "SELECT nombre, apellidos, email, telefono, dni FROM usuarios WHERE dni = '".$_POST["dni"]."' OR telefono = '".$_POST["telefono"]."' OR email = '".$_POST["email"]."'";
 $conexion->consultas($sql);
 if($conexion->devolverFilas() > 0){
-    echo '<span class="col-md-12 alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> El correo, telefono o dni especificado ya existen</span>';
+    echo '<script>$.growl.error({ message: "El correo, telefono o dni especificado ya existen" });</script>';
 }else {
     $sql = "SELECT * FROM usuarios WHERE id_usuario = ".$_SESSION["idUsuario"]." ";
 
@@ -44,13 +44,14 @@ if($conexion->devolverFilas() > 0){
     $_SESSION['nombre'] = $_POST["nombre"];
     $_SESSION['email'] = $_POST["email"];
     if ($conexion->filasAfectadas() > 0) {
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Usuario modificado</span>
+        echo '
         <script>
+            $.growl.notice({ message: "Usuario modificado" });
             setTimeout(function(){
                 $("#cuerpo").load("consultarPerfil.php");
             }, 1200);
         </script>';
     } else {
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Ha ocurrido algún error al modificar los datos</span>';
+        echo '<script>$.growl.error({ message: "Ha ocurrido algún error al modificar los datos. Vuelva a intentarlo" });</script>';
     }
 }

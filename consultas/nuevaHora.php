@@ -4,18 +4,25 @@ include_once '../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
-
-$query = "INSERT INTO hora_reserva VALUES('','".$_POST["hora"]."', 0) ";
-echo $query;
+$hora = explode(" ", $_POST["hora"]);
+$query = "SELECT hora FROM hora_reserva WHERE hora = '".$hora."' ";
 $conexion->consultas($query);
 
 if($conexion->filasAfectadas() > 0){
-    echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Añadido correctamente</span>
+    echo '<script>$.growl.error({ message: "Ya existe la hora especificada" });</script>';
+}else {
+    $query = "INSERT INTO hora_reserva VALUES('','".$hora."', 0) ";
+    $conexion->consultas($query);
+
+    if($conexion->filasAfectadas() > 0){
+        echo '
             <script>
+                $.growl.notice({ message: "Hora añadida" });
                 setTimeout(function(){
                     $("#cuerpo").load("listadoHoras.php");
-                }, 1200);
+                }, 2000);
             </script>';
-}else{
-    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';
+    }else{
+        echo '<script>$.growl.error({ message: "Se ha prducido un erro. Vuelve a intentarlo" });</script>';
+    }
 }

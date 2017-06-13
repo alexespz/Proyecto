@@ -22,6 +22,8 @@ if(!isset($_SESSION["usuario"])){
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap2-toggle.min.css" rel="stylesheet">
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap2-toggle.min.js"></script>
+    <script src="../sources/jquery.growl.js" type="text/javascript"></script>
+    <link href="../sources/jquery.growl.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../sources/ajaxAdmin.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>

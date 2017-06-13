@@ -92,7 +92,12 @@ while($resultado = $conexion->devolverFilas()){
         echo '<td><input type="checkbox" id="miToggle-'.$resultado["id_alergeno"].'" disabled checked data-toggle="toggle" data-width="60" data-height="30" data-onstyle="success" data-offstyle="danger" data-on=" " data-off=" "></td>';
     }echo'
         <td>' .$resultado["nombre"]. '</td>
-        <td><img src="../imagenes/alergenos/'.$resultado["foto"].'" style="width: 60px;"></td>
+        <td>';
+            if($resultado["foto"] == null){
+                echo '<img src="../imagenes/imagen-no-disponible.gif" style="width: 60px;">';
+            }else{
+                echo '<img src="../imagenes/alergenos/'.$resultado["foto"].'" style="width: 60px;">';
+            }echo'
         <td>';
         if($resultado["is_delete"] == 0){echo '
             <button type="button" class="btn btn-info" href="modificarAlergeno('.$resultado["id_alergeno"].')"><span class="glyphicon glyphicon-pencil"></span></button>

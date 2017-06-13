@@ -6,17 +6,18 @@ $conexion = new procedimientos();
 $conexion->conect();
 
 if($_POST["nuevaContrasena"] != $_POST["repetirContrasena"]){
-    echo '<span class="col-md-12 alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Las contraseñas no coinciden</span>';
+    echo '<script>$.growl.error({ message: "Las contraseñas no coinciden" });</script>';
 }else{
     $passEncrypted = password_hash($_POST["nuevaContrasena"], PASSWORD_DEFAULT);
     $sql = "UPDATE usuarios SET contrasenia = '".$passEncrypted."' WHERE usuario = '".$_SESSION["usuario"]."'";
     $conexion->consultas($sql);
     if($conexion->filasAfectadas() > 0){
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Contraseña modificada</span>
+        echo '
             <script>
+                $.growl.notice({ message: "Contraseña modificada" });
                 setTimeout(function(){
                     $("#cuerpo").load("consultarPerfil.php");
-                }, 1200);
+                }, 2000);
             </script>';
     }
 }

@@ -4,33 +4,33 @@ include_once '../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
+$hora = explode(" ", $_POST["hora"]);
 
-$hora = $_POST["hora"];
-
-$query = "SELECT * FROM hora_reserva WHERE id_hora '" .$_POST["id"]."' ";
+$query = "SELECT * FROM hora_reserva WHERE id_hora = '" .$_POST["id"]."' ";
 $conexion->consultas($query);
 $resultado = $conexion->devolverFilas();
 
-if ($_POST["hora"] == " ") {
+if ($_POST["hora"] == "") {
     $hora = $resultado["hora"];
 }
 
-$query = "SELECT hora FROM hora_reserva WHERE hora = '".$_POST["hora"]."' ";
+$query = "SELECT hora FROM hora_reserva WHERE hora = '".$hora."' ";
 $conexion->consultas($query);
 
-if($conexion->devolverFilas() > 0){
-    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Ya existe la hora especificada</span>';
+if($conexion->filasAfectadas() > 0){
+    echo '<script>$.growl.error({ message: "Ya existe la hora especificada" });</script>';
 }else{
     $query = "UPDATE hora_reserva SET hora = '".$hora."' WHERE id_hora = '".$_POST["id"]."' ";
     $conexion->consultas($query);
-    if($conexion->devolverFilas() > 0){
-        echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Hora modificada</span>
+    if($conexion->filasAfectadas() > 0){
+        echo '
         <script>
+            $.growl.notice({ message: "Hora modificada con exito" });
             setTimeout(function(){
                 $("#cuerpo").load("listadoHoras.php");
-            }, 1200);
+            }, 2000);
         </script>';
     }else{
-        echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';
+        echo '<script>$.growl.error({ message: "Se ha producido un error. Vuelve a intentarlo" });</script>';
     }
 }

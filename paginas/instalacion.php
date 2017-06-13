@@ -24,6 +24,8 @@ if($conexion->filasAfectadas() > 0){
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <!-- include BlockUI -->
     <script src="../sources/jquery.blockUI.js"></script>
+    <script src="../sources/jquery.growl.js" type="text/javascript"></script>
+    <link href="../sources/jquery.growl.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script>
         function Validar(user, pass, pass2, email) {
@@ -47,7 +49,7 @@ if($conexion->filasAfectadas() > 0){
 <div id="contenedorPrincipal" class="col-md-12 container cajaInstalacion">
     <div class="col-md-12"><h1><p>BIENVENIDO</p></h1></div>
     <div class="col-md-12"><hr /></div>
-    <div class="col-md-12"><p>Bienvenido al proceso de instalación de "insertar nombre de la aplicacion".</p>
+    <div class="col-md-12"><p>Bienvenido al proceso de instalación de "<h3>Manducare</h3>".</p>
         <p>Se trata de un proceso muy sencillo y que no te llevará más de dos minutos. Rellena los datos más abajo y podrás comenzar a utilizar la mejor plataforma de reserva y pedidos en restaurantes.</p></div>
     <div class="col-md-12"><h1><p>DATOS NECESARIOS</p></h1></div>
     <div class="col-md-12"><hr /></div>

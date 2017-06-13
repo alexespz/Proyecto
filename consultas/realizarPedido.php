@@ -51,12 +51,13 @@ if($conexion->filasAfectadas() > 0){
 
     mail($para, $titulo, $mensaje, $cabeceras);
 
-    echo '<span class="col-md-12 alert alert-info" id="mensaje"><p class="fa fa-info-circle"></p> Pedido Realizado. Le enviaremos un correo con los datos del pedido</span>
+    echo '
             <script>
+                $.growl.notice({ message: "Pedido realizado. Le enviaremos un correo con los datos del pedido" });
                 setTimeout(function(){
                     window.location="../paginas/paginaPrincipal.php ";
                 }, 2000);
             </script>';
 }else{
-    echo '<span class="alert alert-danger" id="mensaje"><p class="fa fa-exclamation-triangle"></p> Se ha producido un error. Vuelva a intentarlo</span>';
+    echo '<script>$.growl.error({ message: "Se ha producido un error. Vuelva a intentarlo" });</script>';
 }

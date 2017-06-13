@@ -13,5 +13,6 @@ $sentencia->close();
 
 echo '
 <script>
+    $.growl.notice({ message: "Eliminado con exito" });
     $("#cuerpo").load("listadoHoras.php");
 </script>';
