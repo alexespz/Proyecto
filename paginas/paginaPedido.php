@@ -110,7 +110,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver mas entrantes</a></p>
+                                <p><a href="../paginas/verTodosEntrantes.php" class="btn btn-primary btn-outline">Ver todos los entrantes</a></p>
                             </div>
                         </div>
                     </div>
@@ -147,7 +147,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosEnsaladas.php" class="btn btn-primary btn-outline">Ver mas ensaladas</a></p>
+                                <p><a href="../paginas/verTodosEnsaladas.php" class="btn btn-primary btn-outline">Ver todas las ensaladas</a></p>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosCarnes.php" class="btn btn-primary btn-outline">Ver mas carnes</a></p>
+                                <p><a href="../paginas/verTodosCarnes.php" class="btn btn-primary btn-outline">Ver todas las carnes</a></p>
                             </div>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosPescados.php" class="btn btn-primary btn-outline">Ver mas pescados</a></p>
+                                <p><a href="../paginas/verTodosPescados.php" class="btn btn-primary btn-outline">Ver todos los pescados</a></p>
                             </div>
                         </div>
                     </div>
@@ -258,7 +258,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosBebedias.php" class="btn btn-primary btn-outline">Ver mas bebidas</a></p>
+                                <p><a href="../paginas/verTodosBebedias.php" class="btn btn-primary btn-outline">Ver todas las bebidas</a></p>
                             </div>
                         </div>
                     </div>
@@ -293,7 +293,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosPostres.php" class="btn btn-primary btn-outline">Ver mas postres</a></p>
+                                <p><a href="../paginas/verTodosPostres.php" class="btn btn-primary btn-outline">Ver todos los postres</a></p>
                             </div>
                         </div>
                     </div>
