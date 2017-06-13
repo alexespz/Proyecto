@@ -5,6 +5,18 @@ $conexion = new procedimientos();
 $conexion->conect();
 ?>
 <script>
+    $(document).ready(function(){
+        $.ajax({
+            async: true,
+            type: "POST",
+            url: "../consultas/aniadirProducto.php",
+            data: "id=" + id,
+            success: function (resp) {
+                $('#pedido').html(resp);
+            }
+        });
+    });
+
     function aniadirProducto(id) {
         $.ajax({
             async: true,

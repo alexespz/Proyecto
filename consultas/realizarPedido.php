@@ -26,7 +26,6 @@ for ($i = 0; $i < 9; $i++) {
 $codigoPedido = implode($codigo); //devolvemos el array convertido a string
 
 $query = "INSERT INTO pedido VALUES ('', ".$idUsuario.", ".$_POST["total"].", '".$codigoPedido."')";
-echo $query;
 $conexion->consultas($query);
 
 $lastId = $conexion->ultimoId();
@@ -56,7 +55,7 @@ if($conexion->filasAfectadas() > 0){
                 $.growl.notice({ message: "Pedido realizado. Le enviaremos un correo con los datos del pedido" });
                 setTimeout(function(){
                     window.location="../paginas/paginaPrincipal.php ";
-                }, 2000);
+                }, 3000);
             </script>';
 }else{
     echo '<script>$.growl.error({ message: "Se ha producido un error. Vuelva a intentarlo" });</script>';

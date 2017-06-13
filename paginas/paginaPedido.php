@@ -1,7 +1,9 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
+include_once '../procedimientos/carrito.php';
 
+$carrito = new Carrito();
 $conexion = new procedimientos();
 $conexion->conect();
 
@@ -42,6 +44,8 @@ if(!isset($_SESSION["usuario"])){
     <script src="../sources/main.js"></script>
     <!-- Modernizr JS -->
     <script src="../sources/modernizr-2.6.2.min.js"></script>
+    <script src="../sources/jquery.growl.js" type="text/javascript"></script>
+    <link href="../sources/jquery.growl.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../sources/tabsPedido.js"></script>
     <script>
         function aniadirProducto(id) {
@@ -52,6 +56,22 @@ if(!isset($_SESSION["usuario"])){
                 data: "id=" + id,
                 success: function (resp) {
                     $('#pedido').html(resp);
+                }
+            });
+        }
+
+        function visualizarPedido(){
+            window.location = "../paginas/visualizarPedido.php";
+        }
+
+        function realizarPedido(total) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/realizarPedido.php",
+                data: "total=" + total,
+                success: function (resp) {
+                    $('#resultado').html(resp);
                 }
             });
         }
@@ -67,16 +87,47 @@ if(!isset($_SESSION["usuario"])){
                     <h2 class="heading to-animate">Realizar Pedido</h2>
                 </div>
             </div>
-            <div class="dropdown">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">Mi pedido <span class="caret"></span></button>
+            <div class="dropdown pull-right">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span> Mi pedido <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body" id="pedido">
-
+                            <?php
+                            $carro = $carrito->get_content();
+                            if($carro == null) {
+                                echo 'No hay productos en el carrito';
+                            }else{echo'
+                                <table class="table table-striped col-md-9">
+                                <tr>
+                                    <td class="col-md-7">Producto</td>
+                                    <td class="col-md-1">Cantidad</td>
+                                    <td class="col-md-1">Precio</td>
+                                </tr>';
+                                $carro = $carrito->get_content();
+                                foreach($carro as $producto){echo'
+                                <tr>
+                                    <td class="col-md-7">'.$producto["nombre"].'</td>
+                                    <td class="col-md-1">'.$producto["cantidad"].'</td>
+                                    <td class="col-md-1">'.$producto["precio"].' €</td>
+                                </tr>';
+                                }echo '
+                            </table>
+                            <p>Total: '.$carrito->precio_total().' €</p>
+                            <button class="btn btn-info" onclick="visualizarPedido();">Ver pedido</button>
+                            <hr/>
+                            <button type="button" class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');">Realizar Pedido</button>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </ul>
+                <div class="panel-heading pull-right">
+                    <h4 class="panel-title">
+                        <a href="../paginas/paginaPrincipal.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
+                    </h4>
+                </div>
             </div>
+            <hr/>
             <div class="row row-padded">
                 <div class="col-md-6">
                     <div class="fh5co-food-menu to-animate-2">
@@ -258,7 +309,7 @@ if(!isset($_SESSION["usuario"])){
                         </ul>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-4 text-center to-animate-2">
-                                <p><a href="../paginas/verTodosBebedias.php" class="btn btn-primary btn-outline">Ver todas las bebidas</a></p>
+                                <p><a href="../paginas/verTodosBebidas.php" class="btn btn-primary btn-outline">Ver todas las bebidas</a></p>
                             </div>
                         </div>
                     </div>
@@ -300,34 +351,7 @@ if(!isset($_SESSION["usuario"])){
                 </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3" >
-                <div class="panel-group" id="accordion" >
-                    <!--<div class="panel panel-default">
-                        <div class="panel-heading" >
-                            <h4 class="panel-title ">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    <span class="glyphicon glyphicon-book text-success"></span> Tu Pedido</a>
-                            </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body" id="pedido">
-
-                            </div>
-                        </div>
-                    </div>-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a href="../paginas/paginaPrincipal.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="col-md-12 espacios" id="resultado"></div>
 </div>
 </body>
 </html>

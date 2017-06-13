@@ -84,7 +84,7 @@ function cambiarContrasena(newPass, repeatPass) {
     $.ajax({
         async: true,
         type: "POST",
-        url: "../consultas/perfil/modificarContrasena.php",
+        url: "../consultas/modificarContrasena.php",
         data: "nuevaContrasena="+newPass+"&repetirContrasena="+repeatPass,
         success: function(resp){
             $('#resultado').html(resp);
@@ -96,7 +96,7 @@ function modificarPerfil(nombre, apellidos, email, telefono, sexo, dni) {
     $.ajax({
         async: true,
         type: "POST",
-        url: "../consultas/perfil/modificarPerfil.php",
+        url: "../consultas/modificarPerfil.php",
         data: "nombre="+nombre+"&apellidos="+apellidos+"&email="+email+"&telefono="+telefono+"&sexo="+sexo+"&dni="+dni,
         success: function(resp){
             $('#resultado').html(resp);
@@ -108,7 +108,7 @@ function cambiarUsuario(oldUser, newUser) {
     $.ajax({
         async: true,
         type: "POST",
-        url: "../consultas/perfil/modificarUsuario.php",
+        url: "../consultas/modificarUsuario.php",
         data: "usuarioAntiguo="+oldUser+"&usuarioNuevo="+newUser,
         success: function(resp){
             $('#resultado').html(resp);

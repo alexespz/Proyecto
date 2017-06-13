@@ -22,17 +22,17 @@ class Carrito {
             $cod = rand(0, $longitud);
             $codigo[] = $alphabet[$cod];
         }
-        $codigoPedido = implode($codigo); //devolvemos el array convertido a string
+        //$codigoPedido = implode($codigo); //devolvemos el array convertido a string
         $unique_id = md5($articulo["id"]);
 
         //creamos la id única para el producto
-        $articulo["unique_id"] = $codigoPedido;
+        $articulo["unique_id"] = $unique_id;
 
         //si no está vacío el carrito lo recorremos
         if(!empty($this->carrito)) {
             foreach ($this->carrito as $producto) {
                 //comprobamos si el producto ya estaba en el carrito para actualizar el producto o insertar un nuevo producto
-                if($producto["unique_id"] === $codigoPedido) {
+                if($producto["unique_id"] === $unique_id) {
                     //si ya estaba sumamos la cantidad
                     $articulo["cantidad"] += $producto["cantidad"];
                 }
@@ -43,10 +43,10 @@ class Carrito {
         $articulo["total"] = $articulo["cantidad"] * $articulo["precio"];
 
         //primero debemos eliminar el producto si es que estaba en el carrito
-        $this->unset_producto($codigoPedido);
+        $this->unset_producto($unique_id);
 
         ///ahora añadimos el producto al carrito
-        $_SESSION["carrito"][$codigoPedido] = $articulo;
+        $_SESSION["carrito"][$unique_id] = $articulo;
 
         //actualizamos el carrito
         $this->update_carrito();

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
-include_once '../consultas/perfil/obtenerPerfil.php';
+include_once '../consultas/obtenerPerfil.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
@@ -22,6 +22,8 @@ if(!isset($_SESSION["usuario"])){
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
+    <script src="../sources/jquery.growl.js" type="text/javascript"></script>
+    <link href="../sources/jquery.growl.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script>
         $.datepicker.regional['es'] = {
@@ -56,6 +58,9 @@ if(!isset($_SESSION["usuario"])){
         });
       
         function Validar(nombre, comensales, fecha, hora, alergeno) {
+            var form = document.formulario;
+            var dataString = $(form).serialize();
+
             $.ajax({
                 async: true,
                 type: "POST",
@@ -72,7 +77,7 @@ if(!isset($_SESSION["usuario"])){
 <div id="formulario" class="row container">
     <div class="col-md-9 pull-md-right main-content">
         <div class="col-md-12 text-center"><h1><p>REALIZAR RESERVA</p></h1></div>
-        <form action="return false" onsubmit="return false" method="POST">
+        <form action="return false" onsubmit="return false" method="POST" id="miFormulario">
             <div class="row">
                 <div class="col-md-12 form-group">
                     <div class="col-md-9 form-group">
@@ -120,8 +125,12 @@ if(!isset($_SESSION["usuario"])){
                             while($resultado = $conexion->devolverFilas()){echo'
                                 <td>
                                     <label id="contenedorImagen">
-                                        <input type="checkbox" class="checkImagen" name="alergeno[]" id="alergeno" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>
-                                        <img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>
+                                        <input type="checkbox" class="checkImagen" id="alergeno" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>';
+                                        if($resultado["foto"] == "NULL"){
+                                            echo '<img src="../imagenes/imagen-no-disponible.gif" id="imagen'.$resultado["id_alergeno"].'"/>';
+                                        }else{
+                                            echo '<img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>';
+                                        }echo'
                                     </label>
                                 </td>';
                         }   echo '
@@ -133,7 +142,7 @@ if(!isset($_SESSION["usuario"])){
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
             <div class="col-md-12 text-center" id="boton">
-                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, document.getElementById('alergeno'));">Reservar</button>
+                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, document.getElementById('alergeno').value);">Reservar</button>
             </div>
         </form>
     </div>

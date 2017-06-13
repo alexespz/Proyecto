@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
-include_once '../consultas/perfil/obtenerPerfil.php';
+include_once '../consultas/obtenerPerfil.php';
 
 ?>
 <html lang="en">

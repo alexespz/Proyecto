@@ -18,6 +18,8 @@ $conexion->conect();
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
+    <script src="../sources/jquery.growl.js" type="text/javascript"></script>
+    <link href="../sources/jquery.growl.css" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script>
         function realizarPedido(total) {
@@ -26,6 +28,18 @@ $conexion->conect();
                 type: "POST",
                 url: "../consultas/realizarPedido.php",
                 data: "total=" + total,
+                success: function (resp) {
+                    $('#resultado').html(resp);
+                }
+            });
+        }
+
+        function eliminarProducto(id){
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/eliminarProductoCarrito.php",
+                data: "id=" + id,
                 success: function (resp) {
                     $('#resultado').html(resp);
                 }
@@ -65,14 +79,14 @@ $conexion->conect();
                     <td class="col-md-1">'.$producto["precio"].' €</td>
                     <td class="col-md-3">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$producto["id"].'"><span class="fa fa-eye"></span></button>
-                        <button type="button" class="btn btn-danger" onclick="'.$carrito->remove_producto("$idUnica").'"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button type="button" class="btn btn-danger" onclick="eliminarProducto('.$producto["unique_id"].')"><span class="glyphicon glyphicon-remove"></span></button>
                     </td>
                 </tr>';
                 }echo '
             </table>
                 <p>Productos del carrito: '.$carrito->articulos_total().'</p>
                 <p>Total: '.$carrito->precio_total().' €</p>
-                <button class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');"">Realizar Pedido</button>';?>
+                <button class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');">Realizar Pedido</button>';?>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </div>

@@ -26,7 +26,7 @@ $codigoReserva = implode($codigo); //devolvemos el array convertido a string
 $sql = "INSERT INTO reserva VALUES ('', ".$idUsuario.", ".$_POST["comensales"].", '".$_POST["fecha"]."', '".$_POST["hora"]."', '".$codigoReserva."')";
 $conexion->consultas($sql);
 
-$listaAlergeno = $_POST["alergeno"];
+$listaAlergeno = count($_POST["alergeno"]);
 foreach ($listaAlergeno as $alergeno){
     echo $alergeno. '<br/>';
 }
