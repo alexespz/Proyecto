@@ -39,11 +39,12 @@ $articulo = array("id"=>$id , "nombre"=>"$nombre", "precio"=>$precio, "cantidad"
 $carrito->add($articulo);
 
 echo '
-<table class="table table-striped col-md-9">
+<table class="table table-striped col-md-10">
     <tr>
         <td class="col-md-7">Producto</td>
         <td class="col-md-1">Cantidad</td>
         <td class="col-md-1">Precio</td>
+        <td class="col-md-1">Acciones</td>
     </tr>';
 $carro = $carrito->get_content();
 foreach($carro as $producto) {echo'
@@ -51,10 +52,10 @@ foreach($carro as $producto) {echo'
         <td class="col-md-7">'.$producto["nombre"].'</td>
         <td class="col-md-1">'.$producto["cantidad"].'</td>
         <td class="col-md-1">'.$producto["precio"].' €</td>
+        <td class="col-md-1"><button type="button" class="btn btn-danger" onclick="eliminarProducto('.$producto["id"].')"><span class="glyphicon glyphicon-remove"></span></button></td>
     </tr>';
 }echo '
 </table>
 <p>Total: '.$carrito->precio_total().' €</p>
-<button class="btn btn-info" onclick="visualizarPedido();">Ver pedido</button>
 <hr/>
 <button class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');">Realizar Pedido</button>';

@@ -37,7 +37,7 @@ if(!isset($_SESSION["usuario"])){
             dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
             dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
             weekHeader: 'Sm',
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'yy/mm/dd',
             firstDay: 1,
             isRTL: false,
             showMonthAfterYear: false,
@@ -45,39 +45,19 @@ if(!isset($_SESSION["usuario"])){
         };
         $.datepicker.setDefaults($.datepicker.regional['es']);
         $(function () {
-            $("#fecha").datepicker();
-        });
-
-        $(window).ready(function(){
-          $.datepicker.setDefaults($.datepicker.regional["es"]);
-          $("#fecha").datepicker({
-            firstDay: 1,
-            minDate: -20,
-            maxDate: "+1M +10D" 
-          });
-        });
-      
-        function Validar(nombre, comensales, fecha, hora, alergeno) {
-            var form = document.formulario;
-            var dataString = $(form).serialize();
-
-            $.ajax({
-                async: true,
-                type: "POST",
-                url: "../consultas/realizarReserva.php",
-                data: "nombre="+nombre+"&comensales="+comensales+"&fecha="+fecha+"&hora="+hora+"&alergeno="+alergeno,
-                success: function(resp){
-                    $('#resultado').html(resp);
-                }
+            $("#fecha").datepicker({
+                minDate: "0",
+                maxDate: "+14D",
             });
-        }
+        });
+
     </script>
 </head>
 <body>
 <div id="formulario" class="row container">
     <div class="col-md-9 pull-md-right main-content">
         <div class="col-md-12 text-center"><h1><p>REALIZAR RESERVA</p></h1></div>
-        <form action="return false" onsubmit="return false" method="POST" id="miFormulario">
+        <form action="../consultas/realizarReserva.php" method="POST">
             <div class="row">
                 <div class="col-md-12 form-group">
                     <div class="col-md-9 form-group">
@@ -125,7 +105,7 @@ if(!isset($_SESSION["usuario"])){
                             while($resultado = $conexion->devolverFilas()){echo'
                                 <td>
                                     <label id="contenedorImagen">
-                                        <input type="checkbox" class="checkImagen" id="alergeno" onclick="aniadirAlergeno('.$resultado["id_alergeno"].')"/>';
+                                        <input type="checkbox" class="checkImagen" id="alergeno" name="alergeno[]" value="'.$resultado["id_alergeno"].'"/>';
                                         if($resultado["foto"] == "NULL"){
                                             echo '<img src="../imagenes/imagen-no-disponible.gif" id="imagen'.$resultado["id_alergeno"].'"/>';
                                         }else{
@@ -142,7 +122,7 @@ if(!isset($_SESSION["usuario"])){
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
             <div class="col-md-12 text-center" id="boton">
-                <button class="btn btn-info" id="submit" onclick="Validar(document.getElementById('nombre').value, document.getElementById('comensales').value, document.getElementById('fecha').value, document.getElementById('hora').value, document.getElementById('alergeno').value);">Reservar</button>
+                <button type="submit" class="btn btn-info" id="submit">Reservar</button>
             </div>
         </form>
     </div>

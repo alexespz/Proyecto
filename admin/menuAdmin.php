@@ -14,7 +14,6 @@ if(!isset($_SESSION["usuario"])){
     <title>Pagina principal</title>
     <script type="text/javascript" src="../sources/jquery.min.js"></script>
     <script type="text/javascript" src="../sources/moment.js"></script>
-    <script type="text/javascript" src="../sources/bootstrap.min.js"></script>
     <script type="text/javascript" src="../sources/bootstrap.js"></script>
     <script type="text/javascript" src="../sources/bootstrap-datetimepicker.min.js"></script>
     <link type="text/css" href="../sources/bootstrap.css" rel="stylesheet">

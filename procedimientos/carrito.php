@@ -121,14 +121,15 @@ class Carrito {
         }
 
         //si no existe la id única del producto en el carrito
-        if(!isset($this->carrito[$unique_id])) {
-            throw new Exception("La unique_id $unique_id no existe!", 1);
+        $carro = $this->get_content();
+        foreach ($carro as $producto){
+            if($producto["id"] == $unique_id){
+                unset($_SESSION["carrito"][$producto["unique_id"]]);
+                $this->update_carrito();
+                $this->update_precio_cantidad();
+            }
         }
 
-        //en otro caso, eliminamos el producto, actualizamos el carrito y el precio y cantidad totales del carrito
-        unset($_SESSION["carrito"][$unique_id]);
-        $this->update_carrito();
-        $this->update_precio_cantidad();
         return true;
     }
 

@@ -75,6 +75,18 @@ if(!isset($_SESSION["usuario"])){
                 }
             });
         }
+
+        function eliminarProducto(id){
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: "../consultas/eliminarProductoCarrito.php",
+                data: "id=" + id,
+                success: function (resp) {
+                    $('#pedido').html(resp);
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -97,11 +109,12 @@ if(!isset($_SESSION["usuario"])){
                             if($carro == null) {
                                 echo 'No hay productos en el carrito';
                             }else{echo'
-                                <table class="table table-striped col-md-9">
+                                <table class="table table-striped col-md-10">
                                 <tr>
                                     <td class="col-md-7">Producto</td>
                                     <td class="col-md-1">Cantidad</td>
                                     <td class="col-md-1">Precio</td>
+                                    <td class="col-md-1">Acciones</td>
                                 </tr>';
                                 $carro = $carrito->get_content();
                                 foreach($carro as $producto){echo'
@@ -109,11 +122,11 @@ if(!isset($_SESSION["usuario"])){
                                     <td class="col-md-7">'.$producto["nombre"].'</td>
                                     <td class="col-md-1">'.$producto["cantidad"].'</td>
                                     <td class="col-md-1">'.$producto["precio"].' €</td>
+                                    <td class="col-md-1"><button type="button" class="btn btn-danger" onclick="eliminarProducto('.$producto["id"].')"><span class="glyphicon glyphicon-remove"></span></button></td>
                                 </tr>';
                                 }echo '
                             </table>
                             <p>Total: '.$carrito->precio_total().' €</p>
-                            <button class="btn btn-info" onclick="visualizarPedido();">Ver pedido</button>
                             <hr/>
                             <button type="button" class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');">Realizar Pedido</button>';
                             }
@@ -153,6 +166,7 @@ if(!isset($_SESSION["usuario"])){
                                             '.$resultado["precio"].' €
                                         </div>
                                         <div class="fh5co-food-pricing">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$resultado["id_producto"].'"><span class="fa fa-eye"></span></button>
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
@@ -190,6 +204,7 @@ if(!isset($_SESSION["usuario"])){
                                             '.$resultado["precio"].' €
                                         </div>
                                         <div class="fh5co-food-pricing">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$resultado["id_producto"].'"><span class="fa fa-eye"></span></button>
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
@@ -227,6 +242,7 @@ if(!isset($_SESSION["usuario"])){
                                             '.$resultado["precio"].' €
                                         </div>
                                         <div class="fh5co-food-pricing">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$resultado["id_producto"].'"><span class="fa fa-eye"></span></button>
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
@@ -264,6 +280,7 @@ if(!isset($_SESSION["usuario"])){
                                             '.$resultado["precio"].' €
                                         </div>
                                         <div class="fh5co-food-pricing">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$resultado["id_producto"].'"><span class="fa fa-eye"></span></button>
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
@@ -301,6 +318,7 @@ if(!isset($_SESSION["usuario"])){
                                             '.$resultado["precio"].' €
                                         </div>
                                         <div class="fh5co-food-pricing">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$resultado["id_producto"].'"><span class="fa fa-eye"></span></button>
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
@@ -336,6 +354,7 @@ if(!isset($_SESSION["usuario"])){
                                         </div>
                                         <div class="fh5co-food-pricing">'.$resultado["precio"].' € </div>
                                         <div class="fh5co-food-pricing">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" href="../consultas/obtenerModal.php?id='.$resultado["id_producto"].'"><span class="fa fa-eye"></span></button>
                                             <button type="button" class="btn btn-success" onclick="aniadirProducto('.$resultado["id_producto"].')"><span class="fa fa-plus"></span></button>
                                         </div>
                                     </li>';
@@ -352,6 +371,15 @@ if(!isset($_SESSION["usuario"])){
         </div>
     </div>
     <div class="col-md-12 espacios" id="resultado"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
