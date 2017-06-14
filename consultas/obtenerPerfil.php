@@ -9,3 +9,4 @@ $usuario = $_SESSION["usuario"];
 $sentencia->execute();
 $sentencia->bind_result($nombre, $apellidos, $dni, $telefono, $sexo, $email, $usuario);
 $sentencia->fetch();
+$sentencia->close();

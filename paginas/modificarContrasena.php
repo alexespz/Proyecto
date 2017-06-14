@@ -3,7 +3,6 @@ session_start();
 
 ?>
 <html lang="en">
-<script src="../sources/ajaxPerfil.js"></script>
 <div class="col-md-9 pull-md-right main-content">
     <div class="col-md-12 text-center"><h1><p>MODIFICAR CONTRASEÑA</p></h1></div>
     <form action="return false" onsubmit="return false" method="POST">

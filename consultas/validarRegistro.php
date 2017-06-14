@@ -48,7 +48,7 @@ if(!isset($_POST['submit'])){
 
             echo '
             <script>
-                $.growl.error({ message: "Registro completado" });
+                $.growl.notice({ message: "Registro completado" });
                 setTimeout(function(){
                     window.location="../paginas/inicioSesion.php ";
                 }, 2000);

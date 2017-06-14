@@ -48,7 +48,7 @@
             </div>
             <div class="col-md-12 espacios" id="resultado"></div>
             <div class="col-md-2" id="boton">
-                <button class="btn btn-info" onclick="Validar(document.getElementById('correo').value, document.getElementById('pass').value, document.getElementById('pass2').value);">Instalar</button>
+                <button class="btn btn-info" onclick="Validar(document.getElementById('correo').value, document.getElementById('pass').value, document.getElementById('pass2').value);">Modificar contraseña</button>
             </div>
         </form>
     </div>

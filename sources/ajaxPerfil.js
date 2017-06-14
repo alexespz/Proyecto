@@ -33,14 +33,13 @@ $(document).ready(function(){
 
     $('#editarPerfil').on("click", function(e){
         e.preventDefault();
-        $('#cuerpo').load("../paginasmodificarPerfil.php");
+        $('#cuerpo').load("../paginas/modificarPerfil.php");
     });
 
     $('#cambiarContrasena').on("click", function(e){
         e.preventDefault();
         $('#cuerpo').load("../paginas/modificarContrasena.php");
     });
-
 
     $('#verPerfil').on("click", function(e){
         e.preventDefault();
@@ -114,4 +113,8 @@ function cambiarUsuario(oldUser, newUser) {
             $('#resultado').html(resp);
         }
     });
+}
+
+function volver(){
+    window.location = "../paginas/paginaPrincipal.php";
 }

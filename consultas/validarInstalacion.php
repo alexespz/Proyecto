@@ -15,8 +15,6 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
     $conexion->multiConsultas($sql);
 
     if($conexion->filasAfectadas() > 0){
-        echo '<script>$.growl.error({ message: "Ha ocurrido algún error vuelve ha intentarlo" });</script>';
-    }else{
         //Si la ejecución del archivo sql no ha dado ningun problema se le manda al usuario un correo con los datos de la cuenta del administrador.
         $para      = $_POST["email"];
         $titulo    = 'Instalación de "nombre de la aplicación';
@@ -37,5 +35,7 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
                     window.location="../paginas/inicioSesion.php ";
                 }, 2000);
             </script>';
+    }else{
+        echo '<script>$.growl.error({ message: "Ha ocurrido algún error vuelve ha intentarlo" });</script>';
     }
 }
