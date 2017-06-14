@@ -18,7 +18,7 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
         //Si la ejecución del archivo sql no ha dado ningun problema se le manda al usuario un correo con los datos de la cuenta del administrador.
         $para      = $_POST["email"];
         $titulo    = 'Instalación de "nombre de la aplicación';
-        $mensaje   = 'Gracias por instalar "nombre de la aplicación. A continuación se muestran los datos para acceder con el usuario administrador.'
+        $mensaje   = 'Gracias por instalar Manducare. A continuación se muestran los datos para acceder con el usuario administrador.'
             ."<h3> Usuario: ".$_POST["usuario"]."</h3><br/>
                       <h3> Contraseña: ".$_POST["contrasenia"]."</h3><br/>"
             .'Para iniciar sesión como administrador deberá dirigirse a la siguiente URL: alejandroflores.ga/proyecto/admin';
