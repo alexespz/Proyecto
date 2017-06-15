@@ -40,14 +40,10 @@ echo '
         <p class="divider"></p>
         <p>Puede contener:</p>
         <p>';
-            $obtenerAlergenos = "SELECT id_alergeno FROM producto_alergeno WHERE id_producto = '".$_GET["id"]."' ";
+            $obtenerAlergenos = "SELECT foto FROM alergeno INNER JOIN producto_alergeno ON (alergeno.id_alergeno = producto_alergeno.id_alergeno) WHERE id_producto = '".$_GET["id"]."' ";
             $conexion->consultas($obtenerAlergenos);
             while($resultado = $conexion->devolverFilas()){
-                $obtenerFotoAlergeno = "SELECT foto FROM alergeno WHERE id_alergeno = '".$resultado["id_alergeno"]."' ";
-                $conexion->consultas($obtenerFotoAlergeno);
-                if($resultadoFoto = $conexion->devolverFilas()){
-                    echo '<img src="../imagenes/alergenos/'.$resultadoFoto["foto"].'" id="imagenAlergeno"/>';
-                }
+                echo '<img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagenAlergeno"/>';
             }
         echo '    
         </p>
