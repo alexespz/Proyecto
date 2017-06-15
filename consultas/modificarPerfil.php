@@ -15,27 +15,27 @@ if($conexion->devolverFilas() > 0){
     $conexion->consultas($sql);
     $resultado = $conexion->devolverFilas();
 
-    if ($_POST["nombre"] == " ") {
+    if ($_POST["nombre"] == "") {
         $_POST["nombre"] = $resultado["nombre"];
     }
 
-    if ($_POST["apellidos"] == " ") {
+    if ($_POST["apellidos"] == "") {
         $_POST["apellidos"] = $resultado["apellidos"];
     }
 
-    if ($_POST["email"] == " ") {
+    if ($_POST["email"] == "") {
         $_POST["email"] = $resultado["email"];
     }
 
-    if ($_POST["telefono"] == " ") {
+    if ($_POST["telefono"] == "") {
         $_POST["telefono"] = $resultado["telefono"];
     }
 
-    if ($_POST["sexo"] == " ") {
+    if ($_POST["sexo"] == "") {
         $_POST["sexo"] = $resultado["sexo"];
     }
 
-    if ($_POST["dni"] == " ") {
+    if ($_POST["dni"] == "") {
         $_POST["dni"] = $resultado["dni"];
     }
 
