@@ -40,11 +40,17 @@ if($conexion->filasAfectadas() > 0){
     //Configuramos el correo que se le envia al usuario al realizar la reserva
     $para      = $email;
     $titulo    = 'DATOS DE LA RESERVA';
-    $mensaje   = 'Tu codigo de reserva es el siguiente: '.$codigoReserva;
+    $mensaje   = 'Ha realizado una reserva con los siguientes datos' ."\r\n";
+    $mensaje .= ' Titular de la reserva: <h3>'.$_POST["nombre"].'</h3>' ."\r\n";
+    $mensaje .= ' Numero de comensales: <h3>'.$_POST["comensales"].'</h3>' ."\r\n";
+    $mensaje .= ' Fecha de la reserva: <h3>'.$_POST["fecha"].'</h3>' ."\r\n";
+    $mensaje .= ' Hora de la reserva: <h3>'.$_POST["nombre"].'</h3>' ."\r\n";
+    $mensaje .= 'Su codigo de reserva es el siguiente: <h1>'.$codigoReserva.'</h1>';
 
-    $cabeceras = 'From: webmaster@example.com' . "\r\n" .
-        'Reply-To: webmaster@example.com' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
+    $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    // Cabeceras adicionales
+    $cabeceras .= 'From: webmaster@manducare.com' . "\r\n";
 
     mail($para, $titulo, $mensaje, $cabeceras);
     header("Location: ../paginas/paginaPrincipal.php");

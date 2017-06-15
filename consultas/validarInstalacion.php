@@ -19,16 +19,14 @@ if($_POST["contrasenia"] !== $_POST["repetirContrasenia"]){
         $para      = $_POST["email"];
         $titulo    = 'Instalación Manducare';
         $mensaje   = 'Gracias por instalar Manducare. A continuación se muestran los datos para acceder con el usuario administrador:' ."\r\n";
-        $mensaje .= '<h3> Usuario: ".$_POST["usuario"]."</h3>' ."\r\n";
-        $mensaje .= '<h3> Contraseña: ".$_POST["contrasenia"]."</h3>' ."\r\n";
+        $mensaje .= '<h3> Usuario: '.$_POST["usuario"].'</h3>' ."\r\n";
+        $mensaje .= '<h3> Contraseña: '.$_POST["contrasenia"].'</h3>' ."\r\n";
         $mensaje .= 'Para iniciar sesión como administrador deberá dirigirse a la siguiente URL: alejandroflores.ga/proyecto/admin';
 
         $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
         $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         // Cabeceras adicionales
         $cabeceras .= 'From: webmaster@manducare.com' . "\r\n";
-        $cabeceras .= 'Cc: birthdayarchive@example.com' . "\r\n";
-        $cabeceras .= 'Bcc: birthdaycheck@example.com' . "\r\n";
 
         mail($para, $titulo, $mensaje, $cabeceras);
 

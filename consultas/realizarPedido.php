@@ -44,9 +44,10 @@ if($conexion->filasAfectadas() > 0){
     $titulo    = 'DATOS DEL PEDIDO';
     $mensaje   = 'Tu codigo de pedido es el siguiente: '.$codigoPe;
 
-    $cabeceras = 'From: webmaster@example.com' . "\r\n" .
-        'Reply-To: webmaster@example.com' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
+    $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    // Cabeceras adicionales
+    $cabeceras .= 'From: webmaster@manducare.com' . "\r\n";
 
     mail($para, $titulo, $mensaje, $cabeceras);
 
