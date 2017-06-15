@@ -46,10 +46,10 @@ if($conexion->filasAfectadas() > 0){
     </script>
 </head>
 <body>
-<div id="contenedorPrincipal" class="col-md-12 container cajaInstalacion">
+<div id="formulario" class="col-md-12 container cajaInstalacion">
     <div class="col-md-12"><h1><p>BIENVENIDO</p></h1></div>
     <div class="col-md-12"><hr /></div>
-    <div class="col-md-12"><p>Bienvenido al proceso de instalación de "<h3>Manducare</h3>".</p>
+    <div class="col-md-12"><p>Bienvenido al proceso de instalación de Manducare.</p>
         <p>Se trata de un proceso muy sencillo y que no te llevará más de dos minutos. Rellena los datos más abajo y podrás comenzar a utilizar la mejor plataforma de reserva y pedidos en restaurantes.</p></div>
     <div class="col-md-12"><h1><p>DATOS NECESARIOS</p></h1></div>
     <div class="col-md-12"><hr /></div>

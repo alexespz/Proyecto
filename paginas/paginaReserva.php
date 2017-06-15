@@ -54,7 +54,8 @@ if(!isset($_SESSION["usuario"])){
     </script>
 </head>
 <body>
-<div id="formulario" class="row container">
+<div class="container caja">
+    <div id="formulario" class="row container">
         <div class="col-md-12 text-center"><h1><p>REALIZAR RESERVA</p></h1></div>
         <div class="pull-right" style="margin-bottom: 40px;">
             <h4 class="panel-title">
@@ -87,13 +88,13 @@ if(!isset($_SESSION["usuario"])){
                     <div class="col-md-3 form-group">
                         <label for="hora" class="control-label">Hora de la reserva</label>
                         <select name="hora" class="form-control" id="hora" required>
-                        <?php
-                        $sql = "SELECT * FROM hora_reserva";
-                        $conexion->consultas($sql);
-                        while($resultado = $conexion->devolverFilas()){
-                            echo '<option value="'.$resultado["id_hora"].'">'.$resultado["hora"].'</option>';
-                        }
-                        ?>
+                            <?php
+                            $sql = "SELECT * FROM hora_reserva";
+                            $conexion->consultas($sql);
+                            while($resultado = $conexion->devolverFilas()){
+                                echo '<option value="'.$resultado["id_hora"].'">'.$resultado["hora"].'</option>';
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -104,17 +105,17 @@ if(!isset($_SESSION["usuario"])){
                         <?php
                         $query = "SELECT * FROM alergeno";
                         $conexion->consultas($query);echo '
-                        <table>
+                        <table class="table-responsive">
                             <tr>';
-                            while($resultado = $conexion->devolverFilas()){echo'
+                        while($resultado = $conexion->devolverFilas()){echo'
                                 <td>
                                     <label id="contenedorImagen">
                                         <input type="checkbox" class="checkImagen" id="alergeno" name="alergeno[]" value="'.$resultado["id_alergeno"].'"/>';
-                                        if($resultado["foto"] == "NULL"){
-                                            echo '<img src="../imagenes/imagen-no-disponible.gif" id="imagen'.$resultado["id_alergeno"].'"/>';
-                                        }else{
-                                            echo '<img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>';
-                                        }echo'
+                            if($resultado["foto"] == "NULL"){
+                                echo '<img src="../imagenes/imagen-no-disponible.gif" id="imagen'.$resultado["id_alergeno"].'"/>';
+                            }else{
+                                echo '<img src="../imagenes/alergenos/'.$resultado["foto"].'" id="imagen'.$resultado["id_alergeno"].'"/>';
+                            }echo'
                                     </label>
                                 </td>';
                         }   echo '
@@ -131,5 +132,7 @@ if(!isset($_SESSION["usuario"])){
         </form>
     </div>
 </div>
+</div>
+
 </body>
 </html>

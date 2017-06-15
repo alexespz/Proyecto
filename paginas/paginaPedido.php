@@ -180,6 +180,7 @@ if(!isset($_SESSION["usuario"])){
                         </div>
                     </div>
                 </div>
+                <hr/>
                 <div class="col-md-6">
                     <div class="fh5co-food-menu to-animate-2">
                         <h2 class="fh5co-salads">Ensaladas</h2>

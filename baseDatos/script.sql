@@ -145,19 +145,31 @@ INSERT INTO `alergeno` (`id_alergeno`, `nombre`, `foto`) VALUES
   ('13', 'soja', 'alergenos-soja.png'),
   ('14', 'sulfito', 'alergenos-sulfito.png');
 
-INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `foto`, `calorias`, `tipo_producto`) VALUES
-  ('1', 'Surtido Ibérico', 'Surtido variado ibérico', '4', null, '1200', '1'),
-  ('2', 'Croquetas Caseras', 'Croqueras caseras', '3', null, '800', '1'),
-  ('3', 'Ensalada Mixta', 'Ensalada mixta', '5.20', null, '200', '2'),
-  ('4', 'Ensalada Cesar', 'Ensalada cesar', '7.20', null, '400', '2'),
-  ('5', 'Solomillo al Roquefort', 'Solomillo al roquefort', '13.90', null, '900', '3'),
-  ('6', 'Secreto Ibérico', 'Secreto ibérico', '14.70', null, '900', '3'),
-  ('7', 'Bacalado a la Nata', 'Bacalado a la nata', '14.60', null, '800', '4'),
-  ('8', 'Merluza a la Plancha', 'Merluza a la plancha', '13.90', null, '600', '4'),
-  ('9', 'Jarra Cerveza 1/2 L', 'Jarra de cerveza de medio litro', '2', null, '80', '5'),
-  ('10', 'CocaCola', 'CocaCola normal', '1.20', null, '150', '5'),
-  ('11', 'Copa de Chocolate', 'Copa de helado de chocolate', '2', null, '400', '6'),
-  ('12', 'Flan Casero', 'Flan casero de huevo', '2.50', null, '240', '6');
+INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `foto`, `calorias`, `tipo_producto`, `is_delete`) VALUES
+  ('1', 'Surtido Ibérico', 'Surtido variado ibérico', '4', 'Surtido_de_Ibericos.jpg', '1200', '1', 0),
+  ('2', 'Croquetas Caseras', 'Croqueras caseras', '3', 'croquetas.jpg', '800', '1', 0),
+  ('3', 'Tabla de queso', 'Tabla de quesos', '3', 'tabladequesos.jpg', '400', '1' , 0),
+  ('4', 'Esparragos verdes', 'Esparragos verdes naturales a la plancha', '5', 'esparrago-verde.jpg', '300', '1' , 0),
+  ('5', 'Ensalada Mixta', 'Ensalada mixta', '5.20', 'ensaladamixta.jpg', '200', '2', 0),
+  ('6', 'Ensalada Cesar', 'Ensalada cesar', '7.20', 'ensalada-cesar.jpg', '400', '2', 0),
+  ('7', 'Ensalada Griega', 'Ensalada griega', '7.20', 'ensalada-griega.jpg', '400', '2', 0),
+  ('8', 'Ensalada Gourmet', 'Ensalada gourmet', '11.00', 'Ensalada-gourmet.jpg', '400', '2', 0),
+  ('9', 'Solomillo al Roquefort', 'Solomillo al roquefort', '13.90', 'solomillo-roquefort.jpg', '900', '3', 0),
+  ('10', 'Secreto Ibérico', 'Secreto ibérico', '14.70', 'secreto-iberico.jpg', '900', '3', 0),
+  ('11', 'Chulentón de ternera', 'chuleton de ternera', '17.90', 'chuleton.jpg', '900', '3', 0),
+  ('12', 'Manitas de cerdo', 'manitas de cerdo', '16.90', null, '900', '3', 0),
+  ('13', 'Bacalado a la Nata', 'Bacalado a la nata', '14.60', 'bacalao-nata.jpg', '800', '4', 0),
+  ('14', 'Merluza a la Plancha', 'Merluza a la plancha', '13.90', 'merluza-plancha.jpg', '600', '4', 0),
+  ('15', 'Chipirones rellenos', 'chipirones rellenos', '19.60', 'chipirones-rellenos.jpg', '800', '4', 0),
+  ('16', 'Lubina a la sal', 'Lubina a la sal', '22.60', 'lubina_dorada_sal.jpg', '800', '4', 0),
+  ('17', 'Jarra Cerveza 1/2 L', 'Jarra de cerveza de medio litro', '2', 'cerveza.jpg', '80', '5', 0),
+  ('18', 'CocaCola', 'CocaCola normal', '1.20', 'cocacola.jpg', '150', '5', 0),
+  ('19', 'Fanta de naranja', 'Fanta de naranja', '1.60', 'fanta-naranja.jpg', '80', '5', 0),
+  ('20', 'Nestea', 'nestea', '1.30', 'nestea.jpg', '80', '5', 0),
+  ('21', 'Copa de Chocolate', 'Copa de helado de chocolate', '2', 'copa-chocolate.jpg', '400', '6', 0),
+  ('22', 'Flan Casero', 'Flan casero de huevo', '2.50', 'flan.jpg', '240', '6', 0),
+  ('23', 'Natillas', 'natillas', '3', 'natillas.jpg', '400', '6', 0),
+  ('24', 'Tarta de queso', 'tarta de queso', '3.50', 'tarta-queso.jpg', '400', '6', 0);
 
 INSERT INTO `producto_alergeno` VALUES
   ('1', '2', '6'),

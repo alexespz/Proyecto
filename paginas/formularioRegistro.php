@@ -14,6 +14,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script>
         function Validar(nombre, apellidos, email, telefono, sexo, dni, user, pass, pass2, submit) {
+            var dni = dni
+            var array='TRWAGMYFPDXBNJZSQVHLCKET';
+            var ex1 = new RegExp("^[0-9]{8}[A-Z]{1}$");
+
+            if(ex1.test(dni)){
+                array.split();
+                var numero = (dni.substr(0,8)%23);
+                var letra = array[numero];
+
+                if(letra == dni.substr(8)){
+
+                }
+            }else{
+                $.growl.error({ message: "DNI incorrecto, introduce un DNI valido" });
+            }
+
+            var correo = email;
+
+            expresion = /^(\w+[\.-]?\w+)@(\w+)\.(\w+)?$/;
+            if(expresion.test(correo)){
+            }else{
+                $.growl.error({ message: "El correo es incorrecto, introduce un correo valido" });
+            }
+
+            var numeroTelefono = telefono;
+            var expresionRegular1= new RegExp("^[0-9]{9}$");//<--- con esto vamos a validar el numero
+            var expresionRegular2= /\s/;//<--- con esto vamos a validar que no tenga espacios en blanco
+
+            if(expresionRegular2.test(numeroTelefono))
+                $.growl.error({ message: "El numero de telefono no puede contener espacios en blanco" });
+            else if(!expresionRegular1.test(numeroTelefono))
+                $.growl.error({ message: "Numero de teléfono incorrecto. El numero debe contener 9 caracteres" });
+
             $.ajax({
                 async: true,
                 type: "POST",

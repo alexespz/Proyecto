@@ -24,7 +24,7 @@
     </script>
 </head>
 <body>
-<div id="contenedorPrincipal" class="col-md-12 container cajaInstalacion">
+<div id="contenedorPrincipal" class="col-md-12 container cajaInstalacion" >
     <div class="col-md-12"><h1><p>RECUPERAR CONTRASEÑA</p></h1></div>
     <div class="col-md-12"><hr /></div>
     <div class="col-md-12">
