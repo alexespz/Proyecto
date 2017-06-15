@@ -55,12 +55,16 @@ if(!isset($_SESSION["usuario"])){
 </head>
 <body>
 <div id="formulario" class="row container">
-    <div class="col-md-9 pull-md-right main-content">
         <div class="col-md-12 text-center"><h1><p>REALIZAR RESERVA</p></h1></div>
+        <div class="pull-right" style="margin-bottom: 40px;">
+            <h4 class="panel-title">
+                <a href="../paginas/paginaPrincipal.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
+            </h4>
+        </div>
         <form action="../consultas/realizarReserva.php" method="POST">
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <div class="col-md-9 form-group">
+                    <div class="col-md-6 form-group">
                         <label for="nombre" class="control-label">Titular de la reserva</label>
                         <input type="text" name="nombre" id="nombre" class="form-control" maxlength="20" value="<?php echo $nombre. ' '. $apellidos ?>" disabled>
                     </div>
@@ -76,7 +80,7 @@ if(!isset($_SESSION["usuario"])){
                     </div>
                 </div>
                 <div class="col-md-12 form-group">
-                    <div class="col-md-9 form-group">
+                    <div class="col-md-6 form-group">
                         <label for="fecha" class="control-label">Fecha de la reserva</label>
                         <input type="text" name="fecha" id="fecha" class="form-control" required>
                     </div>

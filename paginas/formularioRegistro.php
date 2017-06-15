@@ -28,7 +28,6 @@
 </head>
 <body>
 <div id="formulario" class="row container">
-    <div class="col-md-9 pull-md-right main-content">
         <div class="col-md-12 text-center"><h1><p>REGISTRO DE USUARIOS</p></h1></div>
         <form action="return false" onsubmit="return false" method="POST">
             <div class="row">
@@ -90,7 +89,7 @@
                 <div class="panel-body ">
                     <div class="col-md-12">
                         <label class="checkbox">
-                            <input type="checkbox" name="terminos" class="terminos" required>He leido y estoy deacuerdo con los terminos del servicio y condiciones de uso
+                            <input type="checkbox" name="terminos" class="terminos" required>He leido y estoy deacuerdo con los <a href="../paginas/condiciones.html">terminos del servicio y condiciones de uso</a>
                         </label>
                     </div>
                 </div>

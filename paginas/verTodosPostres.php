@@ -1,7 +1,9 @@
 <?php
 session_start();
 include_once '../procedimientos/procedimientos.php';
+include_once '../procedimientos/carrito.php';
 
+$carrito = new Carrito();
 $conexion = new procedimientos();
 $conexion->conect();
 
@@ -99,6 +101,65 @@ if(!isset($_SESSION["usuario"])){
                             }
                             ?>
                         </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3" >
+                            <div class="panel-group" id="accordion" >
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" >
+                                        <h4 class="panel-title ">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                <span class="glyphicon glyphicon-book text-success"></span> Tu Pedido</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body" id="pedido">
+                                            <?php
+                                            $carro = $carrito->get_content();
+                                            if($carro == null) {
+                                                echo 'No hay productos en el carrito';
+                                            }else{echo'
+                                                <table class="table table-striped col-md-9">
+                                                <tr>
+                                                    <td class="col-md-7">Producto</td>
+                                                    <td class="col-md-1">Cantidad</td>
+                                                    <td class="col-md-1">Precio</td>
+                                                </tr>';
+                                                $carro = $carrito->get_content();
+                                                foreach($carro as $producto){echo'
+                                                <tr>
+                                                    <td class="col-md-7">'.$producto["nombre"].'</td>
+                                                    <td class="col-md-1">'.$producto["cantidad"].'</td>
+                                                    <td class="col-md-1">'.$producto["precio"].' €</td>
+                                                </tr>';
+                                                }echo '
+                                                </table>
+                                                <p>Total: '.$carrito->precio_total().' €</p>
+                                                <hr/>
+                                                <button type="button" class="btn btn-warning" onclick="realizarPedido('.$carrito->precio_total().');">Realizar Pedido</button>';
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a href="../paginas/paginaPedido.php"><span class="glyphicon glyphicon-arrow-left text-success"></span> Vovler</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a href="../paginas/paginaPrincipal.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

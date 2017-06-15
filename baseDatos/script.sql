@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS producto(
   descripcion VARCHAR(100),
   precio DOUBLE NOT NULL,
   foto VARCHAR(100) DEFAULT NULL,
-  calorias TINYINT UNSIGNED DEFAULT NULL,
+  calorias SMALLINT UNSIGNED DEFAULT NULL,
   tipo_producto TINYINT UNSIGNED NOT NULL,
   is_delete CHAR(1) NOT NULL DEFAULT 0,
   CONSTRAINT fk_producto_tipo FOREIGN KEY (tipo_producto) REFERENCES tipo_producto(id_tipo_producto)
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS reserva(
   hora_reserva TINYINT UNSIGNED NOT NULL,
   codigo_reserva CHAR(9) NOT NULL,
   CONSTRAINT fk_hora_reserva FOREIGN KEY (hora_reserva) REFERENCES hora_reserva(id_hora),
-  CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+  CONSTRAINT fk_reserva_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 /*TABLA 7 - PEDIDO*/
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS pedido(
   id_usuario TINYINT UNSIGNED NOT NULL,
   precio DOUBLE NOT NULL,
   codigo_pedido CHAR(9) NOT NULL,
-  CONSTRAINT fk_pedido_producto FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+  CONSTRAINT fk_pedido_producto FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 /*TABLA 8 - PEDIDO_PRODUCTO*/

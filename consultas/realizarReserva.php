@@ -32,7 +32,6 @@ $lastId = $conexion->ultimoId();
 for($i=0; $i<= count($_POST["alergeno"])-1; $i++){
     if($_POST["alergeno"][$i] != NULL){
         $query = "INSERT INTO reserva_alergeno(id_reserva, id_alergeno)VALUES (".$lastId.", ".$_POST["alergeno"][$i].")";
-        echo $query;
         $conexion->consultas($query);
     }
 }

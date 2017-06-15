@@ -4,7 +4,8 @@ include_once '../procedimientos/procedimientos.php';
 
 $conexion = new procedimientos();
 $conexion->conect();
-$hora = explode(" ", $_POST["hora"]);
+$hora = $_POST["hora"];
+
 $query = "SELECT hora FROM hora_reserva WHERE hora = '".$hora."' ";
 $conexion->consultas($query);
 

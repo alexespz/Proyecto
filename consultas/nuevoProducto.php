@@ -5,7 +5,7 @@ include_once '../procedimientos/procedimientos.php';
 $conexion = new procedimientos();
 $conexion->conect();
 
-if(!isset($_POST["foto"])){
+if(isset($_FILES["foto"])){
     $carpeta = "../imagenes/productos/";
     $tipoImagen = $_FILES["foto"]["type"];
 
@@ -26,68 +26,19 @@ if(!isset($_POST["foto"])){
   if($_POST["calorias"] == ""){
       $_POST["calorias"] = 'NULL';
   }
-  if($_POST["foto"] == "undefined"){
+  if($_FILES["foto"] == "undefined"){
       $imagen = 'NULL';
   }
   
   $query = "INSERT INTO producto VALUES('','".$_POST["nombre"]."', '".$_POST["descripcion"]."', ".$_POST["precio"].", '".$imagen."', ".$_POST["calorias"].", ".$_POST["tipo"].", 0 )";
   $conexion->consultas($query);
 
-  if($conexion->filasAfectadas() > 0){
-      echo '
-            <script>
-                $.growl.notice({ message: "Producto añadido" });
-                setTimeout(function(){
-                    $("#cuerpo").load("listadoProductos.php");
-                }, 2000);
-            </script>';
-  }else{
-      echo '<script>$.growl.error({ message: "Se ha producido un error. Vuelva a intentarlo" });</script>';
-  }
-
   $lastId = $conexion->ultimoId();
-  $query = "";
-  if($_POST["alergeno1"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 1);";
+  for($i=0; $i<= count($_POST["alergeno"])-1; $i++){
+      if($_POST["alergeno"][$i] != NULL){
+          $query = "INSERT INTO producto_alergeno(id_producto, id_alergeno)VALUES (".$lastId.", ".$_POST["alergeno"][$i].")";
+          $conexion->consultas($query);
+      }
   }
-  if($_POST["alergeno2"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 2);";
-  }
-  if($_POST["alergeno3"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 3);";
-  }
-  if($_POST["alergeno4"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 4);";
-  }
-  if($_POST["alergeno5"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 5);";
-  }
-  if($_POST["alergeno6"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 6);";
-  }
-  if($_POST["alergeno7"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 7);";
-  }
-  if($_POST["alergeno8"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 8);";
-  }
-  if($_POST["alergeno9"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 9);";
-  }
-  if($_POST["alergeno10"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 10);";
-  }
-  if($_POST["alergeno11"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 11);";
-  }
-  if($_POST["alergeno12"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 12);";
-  }
-  if($_POST["alergeno13"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 13);";
-  }
-  if($_POST["alergeno14"] == "true"){
-      $query .= "INSERT INTO producto_alergeno VALUES ('', ".$lastId.", 14);";
-  }
-  $conexion->multiConsultas($query);
 
+  header("Location: ../admin/menuAdmin.php");

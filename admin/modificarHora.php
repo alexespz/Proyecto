@@ -31,7 +31,7 @@ $sentencia->close();
             url: "../consultas/modificarHora.php",
             data: "id="+id+"hora="+hora,
             success: function(resp){
-                $('#cuerpo').load("resp");
+                $('#resultado').html(resp);
             }
         });
     }
@@ -51,7 +51,7 @@ $sentencia->close();
                 <div class="form-group">
                     <label for="hora" class="control-label">Hora</label>
                     <div class='input-group date' id='datetimepicker3'>
-                        <input type='text' class="form-control" id="hora"/>
+                        <input type='text' class="form-control" id="hora" placeholder="<?php echo $hora ?>"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-time"></span>
                         </span>
@@ -60,7 +60,7 @@ $sentencia->close();
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="modificarHora($('#id').val(), $('#hora').val();">Modificar</button>
+            <button class="btn btn-info" id="submit" onclick="modificarHora($('#id').val(), $('#hora').val());">Modificar</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

@@ -60,7 +60,7 @@ if(!isset($_SESSION["usuario"])){
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a id="volverMenu"><span class="fa fa-sign-out text-success"></span> Volver al menu</a>
+                                <a id="volverMenu"><span class="glyphicon glyphicon-arrow-left text-success"></span> Volver al menu</a>
                             </h4>
                         </div>
                     </div>

@@ -32,7 +32,6 @@ if ($_POST["calorias"] == "") {
 if ($_POST["tipo"] == "") {
     $_POST["tipo"] = $resultado["tipo"];
 }
-echo $_POST["foto"];
 $foto = explode("\\", $_POST["foto"]);
 
 $query = "UPDATE producto SET nombre = '".$_POST["nombre"]."', descripcion = '".$_POST["descripcion"]."', precio = ".$_POST["precio"].", foto = '".$_POST["foto"]."', calorias = '".$_POST["calorias"]."', tipo_producto = '".$_POST["tipo"]."' WHERE id_producto = '".$_POST["id"]."' ";

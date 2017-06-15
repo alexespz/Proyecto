@@ -147,6 +147,13 @@ if(!isset($_SESSION["usuario"])){
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
+                                            <a href="../paginas/paginaPedido.php"><span class="glyphicon glyphicon-arrow-left text-success"></span> Vovler</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
                                             <a href="../paginas/paginaPrincipal.php"><span class="glyphicon glyphicon-log-out text-success"></span> Vovler al Menu Principal</a>
                                         </h4>
                                     </div>

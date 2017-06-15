@@ -100,7 +100,7 @@ while($resultado = $conexion->devolverFilas()){
             }echo'
         <td>';
         if($resultado["is_delete"] == 0){echo '
-            <button type="button" class="btn btn-info" href="modificarAlergeno('.$resultado["id_alergeno"].')"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button type="button" class="btn btn-info" onclick="modificarAlergeno('.$resultado["id_alergeno"].')"><span class="glyphicon glyphicon-pencil"></span></button>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminar" href="../consultas/confirmarEliminarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-trash"></span></button>';
         }else { echo '
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalRecuperar" href="../consultas/confirmarRecuperarAlergeno.php?id='.$resultado["id_alergeno"].'"><span class="glyphicon glyphicon-refresh"></span></button>';

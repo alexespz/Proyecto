@@ -20,7 +20,7 @@ if(!isset($_POST["foto"])){
     $imagen = $_FILES['foto']['name'];
 }
 
-if($_POST["foto"] == "undefined"){
+if(isset($_POST["foto"])){
     $imagen = 'NULL';
 }
 

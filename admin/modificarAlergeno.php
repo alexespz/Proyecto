@@ -10,7 +10,7 @@ if(!isset($_SESSION["usuario"])){
 }
 $query = "SELECT id_alergeno, nombre FROM alergeno WHERE id_alergeno = ?";
 $sentencia = $conexion->consultasPreparadas($query);
-$sentencia->bindParam('i', $id);
+$sentencia->bind_param('i', $id);
 $id = $_POST["id"];
 $sentencia->execute();
 $sentencia->bind_result($id, $nombre);
@@ -23,9 +23,9 @@ $sentencia->close();
             async: true,
             type: "POST",
             url: "../consultas/modificarAlergeno.php",
-            data: "id="+id+"nombre="+nombre,
+            data: "id="+id+"&nombre="+nombre,
             success: function(resp){
-                $('#cuerpo').load("resp");
+                $('#resultado').html(resp);
             }
         });
     }
@@ -49,7 +49,7 @@ $sentencia->close();
             </div>
         </div>
         <div class="col-md-12 " id="boton">
-            <button class="btn btn-info" id="submit" onclick="modificarAlergeno(document.getElementById('id').value, document.getElementById('nombre').value;">Modificar</button>
+            <button class="btn btn-info" id="submit" onclick="modificarAlergeno($('#id').val(), $('#nombre').val());">Modificar</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>

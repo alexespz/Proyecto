@@ -6,7 +6,7 @@ $conexion = new procedimientos();
 $conexion->conect();
 $alergeno = $_POST["nombre"];
 
-$query = "SELECT * FROM alergeno WHERE id_alergeno '" .$_POST["id"]."' ";
+$query = "SELECT * FROM alergeno WHERE id_alergeno = '" .$_POST["id"]."' ";
 $conexion->consultas($query);
 $resultado = $conexion->devolverFilas();
 

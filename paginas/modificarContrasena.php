@@ -22,7 +22,6 @@ session_start();
         </div>
         <div class="col-md-12 " id="boton">
             <button class="btn btn-info" id="submit" onclick="cambiarContrasena(document.getElementById('nuevaContrasena').value, document.getElementById('repetirContrasena').value);">Modificar</button>
-            <button class="btn btn-info" id="submit" onclick="volver();">Volver al Menu</button>
         </div>
         <div class="col-md-12 espacios" id="resultado"></div>
     </form>
